@@ -7,5 +7,5 @@ for i in list:
 for i in list:
     print(i*2)
 
-estudiante = {"nombre": "Sofia", "edad": 18, "carrera": "CC"}
+estudiante = {"nombre": "Sofia", "edad": 19, "carrera": "CC"}
 print(estudiante)
