@@ -6,3 +6,6 @@ for i in list:
     print(i)
 for i in list:
     print(i*2)
+
+estudiante = {"nombre": "Sofia", "edad": 19, "carrera": "CC"}
+print(estudiante)
