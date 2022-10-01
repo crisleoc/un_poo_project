@@ -3,9 +3,9 @@ for i in range(3):
 
 list = [1, 2, 3]
 for i in list:
-    print(i)
+    print(i**2)
 for i in list:
-    print(i*2)
+    print(i*3)
 
 estudiante = {"nombre": "Sofia", "edad": 19, "carrera": "CC"}
 print(estudiante)
