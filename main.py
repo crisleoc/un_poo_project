@@ -4,3 +4,5 @@ for i in range(3):
 list = [1, 2, 3]
 for i in list:
     print(i)
+for i in list:
+    print(i*2)
