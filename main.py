@@ -10,4 +10,5 @@ for i in list:
 estudiante = {"nombre": "Sofia", "edad": 19, "carrera": "CC"}
 print(estudiante)
 print('Alejandro Guacaneme')
+print("Joshua Cardona Toro")
 print('Miguel Ochoa')
