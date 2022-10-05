@@ -1,4 +1,5 @@
 import modules.students as students
+import modules.subjects as subjects
 
 
 def readDataUser():
@@ -22,6 +23,7 @@ def main():
     my_connection = students.connectionToDB()
     students.createTableStudent(my_connection)
     # readDataUser()
+    subjects.createTableSubjects(my_connection)
 
 
 if __name__ == "__main__":
