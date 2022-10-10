@@ -1,0 +1,30 @@
+import sqlite3 #Paso1 importar sqlite3
+from sqlite3 import Error #Paso2 importar manejo de errores
+
+def databaseConnection():
+    try:
+        con = sqlite3.connect('academicHistory.db') #paso3 establezco tipo de conexión y creo mi base de datos
+        return con
+    except Error:
+        print(Error)
+
+def createAHTable (con):
+    cursorObj = con.cursor() #paso4 recorremos la base de datos con el objeto cursor
+    cursorObj.execute('CREATE TABLE academicHistory(subjectCode integer PRIMARY KEY, identificationNumber integer , finalNote float, creditsCompleted integer)')#paso5 creamos la tabla academicHistory
+    con.commit() #paso6 aseguramos la persistencia guardando la tabla en el disco
+    
+def readAcademicHistory():
+    subjectCode = input('Enter the subject code: ')
+    identificationNumber = input('Enter the identification number: ')
+    finalNote = input('Enter the final grade for the subject: ')
+    creditsCompleted = input('Enter the credits completed: ')
+
+    academicHistory = (subjectCode, identificationNumber, finalNote, creditsCompleted)
+    return academicHistory
+    
+def main():
+    miCon = databaseConnection()
+    createAHTable(miCon)
+    readAcademicHistory()
+
+main()
