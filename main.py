@@ -1,6 +1,6 @@
 import modules.students as students
 import modules.subjects as subjects
-
+import modules.clasificación as clasi
 
 def readDataUser():
     id = input("Enter the id of the student: ")
@@ -24,6 +24,7 @@ def main():
     students.createTableStudent(my_connection)
     # readDataUser()
     subjects.createTableSubjects(my_connection)
+    clasi.crearTablaClasificación(my_connection)
 
 
 if __name__ == "__main__":
