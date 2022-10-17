@@ -1,8 +1,11 @@
-import modules.students as students
-import modules.subjects as subjects
+import modules.connect_db as CONNECT_DB
+import modules.students as STUDENTS
+import modules.subjects as SUBJECTS
+# ? Importar módulo Joshua
+# ? Importar módulo Alejandro
 
 
-def readDataUser():
+def readDataUserStudent():
     id = input("Enter the id of the student: ")
     id = id.ljust(12)  # Fix to the left 12 positions
     name = input("Enter the name of the student: ")
@@ -20,10 +23,17 @@ def readDataUser():
 
 
 def main():
-    my_connection = students.connectionToDB()
-    students.createTableStudent(my_connection)
-    # readDataUser()
-    subjects.createTableSubjects(my_connection)
+    my_connection = CONNECT_DB.connectionToDB()
+    STUDENTS.createTableStudent(my_connection)
+    SUBJECTS.createTableSubjects(my_connection)
+    # ? Crear tabla Joshua
+    # ? Crear tabla Alejandro
+
+    STUDENTS.insertStudent(my_connection, readDataUserStudent())
+    # people = STUDENTS.selectAllStudents(my_connection)
+    # print(people)
+    # person = STUDENTS.selectStudentByID(my_connection, 1234)
+    # print(person)
 
 
 if __name__ == "__main__":
