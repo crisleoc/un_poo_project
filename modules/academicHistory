@@ -1,30 +1,55 @@
-import sqlite3 #Paso1 importar sqlite3
-from sqlite3 import Error #Paso2 importar manejo de errores
+import sqlite3 # Importar sqlite3
+from sqlite3 import Error # Importar manejo de errores
 
 def databaseConnection():
     try:
-        con = sqlite3.connect('academicHistory.db') #paso3 establezco tipo de conexión y creo mi base de datos
+        con = sqlite3.connect('academicHistory.db') # Establezco tipo de conexión y creo mi base de datos
         return con
     except Error:
         print(Error)
 
-def createAHTable (con):
-    cursorObj = con.cursor() #paso4 recorremos la base de datos con el objeto cursor
-    cursorObj.execute('CREATE TABLE academicHistory(subjectCode integer PRIMARY KEY, identificationNumber integer , finalNote float, creditsCompleted integer)')#paso5 creamos la tabla academicHistory
-    con.commit() #paso6 aseguramos la persistencia guardando la tabla en el disco
+def createAcademicHistoryTable (con):
+    cursorObj = con.cursor() # Recorremos la base de datos con el objeto cursor
+    cursorObj.execute('CREATE TABLE academicHistory(subjectCode integer PRIMARY KEY, identificationNumber integer , finalNote float, creditsCompleted integer )')# Creamos la tabla academicHistory
+    con.commit() # Aseguramos la persistencia guardando la tabla en el disco
     
-def readAcademicHistory():
+def newAcademicHistory (con):
+
+    cursorObj = con.cursor()
+    
     subjectCode = input('Enter the subject code: ')
     identificationNumber = input('Enter the identification number: ')
-    finalNote = input('Enter the final grade for the subject: ')
-    creditsCompleted = input('Enter the credits completed: ')
-
-    academicHistory = (subjectCode, identificationNumber, finalNote, creditsCompleted)
-    return academicHistory
+    finalNote = str(object='5.0')
+    creditsCompleted = str(object='10')
     
+    academicHistory = 'INSERT INTO academicHistory VALUES('+subjectCode+','+identificationNumber+', '+finalNote+', '+creditsCompleted+')'
+    print ('\nAcademic History: \n', '\nSubject Code: ', subjectCode, '\nIdentification Number: ', identificationNumber, '\nFinal Note: ', finalNote, '\nCredits Completed: ', creditsCompleted)
+    cursorObj.execute(academicHistory)
+    con.commit()
+
+
+def readAcademicHistory (con):
+    
+    identification = input('Enter the identification number: ')
+    readHistory = "SELECT * FROM academicHistory WHERE identificationNumber == "+identification+""
+    cursorObj = con.cursor()
+   
+    def useSelect(numberHistory):
+        cursorObj.execute(numberHistory)
+        rows = cursorObj.fetchall()
+        return rows
+
+    rows = useSelect(readHistory)
+    for r in rows:
+        print (r)
+        
+    if rows == []:
+        print ('This document does not have an academic history assigned')
+
 def main():
     miCon = databaseConnection()
-    createAHTable(miCon)
-    readAcademicHistory()
+    #createAcademicHistoryTable(miCon)
+    #newAcademicHistory (miCon)
+    readAcademicHistory (miCon)
 
 main()
