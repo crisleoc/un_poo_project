@@ -21,6 +21,7 @@ def createTableSubjects(connection):
 
 
 def insertSubject(connection, subject):
+    
     """Insert a subject in the Subjects table:
 
     Args:
@@ -35,6 +36,7 @@ def insertSubject(connection, subject):
 
 
 def selectAllSubjects(connection):
+    
     """Select all of the subjects in the Subjects table:
 
     Args:
