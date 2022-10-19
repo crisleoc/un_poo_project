@@ -1,22 +1,22 @@
-def createTableSubjects(connection):
+def createSubjectsTable(connection):
     """Create the subjects table in the database:
 
     Args:
         connection (object): Connection to sqlite3.
     """
 
-    cursor_obj = connection.cursor()
-    code = "code INTEGER PRIMARY KEY NOT NULL UNIQUE"
-    name = "name TEXT NOT NULL UNIQUE"
-    school = "school TEXT"
-    department = "department TEXT"
-    credits = "credits TEXT"
-    language = "language TEXT"
-    create_statement = f"""CREATE TABLE IF NOT EXISTS subjects(
-        {code}, {name}, {school}, {department}, {credits}, {language}
+    CURSOR_OBJ = connection.cursor()
+    ID = "id INTEGER PRIMARY KEY NOT NULL UNIQUE"
+    NAME = "name TEXT NOT NULL UNIQUE"
+    SCHOOL = "school TEXT"
+    DEPARTMENT = "department TEXT"
+    CREDITS = "credits TEXT"
+    LANGUAGE = "language TEXT"
+    CREATE_STATEMENT = f"""CREATE TABLE IF NOT EXISTS subjects(
+        {ID}, {NAME}, {SCHOOL}, {DEPARTMENT}, {CREDITS}, {LANGUAGE}
         )"""
-    cursor_obj.execute(create_statement)
-    connection.commit()  # Save DB
+    CURSOR_OBJ.execute(CREATE_STATEMENT)
+    connection.commit()
 
 
 def insertSubject(connection, subject):

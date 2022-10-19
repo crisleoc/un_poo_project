@@ -1,17 +1,4 @@
-import sqlite3  # importar SQLITE
-from sqlite3 import Error  # generación de errores de SQLITE
-
-
-def connectionToDB():
-    try:
-        connection = sqlite3.connect(
-            './res/database.db')  # Database connection
-        return connection
-    except Error:
-        print(Error)
-
-
-def crearTablaClasificación(connection):
+def createClassificationTable(connection):
     # recorremos la base de datos con el objeto de conexión
     cursorObj = connection.cursor()
     # creamos la tabla materias
@@ -19,7 +6,7 @@ def crearTablaClasificación(connection):
     connection.commit()  # aseguramos la persistencia guardando la tabla en el disco
 
 
-def insertarInfoClasificación(connection):
+def insertDataClassify(connection):
     cursorObj = connection.cursor()
     identificación = input("inserte la identificación del estudiante")
     # ajustar el codigo a la izquierda 12 posiciones

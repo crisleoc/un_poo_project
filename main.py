@@ -2,7 +2,7 @@ import modules.connect_db as CONNECT_DB
 import modules.students as STUDENTS
 import modules.subjects as SUBJECTS
 import modules.clasificación as CLASSIFY
-# ? Importar módulo Alejandro
+import modules.academic_history as ACADEMIC_HISTORY
 
 
 def readDataUserStudent():
@@ -24,10 +24,10 @@ def readDataUserStudent():
 
 def main():
     my_connection = CONNECT_DB.connectionToDB()
-    STUDENTS.createTableStudent(my_connection)
-    SUBJECTS.createTableSubjects(my_connection)
-    CLASSIFY.crearTablaClasificación(my_connection)
-    # ? Crear tabla Alejandro
+    STUDENTS.createStudentTable(my_connection)
+    SUBJECTS.createSubjectsTable(my_connection)
+    CLASSIFY.createClassificationTable(my_connection)
+    ACADEMIC_HISTORY.createAcademicHistoryTable(my_connection)
 
     STUDENTS.insertStudent(my_connection, readDataUserStudent())
     # people = STUDENTS.selectAllStudents(my_connection)
