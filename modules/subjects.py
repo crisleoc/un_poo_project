@@ -1,26 +1,29 @@
 def createSubjectsTable(connection):
-    """Create the subjects table in the database:
+
+    """Creates the subjects table in the database:
 
     Args:
         connection (object): Connection to sqlite3.
+
     """
 
     CURSOR_OBJ = connection.cursor()
-    ID = "id INTEGER PRIMARY KEY NOT NULL UNIQUE"
+    CODE = "id INTEGER PRIMARY KEY NOT NULL UNIQUE"
     NAME = "name TEXT NOT NULL UNIQUE"
     SCHOOL = "school TEXT"
     DEPARTMENT = "department TEXT"
     CREDITS = "credits TEXT"
     LANGUAGE = "language TEXT"
     CREATE_STATEMENT = f"""CREATE TABLE IF NOT EXISTS subjects(
-        {ID}, {NAME}, {SCHOOL}, {DEPARTMENT}, {CREDITS}, {LANGUAGE}
+        {CODE}, {NAME}, {SCHOOL}, {DEPARTMENT}, {CREDITS}, {LANGUAGE}
         )"""
     CURSOR_OBJ.execute(CREATE_STATEMENT)
     connection.commit()
 
 
 def insertSubject(connection, subject):
-    """Insert a subject in the subjects table:
+
+    """Inserts a subject in the subjects table:
 
     Args:
         connection (object): Connection to sqlite3.
@@ -28,13 +31,14 @@ def insertSubject(connection, subject):
 
     """
     cursor_obj = connection.cursor()
-    create_statement = "INSERT INTO subject VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    create_statement = "INSERT INTO subject VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" # uses string formatting to replace the ? characters with the elements contained in the subject list
     cursor_obj.execute(create_statement, subject)
     connection.commit()
 
 
 def selectAllSubjects(connection):
-    """Select all of the subjects in the Subjects table:
+
+    """Returns a list containing all the subjects registered in the Subjects table:
 
     Args:
         connection (object): Connection to sqlite3.
@@ -58,79 +62,168 @@ def updateSubjects(connection, codmat):
 
     """
     cursor_obj = connection.cursor()
-    salirMenu = False
-    while not salirMenu:
-        opc = input('''
-        Menú de Opciones
-        1. Cambiar Código
-        2. Cambiar Nombre
-        3. Cambiar Facultad
-        4. Cambiar Departamento
-        5. Cambiar Créditos
-        6. Cambiar Lenguaje
-        7. Cambiar Todo
+    exitMenu = False
+    while not exitMenu:
+        opc = input("""
+        Option's Menu:
+        1. Modify Code
+        2. Modify Name
+        3. Modify School
+        4. Modify Department
+        5. Modify Credits
+        6. Modify Language
+        7. Modify Everything
 
-        Seleccionar opción>>>: ''')
+        0. Exit
 
-        if (opc == 1):
-            newID = input("Digite nuevo código de la materia: ")
-            create_statement = 'UPDATE subjects SET ID="' + \
-                newID+'" WHERE ID ="'+codmat+'"'
-            cursor_obj.execute(create_statement)
-
-        elif (opc == 2):
-            newNAME = input("Digite nuevo nombre de la materia: ")
-            create_statement = 'UPDATE subjects SET NAME="' + \
-                newNAME+'" WHERE ID ="'+codmat+'"'
-            cursor_obj.execute(create_statement)
-        elif (opc == 3):
-            newSCHOOL = input("Digite nueva facultad de la materia: ")
-            create_statement = 'UPDATE subjects SET SCHOOL="' + \
-                newSCHOOL+'" WHERE ID ="'+codmat+'"'
-            cursor_obj.execute(create_statement)
-        elif (opc == 4):
-            newDEPARTMENT = input("Digite nuevo departamento de la materia: ")
-            create_statement = 'UPDATE subjects SET DEPARTMENT="' + \
-                newDEPARTMENT+'" WHERE ID ="'+codmat+'"'
-            cursor_obj.execute(create_statement)
-        elif (opc == 5):
-            newCREDITS = input(
-                "Digite nueva cantidad de créditos de la materia: ")
-            create_statement = 'UPDATE subjects SET CREDITS="' + \
-                newCREDITS+'" WHERE ID ="'+codmat+'"'
-            cursor_obj.execute(create_statement)
-        elif (opc == 6):
-            newLANGUAGE = input("Digite nuevo código de la materia: ")
-            create_statement = 'UPDATE subjects SET LANGUAGE="' + \
-                newLANGUAGE+'" WHERE ID ="'+codmat+'"'
-            cursor_obj.execute(create_statement)
-        elif (opc == 7):
-            newID = input("Digite nuevo código de la materia: ")
-            newNAME = input("Digite nuevo nombre de la materia: ")
-            newSCHOOL = input("Digite nueva facultad de la materia: ")
-            newDEPARTMENT = input("Digite nuevo departamento de la materia: ")
-            newCREDITS = input(
-                "Digite nueva cantidad de créditos de la materia: ")
-            newLANGUAGE = input("Digite nuevo código de la materia: ")
-            create_statement = 'UPDATE subjects SET ID="' + \
-                newID+'", NAME="' + \
-                newNAME+'", SCHOOL="' + \
-                newSCHOOL+'", DEPARTMENT="' + \
-                newDEPARTMENT+'", CREDITS="' + \
-                newCREDITS+'", LANGUAGE="' + \
-                newLANGUAGE+'" WHERE ID ="'+codmat+'"'
-            cursor_obj.execute(create_statement)
+        Enter Option>>>: """)
+        print("You entered: "+opc)
+        if opc == '1':
+            try:
+                newCode = input("Enter a new code: ")
+                create_statement = 'UPDATE subjects SET CODE="' + \
+                    newCode+'" WHERE CODE ="'+codmat+'"'
+                cursor_obj.execute(create_statement)
+                connection.commit()
+                print("Subject's code has been modified successfully:")
+                opc = input("Press 1 to close the menu, 0 to return >>>: ")
+                if opc == '1':
+                    exitMenu = True
+                else:
+                    exitMenu = False
+            except:
+                print("ERROR: Please enter a valid code")
+        elif opc == '2':
+            try:
+                newNAME = input("Enter a new name: ")
+                create_statement = 'UPDATE subjects SET NAME="' + \
+                    newNAME+'" WHERE CODE ="'+codmat+'"'
+                cursor_obj.execute(create_statement)
+                connection.commit()
+                print("""Subject's name has been modified successfully""")
+                opc = input("Press 1 to close the menu, 0 to return >>>: ")
+                if opc == '1':
+                    exitMenu = True
+                else:
+                    exitMenu = False
+            except:
+                print("ERROR: Please enter a valid input")
+        elif opc == '3':
+            try:
+                newSCHOOL = input("Enter a new school: ")
+                create_statement = 'UPDATE subjects SET SCHOOL="' + \
+                    newSCHOOL+'" WHERE CODE ="'+codmat+'"'
+                cursor_obj.execute(create_statement)
+                connection.commit()
+                print("""Subject's school has been modified successfully""")
+                opc = input("Press 1 to close the menu, 0 to return >>>: ")
+                if opc == '1':
+                    exitMenu = True
+                else:
+                    exitMenu = False
+            except:
+                print("ERROR: Please enter a valid input")
+        elif opc == '4':
+            try:
+                newDEPARTMENT = input("Enter a new department: ")
+                create_statement = 'UPDATE subjects SET DEPARTMENT="' + \
+                    newDEPARTMENT+'" WHERE CODE ="'+codmat+'"'
+                cursor_obj.execute(create_statement)
+                connection.commit()
+                print("""Subject's department has been modified successfully""")
+                opc = input("Press 1 to close the menu, 0 to return >>>: ")
+                if opc == '1':
+                    exitMenu = True
+                else:
+                    exitMenu = False
+            except:
+                print("ERROR: Please enter a valid input")
+        elif opc == '5':
+            try:
+                newCREDITS = input(
+                    "Enter a new number of credits: ")
+                create_statement = 'UPDATE subjects SET CREDITS="' + \
+                    newCREDITS+'" WHERE CODE ="'+codmat+'"'
+                cursor_obj.execute(create_statement)
+                connection.commit()
+                print("""Subject's credits has been modified successfully""")
+                opc = input("Press 1 to close the menu, 0 to return >>>: ")
+                if opc == '1':
+                    exitMenu = True
+                else:
+                    exitMenu = False
+            except:
+                print("ERROR: Please enter a valid input")
+        elif opc == '6':
+            try:
+                newLANGUAGE = input("Enter a new language: ")
+                create_statement = 'UPDATE subjects SET LANGUAGE="' + \
+                    newLANGUAGE+'" WHERE CODE ="'+codmat+'"'
+                cursor_obj.execute(create_statement)
+                connection.commit()
+                print("""Subject's language has been modified successfully""")
+                opc = input("Press 1 to close the menu, 0 to return >>>: ")
+                if opc == '1':
+                    exitMenu = True
+                else:
+                    exitMenu = False
+            except:
+                print("ERROR: Please enter a valid input")
+        elif opc == '7':
+            try:
+                newID = input("Enter a new code: ")
+                newNAME = input("Enter a new name: ")
+                newSCHOOL = input("Enter a new school: ")
+                newDEPARTMENT = input("Enter a new department: ")
+                newCREDITS = input("Enter a new number of credits: ")
+                newLANGUAGE = input("Enter a new language: ")
+                create_statement = 'UPDATE subjects SET CODE="' + \
+                    newID+'", NAME="' + \
+                    newNAME+'", SCHOOL="' + \
+                    newSCHOOL+'", DEPARTMENT="' + \
+                    newDEPARTMENT+'", CREDITS="' + \
+                    newCREDITS+'", LANGUAGE="' + \
+                    newLANGUAGE+'" WHERE CODE ="'+codmat+'"'
+                cursor_obj.execute(create_statement)
+                connection.commit()
+                print("""Subject's data has been modified successfully""")
+                opc = input("Press 1 to close the menu, 0 to return >>>: ")
+                if opc == '1':
+                    exitMenu = True
+                else:
+                    exitMenu = False
+            except:
+                print("ERROR: Please enter a valid input")
+        elif opc == '0':
+            exitMenu = True
+        else:
+            print("ERROR: Enter a valid option")
     connection.commit()
 
-def consultarTablaMaterias(con):
-    cursorObj = con.cursor()
+
+def querySubjects(connection, codmat):
+
+    """Queries a specific subject using its code as reference:
+    
+    Args:
+        connection (object): Connection to sqlite3.
+        codmat (int): Integer that contains the code of a specific subject that we want to query.
+
+    """
+    count = 0 # allows extracting the first index of all the rows inside the dataList list
+    rowIsFound = False #changes its value to True if the Code entered by the user matches one of the codes registered in the table
+    cursorObj = connection.cursor()
     cursorObj.execute("SELECT * FROM subjects")
-    filas = cursorObj.fetchall()
-    print("filas es de tipo: ", type(filas))
-    print(filas)
-    for row in filas:
-        codigo = row[0]
-        nombre = row[1]
-        print("La información de la materia es: ", codigo, nombre)
-        print("La información de la lista es: ", row)
-    return filas
+    dataList = cursorObj.fetchall()
+    for row in dataList:
+        if codmat == int(dataList[count][0]): #if the entered code exists inside the table, prints the row associated with the code
+            print(row)
+            rowIsFound = True
+            break #breaks the for iteration when the row has been found
+        else:
+            count += 1
+            continue
+    if rowIsFound == False:  # if its value's still false after iterating through all the rows of the table, it prints an error message
+        print(
+            "ERROR: The subject doesn't exist/ Code you entered isn't linked to any subject")
+    return dataList
