@@ -1,7 +1,7 @@
 import modules.connect_db as CONNECT_DB
 import modules.students as STUDENTS
 import modules.subjects as SUBJECTS
-import modules.clasificación as CLASSIFY
+import modules.classification as CLASSIFY
 import modules.academic_history as ACADEMIC_HISTORY
 
 
