@@ -1,4 +1,4 @@
-def createTableStudent(connection):
+def createStudentTable(connection):
     """Create a table in the database:
 
     Args:
@@ -17,7 +17,7 @@ def createTableStudent(connection):
     PICTURE = "photograph TEXT"
     CREATE_STATEMENT = f"CREATE TABLE IF NOT EXISTS students({ID}, {NAME}, {LAST_NAME}, {CAREER}, {BORN_DATE}, {ENTRY_DATE}, {PLACE_ORIGIN}, {EMAIL}, {ENROLL_QUANTITY}, {PICTURE})"
     CURSOR_OBJ.execute(CREATE_STATEMENT)
-    connection.commit()  # Save DB
+    connection.commit()
 
 
 def insertStudent(connection, student):

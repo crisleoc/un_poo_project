@@ -3,6 +3,8 @@ import modules.students as STUDENTS
 import modules.subjects as SUBJECTS
 import modules.clasification as clasi
 # ? Importar módulo Alejandro
+import modules.classification as CLASSIFY
+import modules.academic_history as ACADEMIC_HISTORY
 
 
 def readDataUserStudent():
@@ -28,6 +30,10 @@ def main():
     SUBJECTS.createTableSubjects(my_connection)
     clasi.createTableClasification(my_connection)
     # ? Crear tabla Alejandro
+    STUDENTS.createStudentTable(my_connection)
+    SUBJECTS.createSubjectsTable(my_connection)
+    CLASSIFY.createClassificationTable(my_connection)
+    ACADEMIC_HISTORY.createAcademicHistoryTable(my_connection)
 
     STUDENTS.insertStudent(my_connection, readDataUserStudent())
     # people = STUDENTS.selectAllStudents(my_connection)
