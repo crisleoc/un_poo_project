@@ -56,19 +56,19 @@ INSERT INTO students(id, name, lastName, career, bornDate, entryDate, placeOrigi
 (1078366421, "Camilo", "Gonzalez", "Administración de Empresas", "03-10-2004", "01-01-2022", "Bogotá", "camgonzalez", 2, "https://source.unsplash.com/100x100/?people");
 
 INSERT INTO subjects(id, name, school, department, credits, language) VALUES
-(1, "Matemáticas", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(2, "Física", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(3, "Química", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(4, "Inglés", "Ingeniería", "Ingeniería de Sistemas", "2", "Inglés"),
-(5, "Programación", "Ingeniería", "Ingeniería de Sistemas", "3", "Español"),
-(6, "Estructuras de Datos", "Ingeniería", "Ingeniería de Sistemas", "3", "Español"),
-(7, "Bases de Datos", "Ingeniería", "Ingeniería de Sistemas", "3", "Español"),
-(8, "Sistemas Operativos", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(9, "Arquitectura de Computadores", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(10, "Redes de Computadores", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(11, "Ingeniería de Software", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(12, "Administración de Proyectos", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(13, "Sistemas de Información", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
-(14, "Ingeniería Económica", "Ingeniería", "Ingeniería de Sistemas", "2", "Español");
+(001, "Matemáticas", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(002, "Física", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(003, "Química", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(004, "Inglés", "Ingeniería", "Ingeniería de Sistemas", "2", "Inglés"),
+(005, "Programación", "Ingeniería", "Ingeniería de Sistemas", "3", "Español"),
+(006, "Estructuras de Datos", "Ingeniería", "Ingeniería de Sistemas", "3", "Español"),
+(007, "Bases de Datos", "Ingeniería", "Ingeniería de Sistemas", "3", "Español"),
+(008, "Sistemas Operativos", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(009, "Arquitectura de Computadores", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(010, "Redes de Computadores", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(011, "Ingeniería de Software", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(012, "Administración de Proyectos", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(013, "Sistemas de Información", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
+(014, "Ingeniería Económica", "Ingeniería", "Ingeniería de Sistemas", "2", "Español");
 
 
