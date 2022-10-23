@@ -16,7 +16,6 @@ def createAcademicHistoryTable(connection):
                                     FOREIGN KEY (id) REFERENCES students(id))''')#We create the table academicHistory
     connection.commit()#We ensure persistence by saving the table to disk
 
-
 def addSubject(connection):
     """The add Subject function adds subjects to the academic History table.
     Args:
@@ -69,7 +68,6 @@ def addSubject(connection):
             print('This document already has a grade for this subject!')
     else:
         print('one or both data is incorrect, please check and try again!')
-
 
 def readAcademicHistory(connection):
     """The readAcademicHistory function queries the academicHistory table for information.
@@ -140,7 +138,6 @@ def deleteSubject(connection):
 
     deleteHistory = "DELETE FROM academicHistory Where id == "+identity+" AND code == "+code+""
     modificateHistory(deleteHistory)#The modificateHistory function executes the DELETE
-
 
 def updateFinalNote(connection):
     """The updateFinalNote function updates the final grade of a subject in the academicHistory table.
