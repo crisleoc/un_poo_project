@@ -3,7 +3,7 @@ import modules.connect_db as CONNECT_DB
 
 def createAcademicHistoryTable(connection):
     cursorObj = connection.cursor()
-    cursorObj.execute('''CREATE TABLE academicHistory(
+    cursorObj.execute('''CREATE TABLE IF NOT EXISTS academicHistory(
                                     code integer,
                                     id integer,
                                     finalNote float,
