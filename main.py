@@ -29,7 +29,7 @@ def main():
     CLASSIFY.createClassificationTable(my_connection)
     ACADEMIC_HISTORY.createAcademicHistoryTable(my_connection)
 
-    STUDENTS.insertStudent(my_connection, readDataUserStudent())
+    # STUDENTS.insertStudent(my_connection, readDataUserStudent())
     # people = STUDENTS.selectAllStudents(my_connection)
     # print(people)
     # person = STUDENTS.selectStudentByID(my_connection, 1234)
