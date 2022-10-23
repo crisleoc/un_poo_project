@@ -1,152 +1,186 @@
+import modules.connect_db as CONNECT_DB
+
 def createAcademicHistoryTable(connection):
-    cursorObj = connection.cursor()#Recorremos la base de datos con el objeto cursorObj
+    cursorObj = connection.cursor()
     cursorObj.execute('''CREATE TABLE academicHistory(
-                                    subjectCode integer PRIMARY KEY,
-                                    identificationNumber integer,
+                                    code integer,
+                                    id integer,
                                     finalNote float,
-                                    subjectCredits integer )''')#Creamos la tabla academicHistory
-    connection.commit()#Aseguramos la persistencia guardando la tabla en el disco
+                                    credits integer,
 
-def addSubject(connection):#La función addSubjec añade materias a la tabla academicHistory   
+                                    PRIMARY KEY (code, id)
+                                    FOREIGN KEY (code) REFERENCES subjects(code),
+                                    FOREIGN KEY (id) REFERENCES students(id))''')
+    connection.commit()
 
-    print ('\n\nWelcome! Enter the information to add a new subject\n')#Solicitamos la información de la materia que se va a insertar a la historia acádemica
-    subjectCode = input('Enter the subject code: ') 
-    identificationNumber = input('Enter the identification number: ')
-    finalNote = input('Enter the final note: ')
-    subjectCredits = input('Enter the subject credits: ')
+def addSubject(connection):
 
-    cursorObj = connection.cursor()#Recorremos la base de datos con el objeto cursorObj
-    infoSubject = 'INSERT INTO academicHistory VALUES('+subjectCode+','+identificationNumber+', '+finalNote+', '+subjectCredits+')'
-    #Asignamos a la variable infoSubject la función INSERT, y relacionamos la información solicitada con el campo correspondiente de la tabla academicHistory
-    cursorObj.execute(infoSubject)#Insertamos la información en la tabla academicHistory
-    connection.commit()#Aseguramos la persistencia guardando la tabla en el disco
-    print ('\nSubject was successfully added!')
+    print ('\n\nWelcome! Enter the information to create your academic history\n')
+    key = input('Enter the code of the subject to update: ')
+    identity = input('Enter the identification number: ')
+    cursorObj = connection.cursor()
     
-def readAcademicHistory(connection):#La función readAcademicHistory hace la consulta de informacion a la tabla academicHistory 
-    
-    print ('\n\nWelcome! Enter the information to see your academic history\n')#Solicitamos la información del usuario para realizar la consulta correcta
-    identification = input('Enter the identification number: ')
-    readHistory = "SELECT * FROM academicHistory WHERE identificationNumber = "+identification+""
-    #Asignamos a la variable readHistory la función SELECT, y relacionamos la información solicitada con el campo correspondiente de la tabla
-    cursorObj = connection.cursor()#Recorremos la base de datos con el objeto cursorObj
+    def useSelect(x):
+        cursorObj.execute(x)
+        rows = cursorObj.fetchall()
+        return rows
+
+    readCode = "SELECT code FROM subjects WHERE code = "+key+""
+    rows1 = useSelect(readCode)
+    for r in rows1:
+        key = str(r[0])
    
-    def useSelect(numberHistory):#La función useSelect ejecuta el SELECT
-        cursorObj.execute(numberHistory)#Consultamos la informacion en la tabla academicHistory
-        rows = cursorObj.fetchall()#Lee los registros en memoria y devuelve una lista
-        return rows 
+    readId = "SELECT id FROM students WHERE id = "+identity+""
+    rows2 = useSelect(readId)
+    for r in rows2:
+        identity = str(r[0])
 
-    rows = useSelect(readHistory)#Llamamos a la función que ejecuta el SELECT
+    if rows1 != [] and rows2 != []:
+
+        validation2 = "SELECT * FROM academicHistory WHERE id = "+identity+" AND code = "+key+""
+        rows = useSelect(validation2)
+        for r in rows:
+            a = str(r[0])
+        
+        if rows == []:
+            
+            finalNote = input('Enter your final grade: ')
+            credits = str(0)
+            readCredits = "SELECT credits FROM subjects WHERE code = "+key+""
+            rows = useSelect(readCredits)
+            for r in rows:
+                credits = str(r[0])
+                
+            infoSubject = 'INSERT INTO academicHistory VALUES('+key+','+identity+', '+finalNote+','+credits+')'
+            cursorObj.execute(infoSubject)
+            connection.commit()
+            print ('\nSubject successfully added to academic history!')
+
+        else:
+            print ('This document already has a grade for this subject!')
+    else:
+        print('one or both data is incorrect, please check and try again!')
     
-    for r in rows:#El ciclo for recorre la base de datos y nos devuelve la información solicitada a traves de los correspondientes indices
-        subjectCode = r[0]
-        finalNote = r[2]
-        subjectCredits = r[3]
-        print ('\nAcademic History: ')
-        print ('\nSubject Code: ', subjectCode)
-        print ('Final Note: ', finalNote)
-        print ('Subject Credits: ', subjectCredits)
+def readAcademicHistory(connection):
+    
+    print ('\n\nWelcome! Enter the information to see your academic history\n')
+    identity = input('Enter the identification number: ')
+    cursorObj = connection.cursor()
+   
+    def useSelect(x):
+        cursorObj.execute(x)
+        rows = cursorObj.fetchall()
+        return rows
+    
+    readHistory = "SELECT * FROM academicHistory WHERE id = "+identity+""
+    rows = useSelect(readHistory)
 
-    if rows == []:#El condicional if verifica que la lista esté vacia, e imprime mensaje de incidencia por el documento ingresado
+    print ('\nAcademic History: ')
+    for r in rows:
+        code = r[0]
+        finalNote = r[2]
+        credits = r[3]
+        print ('\nSubject Code: ', code)
+        print ('Final Note: ', finalNote)
+        print ('Subject Credits: ', credits)
+
+    if rows == []:
+        print ('\nEmpty')
         print ('\nThis document does not have an academic history assigned!')
 
-def deleteSubject(connection):#La función deleteSubject elimina una materia en la tabla academicHistory
+def deleteSubject(connection):
 
-    print ('\n\nwelcome! Enter the information to remove a subject\n')#Solicitamos la información del usuario para realizar la eliminación correcta
-    code = input('Enter the subject code: ')
-    identification = input('Enter the identification number: ')
-    deleteHistory = "DELETE FROM academicHistory Where identificationNumber == "+identification+" AND subjectCode == "+code+""
-    #Asignamos a la variable deleteHistory la función DELETE, y relacionamos la información solicitada con el campo correspondiente de la tabla
-    readHistory = "SELECT * FROM academicHistory WHERE identificationNumber == "+identification+" AND subjectCode == "+code+""
-    #Asignamos a la variable readHistory la función SELECT, y relacionamos la información solicitada con el campo correspondiente de la tabla
-    cursorObj = connection.cursor()#Recorremos la base de datos con el objeto cursorObj
-
-    def modificateHistory(numberHistory):#La función modificateHistory ejecuta el DELETE
-        cursorObj.execute(numberHistory)#Eliminamos la información en la tabla academicHistory
-        connection.commit()#Aseguramos la persistencia guardando la tabla en el disco
-
-    def checkDelete(numberHistory):#La función checkDelete ejecuta el SELECT
-        cursorObj.execute(numberHistory)#Consultamos la información en la tabla academicHistory
-        rows = cursorObj.fetchall()#Lee los registros en memoria y devuelve una lista
+    def checkDelete(x):
+        cursorObj.execute(x)
+        rows = cursorObj.fetchall()
         return rows
 
-    rows = checkDelete(readHistory)#Llamamos a la función que ejecuta el DELETE
+    def modificateHistory(y):
+        cursorObj.execute(y)
+        connection.commit()
+
+    print ('\n\nwelcome! Enter the information to remove a subject\n')
+    code = input('Enter the subject code: ')
+    identity = input('Enter the identification number: ')
+
+    cursorObj = connection.cursor()
+    readHistory = "SELECT * FROM academicHistory WHERE id == "+identity+" AND code == "+code+""
+    rows = checkDelete(readHistory)
     
-    for r in rows:#El ciclo for recorre la base de datos y nos devuelve la información de la materia eliminada
-        subjectCode = r[0]
-        finalNote = r[2]
-        subjectCredits = r[3]
-        print ('\nSubject Code: ', subjectCode)
+    for r in rows:
+        code = str(r[0])
+        finalNote = str(r[2])
+        credits = str(r[3])
+        print ('\nSubject Code: ', code)
         print ('Final Note: ', finalNote)
-        print ('Subject Credits: ', subjectCredits)
+        print ('Subject Credits: ', credits)
         
-    if rows == []:#El condicional if verifica que la lista esté vacia, e imprime mensaje de incidencia con el documento ingresado
-        print ('\nThe data entered is incorrect, please check and try again!')
+    if rows == []:
+        print ('\nThe data entered is incorrect or the subject was already deleted, please check and try again!')
     else:
         print ('\n<- This subject was successfully deleted!')
-        
-    modificateHistory(deleteHistory)#Llamamos a la función que ejecuta el SELECT
 
-def updateFinalNote(connection):#La función updateFinalNote actualiza la nota final de una materia en la tabla academicHistory
+    deleteHistory = "DELETE FROM academicHistory Where id == "+identity+" AND code == "+code+"" 
+    modificateHistory(deleteHistory)
 
-    print ('\n\nWelcome! Enter the information to update the final note\n')#Solicitamos la información del usuario para realizar la actualización correcta
-    code = input('Enter the subject code: ')
-    identification = input('Enter the identification number: ')
-    readHistory = "SELECT * FROM academicHistory WHERE identificationNumber == "+identification+" AND subjectCode == "+code+""
-    #Asignamos a la variable readHistory la función SELECT, y relacionamos la información solicitada con el campo correspondiente de la tabla
-    cursorObj = connection.cursor()#Recorremos la base de datos con el objeto cursorObj
-        
-    def readNew(numberHistory):#La función readNew ejecuta el Select
-        cursorObj.execute(numberHistory)#Consultamos la información en la tabla academicHistory
-        rows = cursorObj.fetchall()#Lee los registros en memoria y devuelve una lista
+def updateFinalNote(connection):
+
+    def readNew(x):
+        cursorObj.execute(x)
+        rows = cursorObj.fetchall()
         return rows
 
-    rows = readNew(readHistory)#Llamamos a la función que ejecuta el SELECT
+    def refreshNote(z):
+        cursorObj.execute(z)
+        connection.commit()
 
-    for r in rows:#El ciclo for recorre la base de datos y nos devuelve los elementos solicitados
-            subjectCode = r[0]
-            finalNote = r[2]
-            subjectCredits = r[3]
+    print ('\n\nWelcome! Enter the information to update the final note\n')
+    code = input('Enter the subject code: ')
+    identification = input('Enter the identification number: ')
+
+    cursorObj = connection.cursor()
+    readHistory = "SELECT * FROM academicHistory WHERE id == "+identification+" AND code == "+code+""
+    rows = readNew(readHistory)
+
+    for r in rows:
+            code = str(r[0])
+            finalNote = str(r[2])
+            credits = str(r[3])
             
-    if rows == []:#El condicional if verifica que la lista esté vacia, e imprime mensaje de incidencia por el documento ingresado
+    if rows == []:
         print ('\nThe data entered is incorrect, please check and try again!')
     
     else:
         
-        newNote = input('Enter the new final note: ')#Solicitamos la nueva nota al usuario para realizar la actualización correcta
-        updateHistory = "UPDATE academicHistory SET finalNote == "+newNote+" WHERE identificationNumber == "+identification+" AND subjectCode == "+code+""
-        #Asignamos a la variable updateHistory la función UPDATE, y relacionamos la información solicitada con el campo correspondiente de la tabla
-        cursorObj = connection.cursor()#Recorremos la base de datos con el objeto cursorObj
-
-        def refreshNote(chooseHistory):#La función refreshNote ejecuta el UPDATE
-            cursorObj.execute(chooseHistory)#Actualizamos la información en la table academicHistory
-            connection.commit()#Aseguramos la persistencia guardando la tabla en el disco
-
-        refreshNote(updateHistory)#Llamamos a la función que ejecuta el UPDATE
-        rows = readNew(readHistory)#Llamamos a la función que ejecuta el SELECT con la nota ya actualizada
+        newNote = input('Enter the new final note: ')
+        updateHistory = "UPDATE academicHistory SET finalNote == "+newNote+" WHERE id == "+identification+" AND code == "+code+""
+        refreshNote(updateHistory)
+        rows = readNew(readHistory)
         
-        for r in rows:#El ciclo for recorre la base de datos y nos devuelve la información de la materia con la nota actualizada
-            subjectCode = r[0]
-            finalNote = r[2]
-            subjectCredits = r[3]
-            print ('\nSubject Code: ', subjectCode)
+        for r in rows:
+            code = str(r[0])
+            finalNote = str(r[2])
+            credits = str(r[3])
+            print ('\nSubject Code: ', code)
             print ('New final Note: ', finalNote)
-            print ('Subject Credits: ', subjectCredits)
+            print ('Subject Credits: ', credits)
             print ('\n<- This subject was successfully updated!')
 
-def close_db(connection):#La funcion close_db cierra la base de datos academicHistory
+def close_db(connection):
     connection.close()
 
-def eraseAcademicHistoryTable(connection):#La funcion eraseAcademicHistoryTable elimina la tabla academicHistory
+def eraseAcademicHistoryTable(connection):
 
-    cursorObj = connection.cursor()#Recorremos la base de datos con el objeto cursorObj
-    cursorObj.execute('DROP TABLE academicHistory')#Eliminamos la tabla academicHistory
-    connection.commit()#Aseguramos la persistencia guardando el cambio en el disco
+    cursorObj = connection.cursor()
+    cursorObj.execute('DROP TABLE academicHistory')
+    connection.commit()
 
-def menu():#La función menu utiliza las funciones del programa y crea una interfaz para navegar a través de este mismo
+def menu():
 
-    my_connection = connectionToDB()#Variable my_connection asignada a la conexión con la base de datos
+    my_connection = CONNECT_DB.connectionToDB()
+
     leave = False
-    while not leave:#Ciclo while not que se ejecuta con el Main Menu, hasta que leave = True
+    while not leave:
         mainMenu = input('''
 
                         Main Menu
@@ -159,10 +193,12 @@ def menu():#La función menu utiliza las funciones del programa y crea una inter
                         5. close_db
                         6. exit
                         7. eraseAcademicHistoryTable
+                        8. createSubjectsTable
+                        9. createStudentTable
                         
                         select an option >>>: ''')
         
-        if mainMenu == '0':#condicional if con diferentes elif, que brindan al usuario las opciones para utilizar el programa
+        if mainMenu == '0':
             createAcademicHistoryTable(my_connection)
             print('\n\nTable "academicHistory" created successfully')
         elif mainMenu == '1':
@@ -182,5 +218,5 @@ def menu():#La función menu utiliza las funciones del programa y crea una inter
         elif mainMenu == '7':
             eraseAcademicHistoryTable(my_connection)
             print('\n\nThe database "academicHistory" has been dropped!')
-        else:#sentencia else que imprime mesaje de incidencia al escribir una opción invalida
+        else:
             print('\n\nIs not a valid option, please try again!')
