@@ -1,6 +1,8 @@
 import modules.connect_db as CONNECT_DB
 import modules.students as STUDENTS
 import modules.subjects as SUBJECTS
+import modules.clasification as clasi
+# ? Importar módulo Alejandro
 import modules.classification as CLASSIFY
 import modules.academic_history as ACADEMIC_HISTORY
 
@@ -24,6 +26,10 @@ def readDataUserStudent():
 
 def main():
     my_connection = CONNECT_DB.connectionToDB()
+    STUDENTS.createTableStudent(my_connection)
+    SUBJECTS.createTableSubjects(my_connection)
+    clasi.createTableClasification(my_connection)
+    # ? Crear tabla Alejandro
     STUDENTS.createStudentTable(my_connection)
     SUBJECTS.createSubjectsTable(my_connection)
     CLASSIFY.createClassificationTable(my_connection)
