@@ -1,5 +1,4 @@
 def createSubjectsTable(connection):
-
     """Creates the subjects table in the database:
 
     Args:
@@ -22,7 +21,6 @@ def createSubjectsTable(connection):
 
 
 def insertSubject(connection, subject):
-
     """Inserts a subject in the subjects table:
 
     Args:
@@ -31,13 +29,13 @@ def insertSubject(connection, subject):
 
     """
     cursor_obj = connection.cursor()
-    create_statement = "INSERT INTO subject VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" # uses string formatting to replace the ? characters with the elements contained in the subject list
+    # uses string formatting to replace the ? characters with the elements contained in the subject list
+    create_statement = "INSERT INTO subject VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     cursor_obj.execute(create_statement, subject)
     connection.commit()
 
 
 def selectAllSubjects(connection):
-
     """Returns a list containing all the subjects registered in the Subjects table:
 
     Args:
@@ -53,9 +51,8 @@ def selectAllSubjects(connection):
 
 
 def updateSubjects(connection, codmat):
-
     """Updates and changes the Subjects table's data:
-    
+
     Args:
         connection (object): Connection to sqlite3.
         codmat (int): Integer that contains the code of a specific subject that we want to modify.
@@ -202,24 +199,24 @@ def updateSubjects(connection, codmat):
 
 
 def querySubjects(connection, codmat):
-
     """Queries a specific subject using its code as reference:
-    
+
     Args:
         connection (object): Connection to sqlite3.
         codmat (int): Integer that contains the code of a specific subject that we want to query.
 
     """
-    count = 0 # allows extracting the first index of all the rows inside the dataList list
-    rowIsFound = False #changes its value to True if the Code entered by the user matches one of the codes registered in the table
+    count = 0  # allows extracting the first index of all the rows inside the dataList list
+    rowIsFound = False  # changes its value to True if the Code entered by the user matches one of the codes registered in the table
     cursorObj = connection.cursor()
     cursorObj.execute("SELECT * FROM subjects")
     dataList = cursorObj.fetchall()
     for row in dataList:
-        if codmat == int(dataList[count][0]): #if the entered code exists inside the table, prints the row associated with the code
+        # if the entered code exists inside the table, prints the row associated with the code
+        if codmat == int(dataList[count][0]):
             print(row)
             rowIsFound = True
-            break #breaks the for iteration when the row has been found
+            break  # breaks the for iteration when the row has been found
         else:
             count += 1
             continue
