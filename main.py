@@ -18,7 +18,7 @@ def main():
     #MENU_STUDENTS.mainMenuStudents(my_connection)
     # STUDENTS.selectStudentByID(my_connection, 1)
     CLASSIFY.getstudentinfo(my_connection)
-    CLASSIFY.GetCreditsAmount(my_connection)
+    CLASSIFY.UpdateClassification(my_connection)
 
 if __name__ == "__main__":
     main()
