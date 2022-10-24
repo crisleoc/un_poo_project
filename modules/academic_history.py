@@ -4,7 +4,7 @@ def createAcademicHistoryTable(connection):
         connection (object): Connection to sqlite3.
     """
     cursorObj = connection.cursor()#We traverse the database with the object cursorObj
-    cursorObj.execute('''CREATE TABLE academicHistory(
+    cursorObj.execute('''CREATE TABLE IF NOT EXISTS academicHistory(
                                     code integer,
                                     id integer,
                                     finalNote float,

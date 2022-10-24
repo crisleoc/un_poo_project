@@ -12,7 +12,7 @@ email_content = mail_template
 msg = email.message.Message()
 msg['Subject'] = 'Tutsplus Newsletter'
 msg['From'] = 'castanedacristian2016@gmail.com'
-msg['To'] = 'crcastanedao@unal.edu.co'
+msg['To'] = 'jcardonat@unal.edu.co'
 password = "uygjdptgwrzratps"
 
 msg.add_header('Content-Type', 'text/html')
