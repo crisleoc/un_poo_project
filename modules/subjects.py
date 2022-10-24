@@ -7,7 +7,7 @@ def createSubjectsTable(connection):
     """
 
     CURSOR_OBJ = connection.cursor()
-    CODE = "id INTEGER PRIMARY KEY NOT NULL UNIQUE"
+    CODE = "code INTEGER PRIMARY KEY NOT NULL UNIQUE"
     NAME = "name TEXT NOT NULL UNIQUE"
     SCHOOL = "school TEXT"
     DEPARTMENT = "department TEXT"
@@ -19,7 +19,16 @@ def createSubjectsTable(connection):
     CURSOR_OBJ.execute(CREATE_STATEMENT)
     connection.commit()
 
-
+def readDataUserSubject():
+    code = input("insert the subject code: ")
+    name = input("insert the subject name: ")
+    school = input("insert the school the subject belongs to: ")
+    department = input("select the department to which the subject belongs to: ")
+    credits = input("write how many credits the subject is worth: ")
+    language = input("in what language will the subject be dictated?: ")
+    subject = (code,name,school,department,credits,language)
+    return subject
+    
 def insertSubject(connection, subject):
     """Inserts a subject in the subjects table:
 
@@ -30,7 +39,7 @@ def insertSubject(connection, subject):
     """
     cursor_obj = connection.cursor()
     # uses string formatting to replace the ? characters with the elements contained in the subject list
-    create_statement = "INSERT INTO subject VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    create_statement = "INSERT INTO subjects VALUES(?, ?, ?, ?, ?, ?)"
     cursor_obj.execute(create_statement, subject)
     connection.commit()
 
@@ -168,14 +177,14 @@ def updateSubjects(connection, codmat):
                 print("ERROR: Please enter a valid input")
         elif opc == '7':
             try:
-                newID = input("Enter a new code: ")
+                newCODE = input("Enter a new code: ")
                 newNAME = input("Enter a new name: ")
                 newSCHOOL = input("Enter a new school: ")
                 newDEPARTMENT = input("Enter a new department: ")
                 newCREDITS = input("Enter a new number of credits: ")
                 newLANGUAGE = input("Enter a new language: ")
                 create_statement = 'UPDATE subjects SET CODE="' + \
-                    newID+'", NAME="' + \
+                    newCODE+'", NAME="' + \
                     newNAME+'", SCHOOL="' + \
                     newSCHOOL+'", DEPARTMENT="' + \
                     newDEPARTMENT+'", CREDITS="' + \
