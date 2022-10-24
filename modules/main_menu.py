@@ -5,7 +5,7 @@ import modules.classification as CLASSIFY
 import modules.academic_history as ACADEMIC_HISTORY
 
 
-def readDataUserStudent():
+def readDataUserStudent(): #creates the 'student' tuple, used in the insertStudent method.
     id = input("Enter the id of the student: ")
     id = id.ljust(12)  # Fix to the left 12 positions
     name = input("Enter the name of the student: ")
@@ -22,7 +22,7 @@ def readDataUserStudent():
     return student
 
 
-def readDataUserSubject():
+def readDataUserSubject(): #creates the 'subject' tuple, used in the insertSubject method.
     code = input("Enter code of the subject: ")
     code = code.ljust(12)
     name = input("Enter name of the subject")
@@ -37,7 +37,7 @@ def readDataUserSubject():
 def mainMenu(connection):
     
     exitMenu = False
-    while not exitMenu:#Ciclo while not que se ejecuta con el Main Menu, hasta que leave = True
+    while not exitMenu: #an infinite while not iteration. Prints out the main menu options, every option is a table that the user can modify.
         option = input('''
 
                         Main Menu
@@ -51,7 +51,7 @@ def mainMenu(connection):
                         
                         Select an option >>>: ''')
         
-        if option == '1':#condicional if con diferentes elif, que brindan al usuario las opciones para utilizar el programa
+        if option == '1': #starts another infinite iteration for each option; prints a submenu that allows the calling of the methods of the tables
             exitSubjects = False
             while not exitSubjects:
                 option = input('''
@@ -73,8 +73,8 @@ def mainMenu(connection):
                 elif option == '3':
                     codeSubQuery = int(input("Enter the code of the subject you want to query: "))
                     SUBJECTS.querySubjects(connection, codeSubQuery)
-                elif option == '0': exitSubjects == True
-                else: print('ERROR: Invalid input, try again')                    
+                elif option == '0': exitSubjects == True # exits the subjects table submenu if the input is 0
+                else: print('ERROR: Invalid input, try again') # exception handling, asks again for a valid option                  
         elif option == '2':
             exitStudents = False
             while not exitStudents:
@@ -99,8 +99,8 @@ def mainMenu(connection):
                     #********************
                     STUDENTS.query()
                     #********************
-                elif option == '0': exitStudents == True
-                else: print('ERROR: Invalid input, try again')         
+                elif option == '0': exitStudents == True # exits the students table submenu if the input is 0
+                else: print('ERROR: Invalid input, try again') # prints out an error message. The submenu iteration continues        
         elif option == '3':
             exitAH = False #Exit Academic History
             while not exitAH:
@@ -128,8 +128,8 @@ def mainMenu(connection):
                     #********************
                 elif option == '4':
                     ACADEMIC_HISTORY.deleteSubject(connection)
-                elif option == '0': exitAH == True
-                else: print('ERROR: Invalid input, try again')
+                elif option == '0': exitAH == True # exits the academic history table submenu if the input is 0
+                else: print('ERROR: Invalid input, try again') # prints out an error message. The submenu iteration continues
         elif option == '4':
             exitClas = False
             while not exitClas:
@@ -146,12 +146,12 @@ def mainMenu(connection):
                     #**************
                     CLASSIFICATION.queryClassification()   
                     #**************  
-                elif option == '0': exitClas == True
+                elif option == '0': exitClas == True # exits the classification table submenu if the input is 0
                 else: print('ERROR: Invalid input, try again')
-        elif option == 0 : 
+        elif option == 0 : # exits the main menu if the input is 0
             print('Exiting Menu...')
             exitMenu = True
-        else:#sentencia else que imprime mesaje de incidencia al escribir una opción invalida
+        else:# prints out an error message. The main menu iteration continues
             print('Is not a valid option, please try again!')
     
     
