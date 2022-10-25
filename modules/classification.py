@@ -28,7 +28,7 @@ def selectClassificationByID(connection, student_id): #permite seleccionar la cl
     SELECT_STATEMENT = "SELECT * FROM Classification WHERE student_id = ?"
     CURSOR_OBJ.execute(SELECT_STATEMENT, (student_id,))
     return CURSOR_OBJ.fetchall()
-def GetCreditsAmount(connection): #recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
+def UpdateClassification(connection): #recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
         cursorObj = connection.cursor()
         SELECT_QUERY_ACAD = "SELECT id FROM academicHistory WHERE id>-1 ORDER BY id ASC"
         SELECT_QUERY_CLAS = "SELECT student_id FROM classification WHERE student_id>-1 ORDER BY student_id ASC"

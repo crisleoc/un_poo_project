@@ -120,11 +120,11 @@ def mainMenu(connection):
                     ACADEMIC_HISTORY.addSubject(connection)        
                 elif option == '2': 
                     #******************
-                    ACADEMIC_HISTORY.updateFinalNote
+                    ACADEMIC_HISTORY.updateFinalNote(connection)
                     #******************
                 elif option == '3':
                     #******************
-                    ACADEMIC_HISTORY.queryAcademicHistory
+                    ACADEMIC_HISTORY.queryAcademicHistory(connection)
                     #*******************
                 elif option == '4':
                     ACADEMIC_HISTORY.deleteSubject(connection)
