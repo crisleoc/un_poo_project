@@ -132,15 +132,16 @@ def mainMenu(connection):
                     CLASSIFY.UpdateClassification(connection)      
                 elif option == '2': 
                     #******************
-                    ACADEMIC_HISTORY.updateFinalNote
+                    ACADEMIC_HISTORY.updateFinalNote(connection)
                     CLASSIFY.UpdateClassification(connection)
                     #******************
                 elif option == '3':
                     #CAMBIAR NOMBRE DE METODO A QueryAcademicHistory
-                    ACADEMIC_HISTORY.readAcademicHistory
+                    ACADEMIC_HISTORY.readAcademicHistory(connection)
                     #********************
                 elif option == '4':
                     ACADEMIC_HISTORY.deleteSubject(connection)
+                    CLASSIFY.UpdateClassification(connection)
                 elif option == '0': exitAH == True # exits the academic history table submenu if the input is 0
                 else: print('ERROR: Invalid input, try again') # prints out an error message. The submenu iteration continues
         elif option == '4':
