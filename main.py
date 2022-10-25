@@ -18,6 +18,8 @@ def main():
     #ACADEMIC_HISTORY.addSubject(my_connection)
     #MENU_STUDENTS.mainMenuStudents(my_connection)
     # STUDENTS.selectStudentByID(my_connection, 1)
+    CLASSIFY.getstudentinfo(my_connection)
+    CLASSIFY.UpdateClassification(my_connection)
     MAINMENU.mainMenu(my_connection)
     CLASSIFY.getstudentinfo(my_connection)
     CLASSIFY.UpdateClassification(my_connection)

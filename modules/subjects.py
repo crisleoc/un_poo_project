@@ -29,7 +29,7 @@ def readDataUserSubject():
     subject = (code,name,school,department,credits,language)
     return subject
     
-def insertSubject(connection, subject):
+def insertSubject(connection, subjects):
     """Inserts a subject in the subjects table:
 
     Args:
@@ -39,8 +39,8 @@ def insertSubject(connection, subject):
     """
     cursor_obj = connection.cursor()
     # uses string formatting to replace the ? characters with the elements contained in the subject list
-    create_statement = "INSERT INTO subject VALUES(?, ?, ?, ?, ?, ?)"
-    cursor_obj.execute(create_statement, subject)
+    create_statement = "INSERT INTO subjects VALUES(?, ?, ?, ?, ?, ?)"
+    cursor_obj.execute(create_statement, subjects)
     connection.commit()
 
 
@@ -175,7 +175,7 @@ def updateSubjects(connection, codmat):
                 newCREDITS = input("Enter a new number of credits: ")
                 newLANGUAGE = input("Enter a new language: ")
                 create_statement = 'UPDATE subjects SET CODE="' + \
-                    newCODE+'", NAME="' + \
+                    newCode+'", NAME="' + \
                     newNAME+'", SCHOOL="' + \
                     newSCHOOL+'", DEPARTMENT="' + \
                     newDEPARTMENT+'", CREDITS="' + \

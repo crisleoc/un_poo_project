@@ -28,12 +28,12 @@ def selectClassificationByID(connection, student_id): #permite seleccionar la cl
     SELECT_STATEMENT = "SELECT * FROM Classification WHERE student_id = ?"
     CURSOR_OBJ.execute(SELECT_STATEMENT, (student_id,))
     return CURSOR_OBJ.fetchall()
-def GetCreditsAmount(connection): #recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
+def UpdateClassification(connection): #recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
         cursorObj = connection.cursor()
         SELECT_QUERY_ACAD = "SELECT id FROM academicHistory WHERE id>-1 ORDER BY id ASC"
         SELECT_QUERY_CLAS = "SELECT student_id FROM classification WHERE student_id>-1 ORDER BY student_id ASC"
         SELECT_QUERY_CREDITS = "SELECT credits FROM academicHistory WHERE id>-1 ORDER BY id ASC"
-        SELECT_QUERY_SCORE = "SELECT finalNote FROM academicHistory WHERE id >-1 ORDER BY id ASC"
+        SELECT_QUERY_SCORE = "SELECT finalNote FROM academicHistory WHERE id >-1 ORDER BY id ASC" #convertimos todas las listas en tuplas para realizar los calculos
         cursorObj.execute(SELECT_QUERY_CLAS)
         CLAStuple=cursorObj.fetchall() #toma las IDs de classification y las convierte en una tupla
         cursorObj.execute(SELECT_QUERY_ACAD)
@@ -42,10 +42,6 @@ def GetCreditsAmount(connection): #recorre la tabla de academicHistory y cuenta 
         CREDITStuple=cursorObj.fetchall()
         cursorObj.execute(SELECT_QUERY_SCORE)
         SCOREtuple=cursorObj.fetchall()
-        print(CLAStuple)
-        print(ACADtuple)
-        print(CREDITStuple)
-        print(SCOREtuple)
         for i in range(len(CLAStuple)):
             creditos=0
             materias=0

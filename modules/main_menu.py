@@ -94,11 +94,21 @@ def mainMenu(connection):
                     CLASSIFY.getstudentinfo(connection)        
                 elif option == '2': 
                     #********************
-                    STUDENTS.update()
+                    studentID=int(input('''
+                    
+                    Insert the ID of the student you want to update: '''
+                    
+                    ))
+                    STUDENTS.updateStudent(connection,studentID)
                     #********************
                 elif option == '3':
                     #********************
-                    STUDENTS.query()
+                    studentID=int(input('''
+                    
+                    Insert the ID of the student you want to query: '''
+                    
+                    ))
+                    print(STUDENTS.selectStudentByID(connection,studentID))
                     #********************
                 elif option == '0': exitStudents == True # exits the students table submenu if the input is 0
                 else: print('ERROR: Invalid input, try again') # prints out an error message. The submenu iteration continues        
@@ -118,7 +128,8 @@ def mainMenu(connection):
                         
                         Select an option >>>: ''')
                 if option == '1': 
-                    ACADEMIC_HISTORY.addSubject(connection)        
+                    ACADEMIC_HISTORY.addSubject(connection)  
+                    CLASSIFY.UpdateClassification(connection)      
                 elif option == '2': 
                     #******************
                     ACADEMIC_HISTORY.updateFinalNote
