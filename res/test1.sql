@@ -42,14 +42,12 @@ CREATE TABLE IF NOT EXISTS academicHistory(
 );
 
 CREATE TABLE IF NOT EXISTS classification(
-  classificationID INTEGER PRIMARY KEY NOT NULL UNIQUE,
-  -- studentID INTEGER,
-  -- name TEXT,
-  -- lastName TEXT,
-  studentID INTEGER,
+  studentID INTEGER PRIMARY KEY NOT NULL UNIQUE,
+  name TEXT,
+  lastName TEXT,
   amountSubjects INTEGER,
   creditSum INTEGER,
-  studentAverage INTEGER,
+  Average INTEGER,
   FOREIGN KEY(studentID)
   REFERENCES students(id)
     ON DELETE CASCADE

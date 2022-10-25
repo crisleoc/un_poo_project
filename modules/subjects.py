@@ -19,7 +19,16 @@ def createSubjectsTable(connection):
     CURSOR_OBJ.execute(CREATE_STATEMENT) #creates the table in the database
     connection.commit() #Ensures persistence by saving the table to disk
 
-
+def readDataUserSubject():
+    code = input("insert the subject code: ")
+    name = input("insert the subject name: ")
+    school = input("insert the school the subject belongs to: ")
+    department = input("select the department to which the subject belongs to: ")
+    credits = input("write how many credits the subject is worth: ")
+    language = input("in what language will the subject be dictated?: ")
+    subject = (code,name,school,department,credits,language)
+    return subject
+    
 def insertSubject(connection, subject):
     """Inserts a subject in the subjects table:
 
@@ -166,7 +175,7 @@ def updateSubjects(connection, codmat):
                 newCREDITS = input("Enter a new number of credits: ")
                 newLANGUAGE = input("Enter a new language: ")
                 create_statement = 'UPDATE subjects SET CODE="' + \
-                    newID+'", NAME="' + \
+                    newCODE+'", NAME="' + \
                     newNAME+'", SCHOOL="' + \
                     newSCHOOL+'", DEPARTMENT="' + \
                     newDEPARTMENT+'", CREDITS="' + \
