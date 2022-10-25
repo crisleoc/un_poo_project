@@ -90,7 +90,8 @@ def mainMenu(connection):
                         
                         Select an option >>>: ''')
                 if option == '1': 
-                    STUDENTS.insertStudent(connection, readDataUserStudent())        
+                    STUDENTS.insertStudent(connection, readDataUserStudent())
+                    CLASSIFY.getstudentinfo(connection)        
                 elif option == '2': 
                     #********************
                     STUDENTS.update()
@@ -121,6 +122,7 @@ def mainMenu(connection):
                 elif option == '2': 
                     #******************
                     ACADEMIC_HISTORY.updateFinalNote
+                    CLASSIFY.UpdateClassification(connection)
                     #******************
                 elif option == '3':
                     #CAMBIAR NOMBRE DE METODO A QueryAcademicHistory
@@ -143,8 +145,13 @@ def mainMenu(connection):
                         
                         Select an option >>>: ''')
                 if option == '1': 
+                    student_id=int(input('''
+                        
+                        Insert the ID of the student you want to see the clasification of:
+                        
+                         '''))
                     #**************
-                    CLASSIFICATION.queryClassification()   
+                    print(CLASSIFY.selectClassificationByID(connection,student_id))   
                     #**************  
                 elif option == '0': exitClas == True # exits the classification table submenu if the input is 0
                 else: print('ERROR: Invalid input, try again')
