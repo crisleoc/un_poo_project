@@ -148,7 +148,7 @@ def mainMenu(connection):
                     #**************  
                 elif option == '0': exitClas == True # exits the classification table submenu if the input is 0
                 else: print('ERROR: Invalid input, try again')
-        elif option == 0 : # exits the main menu if the input is 0
+        elif option == '0' : # exits the main menu if the input is 0
             print('Exiting Menu...')
             exitMenu = True
         else:# prints out an error message. The main menu iteration continues
