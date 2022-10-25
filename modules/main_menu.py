@@ -123,9 +123,9 @@ def mainMenu(connection):
                     ACADEMIC_HISTORY.updateFinalNote
                     #******************
                 elif option == '3':
-                    #CAMBIAR NOMBRE DE METODO A QueryAcademicHistory
+                    #******************
                     ACADEMIC_HISTORY.queryAcademicHistory
-                    #********************
+                    #*******************
                 elif option == '4':
                     ACADEMIC_HISTORY.deleteSubject(connection)
                 elif option == '0': exitAH == True # exits the academic history table submenu if the input is 0
@@ -144,7 +144,7 @@ def mainMenu(connection):
                         Select an option >>>: ''')
                 if option == '1': 
                     #**************
-                    CLASSIFICATION.queryClassification()   
+                    CLASSIFY.queryClassification()   
                     #**************  
                 elif option == '0': exitClas == True # exits the classification table submenu if the input is 0
                 else: print('ERROR: Invalid input, try again')
