@@ -124,7 +124,7 @@ def mainMenu(connection):
                     #******************
                 elif option == '3':
                     #CAMBIAR NOMBRE DE METODO A QueryAcademicHistory
-                    ACADEMIC_HISTORY.readAcademicHistory
+                    ACADEMIC_HISTORY.queryAcademicHistory
                     #********************
                 elif option == '4':
                     ACADEMIC_HISTORY.deleteSubject(connection)
