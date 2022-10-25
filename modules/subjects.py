@@ -7,17 +7,17 @@ def createSubjectsTable(connection):
     """
 
     CURSOR_OBJ = connection.cursor()
-    CODE = "id INTEGER PRIMARY KEY NOT NULL UNIQUE"
+    CODE = "code INTEGER PRIMARY KEY NOT NULL UNIQUE"
     NAME = "name TEXT NOT NULL UNIQUE"
     SCHOOL = "school TEXT"
     DEPARTMENT = "department TEXT"
     CREDITS = "credits TEXT"
     LANGUAGE = "language TEXT"
-    CREATE_STATEMENT = f"""CREATE TABLE IF NOT EXISTS subjects(
+    CREATE_STATEMENT = f"""CREATE TABLE IF NOT EXISTS subjects(  
         {CODE}, {NAME}, {SCHOOL}, {DEPARTMENT}, {CREDITS}, {LANGUAGE}
         )"""
-    CURSOR_OBJ.execute(CREATE_STATEMENT)
-    connection.commit()
+    CURSOR_OBJ.execute(CREATE_STATEMENT) #creates the table in the database
+    connection.commit() #Ensures persistence by saving the table to disk
 
 
 def insertSubject(connection, subject):
@@ -30,24 +30,9 @@ def insertSubject(connection, subject):
     """
     cursor_obj = connection.cursor()
     # uses string formatting to replace the ? characters with the elements contained in the subject list
-    create_statement = "INSERT INTO subject VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    create_statement = "INSERT INTO subject VALUES(?, ?, ?, ?, ?, ?)"
     cursor_obj.execute(create_statement, subject)
     connection.commit()
-
-
-def selectAllSubjects(connection):
-    """Returns a list containing all the subjects registered in the Subjects table:
-
-    Args:
-        connection (object): Connection to sqlite3.
-
-    Returns:
-        list<tuple>: List of tuples with the data of the subjects.
-    """
-    cursor_obj = connection.cursor()
-    create_statement = "SELECT * FROM subjects"
-    cursor_obj.execute(create_statement)
-    return cursor_obj.fetchall()
 
 
 def updateSubjects(connection, codmat):
@@ -60,7 +45,7 @@ def updateSubjects(connection, codmat):
     """
     cursor_obj = connection.cursor()
     exitMenu = False
-    while not exitMenu:
+    while not exitMenu: #starts an infitite while not iteration. Stops when exitMenu = True.
         opc = input("""
         Option's Menu:
         1. Modify Code
@@ -78,21 +63,23 @@ def updateSubjects(connection, codmat):
         if opc == '1':
             try:
                 newCode = input("Enter a new code: ")
+                # searches in the table for the code that the user entered and replaces it with a new one
                 create_statement = 'UPDATE subjects SET CODE="' + \
                     newCode+'" WHERE CODE ="'+codmat+'"'
                 cursor_obj.execute(create_statement)
-                connection.commit()
+                connection.commit() #persistence ensurance
                 print("Subject's code has been modified successfully:")
                 opc = input("Press 1 to close the menu, 0 to return >>>: ")
                 if opc == '1':
                     exitMenu = True
                 else:
                     exitMenu = False
-            except:
+            except: #if the code is not regitered in the table, prints an error message and the iteration continues
                 print("ERROR: Please enter a valid code")
         elif opc == '2':
             try:
                 newNAME = input("Enter a new name: ")
+                # searches in the table for the code that the user entered and replaces the name associated with it
                 create_statement = 'UPDATE subjects SET NAME="' + \
                     newNAME+'" WHERE CODE ="'+codmat+'"'
                 cursor_obj.execute(create_statement)
@@ -103,11 +90,12 @@ def updateSubjects(connection, codmat):
                     exitMenu = True
                 else:
                     exitMenu = False
-            except:
+            except: #if the code is not regitered in the table, prints an error message and the iteration continues
                 print("ERROR: Please enter a valid input")
         elif opc == '3':
             try:
                 newSCHOOL = input("Enter a new school: ")
+                # searches in the table for the code that the user entered and replaces the school associated with it
                 create_statement = 'UPDATE subjects SET SCHOOL="' + \
                     newSCHOOL+'" WHERE CODE ="'+codmat+'"'
                 cursor_obj.execute(create_statement)
@@ -118,11 +106,12 @@ def updateSubjects(connection, codmat):
                     exitMenu = True
                 else:
                     exitMenu = False
-            except:
+            except: #if the code is not regitered in the table, prints an error message and the iteration continues
                 print("ERROR: Please enter a valid input")
         elif opc == '4':
             try:
                 newDEPARTMENT = input("Enter a new department: ")
+                # searches in the table for the code that the user entered and replaces the department associated with it
                 create_statement = 'UPDATE subjects SET DEPARTMENT="' + \
                     newDEPARTMENT+'" WHERE CODE ="'+codmat+'"'
                 cursor_obj.execute(create_statement)
@@ -139,6 +128,7 @@ def updateSubjects(connection, codmat):
             try:
                 newCREDITS = input(
                     "Enter a new number of credits: ")
+                # searches in the table for the code that the user entered and replaces the number of credits associated with it
                 create_statement = 'UPDATE subjects SET CREDITS="' + \
                     newCREDITS+'" WHERE CODE ="'+codmat+'"'
                 cursor_obj.execute(create_statement)
@@ -153,6 +143,7 @@ def updateSubjects(connection, codmat):
                 print("ERROR: Please enter a valid input")
         elif opc == '6':
             try:
+                # searches in the table for the code that the user entered and replaces the language associated with it
                 newLANGUAGE = input("Enter a new language: ")
                 create_statement = 'UPDATE subjects SET LANGUAGE="' + \
                     newLANGUAGE+'" WHERE CODE ="'+codmat+'"'
@@ -164,10 +155,10 @@ def updateSubjects(connection, codmat):
                     exitMenu = True
                 else:
                     exitMenu = False
-            except:
+            except: #if the code is not regitered in the table, prints an error message and the iteration continues
                 print("ERROR: Please enter a valid input")
         elif opc == '7':
-            try:
+            try: #replaces every single value of a row using the code entered by the user
                 newID = input("Enter a new code: ")
                 newNAME = input("Enter a new name: ")
                 newSCHOOL = input("Enter a new school: ")
@@ -193,7 +184,7 @@ def updateSubjects(connection, codmat):
                 print("ERROR: Please enter a valid input")
         elif opc == '0':
             exitMenu = True
-        else:
+        else: #prints out an error message if the input is not a valid option. The iteration continues
             print("ERROR: Enter a valid option")
     connection.commit()
 
@@ -209,8 +200,8 @@ def querySubjects(connection, codmat):
     count = 0  # allows extracting the first index of all the rows inside the dataList list
     rowIsFound = False  # changes its value to True if the Code entered by the user matches one of the codes registered in the table
     cursorObj = connection.cursor()
-    cursorObj.execute("SELECT * FROM subjects")
-    dataList = cursorObj.fetchall()
+    cursorObj.execute("SELECT * FROM subjects") #extracts all the rows from the subjects table and puts it in the dataList
+    dataList = cursorObj.fetchall() 
     for row in dataList:
         # if the entered code exists inside the table, prints the row associated with the code
         if codmat == int(dataList[count][0]):
