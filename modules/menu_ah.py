@@ -3,7 +3,7 @@ from . import academic_history as AH
 
 
 def mainMenuAH(connection):
-    """Function to show the main menu of students:
+    """Function to show the main menu of academic history:
 
     Args:
         connection (object): Connection to sqlite3.
@@ -32,7 +32,7 @@ def mainMenuAH(connection):
                 error = "01. ERROR: " + str(e)
         elif option == '2':
             try:
-                select = AH.readAcademicHistory(connection)
+                select = AH.queryAcademicHistory(connection)
             except Exception as e:
                 error = "02. ERROR: " + str(e)
         elif option == '3':

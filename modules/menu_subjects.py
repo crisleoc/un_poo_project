@@ -42,15 +42,25 @@ def mainMenuSubjects(connection):
         elif option == '3':
             try:
                 subjectCode = int(input("Enter the subject code: "))
-                SUBJECTS.updateSubject(connection, subjectCode)
-                success = "03. SUCCESS: Subject updated successfully"
+                subjectExists = SUBJECTS.selectSubjectByID(
+                    connection, subjectCode)
+                if subjectExists:
+                    SUBJECTS.updateSubject(connection, subjectCode)
+                    success = "03. SUCCESS: Subject updated successfully"
+                else:
+                    raise Exception("Subject does not exist")
             except Exception as e:
                 error = "03. ERROR: " + str(e)
         elif option == '4':
             try:
                 subjectCode = int(input("Enter the subject code: "))
-                SUBJECTS.deleteSubject(connection, subjectCode)
-                success = "04. SUCCESS: Subject deleted successfully"
+                subjectExists = SUBJECTS.selectSubjectByID(
+                    connection, subjectCode)
+                if subjectExists:
+                    SUBJECTS.deleteSubject(connection, subjectCode)
+                    success = "04. SUCCESS: Subject deleted successfully"
+                else:
+                    raise Exception("Subject does not exist")
             except Exception as e:
                 error = "04. ERROR: " + str(e)
         elif option == '5':

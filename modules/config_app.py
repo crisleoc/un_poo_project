@@ -13,8 +13,9 @@ br = '='*60
 
 def menuMain():
     return f"""
-MAIN MENU
+MAIN MENU | SIA SIMULATOR 2022
 {br}
+    00. Fill database with test data
     01. Subjects
     02. Students
     03. Academic History
@@ -32,6 +33,19 @@ STUDENTS MENU
     02. Search student
     03. Update student
     04. Delete student
+    05. Return
+{br}
+Choose an option >>>\t"""
+
+
+def menuClassify():
+    return f"""
+CLASSIFICATION MENU
+{br}
+    01. Query student classification
+    02. Reload main student data
+    03. Reload student classification
+    04. Reload credits amount
     05. Return
 {br}
 Choose an option >>>\t"""
@@ -137,6 +151,22 @@ def printSelectStudent(studentData):
     print(br + "\033[0m")
 
 
+def printSelectClassify(classifyData):
+    titles = ("Id", "Name", "Last Name", "Amount of subjects",
+              "Accumulated credits", "Average")
+    print("\033[0;33m" + br)
+    if classifyData != []:
+        for i in range(len(classifyData[0])):
+            title = str(titles[i])
+            data = str(classifyData[0][i])
+            string = "|{:<23}||{:>33}|".format(title, data)
+            print(string)
+            print('-'*60)
+    else:
+        print("No data found, please reload the data.")
+    print(br + "\033[0m")
+
+
 def printSelectSubject(subjectData):
     titles = ("Code", "Name", "School", "Department", "Credits", "Language")
     print("\033[0;33m" + br)
@@ -154,19 +184,25 @@ def printSelectSubject(subjectData):
 
 def printSelectAH(AHData):
     titles = ("Subject code", "Student id", "Final note", "Credits")
-    print("\033[0;33m" + br)
     if AHData != [] and type(AHData) != str:
+        print(f"\033[0;35m({AHData[0][1]})\033[0;33m")
+        print(br)
         for i in AHData:
             for j in range(len(i)):
-                title = str(titles[j])
-                data = str(i[j])
-                string = "|{:<23}||{:>33}|".format(title, data)
-                print(string)
-                print('-'*60)
+                if j != 1:
+                    title = str(titles[j])
+                    data = str(i[j])
+                    string = "|{:<23}||{:>33}|".format(title, data)
+                    print(string)
+                    print('-'*60)
+                else:
+                    continue
             print(br)
     elif AHData == []:
+        print("\033[0;33m" + br)
         print("No data found")
     else:
+        print("\033[0;33m" + br)
         print(AHData)
     print(br + "\033[0m")
 

@@ -96,6 +96,7 @@ def updateSubject(connection, subjectCode):
                 CURSOR_OBJ.execute(UPDATE_STATEMENT, (newCode, subjectCode))
                 connection.commit()
                 success = f"The id was updated ({newCode}) successfully"
+                exitMenuUpdate = True
             except Exception as e:
                 error = "01. ERROR: " + str(e)
         elif option == '2':

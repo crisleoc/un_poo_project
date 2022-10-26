@@ -13,9 +13,9 @@ def createClassificationTable(connection):
 
 
 # tomamos la información relevante de la tabla students y la pasamos a la tabla clasificación
-def getstudentinfo(connection):
+def getStudentInfo(connection):
     cursorObj = connection.cursor()
-    joinStatement = "INSERT INTO classification (student_id,name,lastname) SELECT id,name,lastname FROM students WHERE id NOT IN(SELECT student_id FROM classification)"
+    joinStatement = "INSERT INTO classification (student_id, name, lastname) SELECT id, name, lastname FROM students WHERE id NOT IN (SELECT student_id FROM classification)"
     cursorObj.execute(joinStatement)
     connection.commit()
 
@@ -53,10 +53,6 @@ def UpdateClassification(connection):
     CREDITStuple = cursorObj.fetchall()
     cursorObj.execute(SELECT_QUERY_SCORE)
     SCOREtuple = cursorObj.fetchall()
-    print(CLAStuple)
-    print(ACADtuple)
-    print(CREDITStuple)
-    print(SCOREtuple)
     for i in range(len(CLAStuple)):
         creditos = 0
         materias = 0
@@ -67,7 +63,7 @@ def UpdateClassification(connection):
                 materias += 1
                 promedio = promedio+(SCOREtuple[j][0]*CREDITStuple[j][0])
         if(creditos != 0):
-            promedio = (promedio/creditos)
+            promedio = round((promedio/creditos), 1)
         UPDATE_STATEMENT = "UPDATE classification SET creditSum == " + \
             str(creditos)+" WHERE student_id == "+str(CLAStuple[i][0])+""
         cursorObj.execute(UPDATE_STATEMENT)
@@ -98,10 +94,6 @@ def GetCreditsAmount(connection):
     CREDITStuple = cursorObj.fetchall()
     cursorObj.execute(SELECT_QUERY_SCORE)
     SCOREtuple = cursorObj.fetchall()
-    print(CLAStuple)
-    print(ACADtuple)
-    print(CREDITStuple)
-    print(SCOREtuple)
     for i in range(len(CLAStuple)):
         creditos = 0
         materias = 0
@@ -112,7 +104,7 @@ def GetCreditsAmount(connection):
                 materias += 1
                 promedio = promedio+(SCOREtuple[j][0]*CREDITStuple[j][0])
         if(creditos != 0):
-            promedio = (promedio/creditos)
+            promedio = round((promedio/creditos), 1)
         UPDATE_STATEMENT = "UPDATE classification SET creditSum == " + \
             str(creditos)+" WHERE student_id == "+str(CLAStuple[i][0])+""
         cursorObj.execute(UPDATE_STATEMENT)

@@ -42,15 +42,25 @@ def mainMenuStudents(connection):
         elif option == '3':
             try:
                 studentID = int(input("Enter the student id: "))
-                STUDENTS.updateStudent(connection, studentID)
-                success = "03. SUCCESS: Student updated successfully"
+                studentExists = STUDENTS.selectStudentByID(
+                    connection, studentID)
+                if studentExists:
+                    STUDENTS.updateStudent(connection, studentID)
+                    success = "03. SUCCESS: Student updated successfully"
+                else:
+                    raise Exception("Student does not exist")
             except Exception as e:
                 error = "03. ERROR: " + str(e)
         elif option == '4':
             try:
                 studentID = int(input("Enter the student id: "))
-                STUDENTS.deleteStudent(connection, studentID)
-                success = "04. SUCCESS: Student deleted successfully"
+                studentExists = STUDENTS.selectStudentByID(
+                    connection, studentID)
+                if studentExists:
+                    STUDENTS.deleteStudent(connection, studentID)
+                    success = "04. SUCCESS: Student deleted successfully"
+                else:
+                    raise Exception("Student does not exist")
             except Exception as e:
                 error = "04. ERROR: " + str(e)
         elif option == '5':
