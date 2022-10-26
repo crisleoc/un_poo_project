@@ -12,26 +12,7 @@ import modules.main_menu as MAIN_MENU
 def main():
 
     my_connection = CONNECT_DB.connectionToDB()
-    # print(ACADEMIC_HISTORY.readAcademicHistory(my_connection))
-    # MENU_STUDENTS.mainMenuStudents(my_connection)
     MAIN_MENU.mainMenu(my_connection)
-    # print(ACADEMIC_HISTORY.deleteSubject(my_connection))
-
-    # STUDENTS.createStudentTable(my_connection)
-    # SUBJECTS.createSubjectsTable(my_connection)
-    # CLASSIFY.createClassificationTable(my_connection)
-
-    # ACADEMIC_HISTORY.createAcademicHistoryTable(my_connection)
-    # ACADEMIC_HISTORY.addSubject(my_connection)
-    # ACADEMIC_HISTORY.readAcademicHistory(my_connection)
-    # ACADEMIC_HISTORY.updateFinalNote(my_connection)
-    # ACADEMIC_HISTORY.deleteSubject(my_connection)
-
-    # #ACADEMIC_HISTORY.addSubject(my_connection)
-    # #MENU_STUDENTS.mainMenuStudents(my_connection)
-    # # STUDENTS.selectStudentByID(my_connection, 1)
-    # CLASSIFY.getstudentinfo(my_connection)
-    # CLASSIFY.UpdateClassification(my_connection)
     my_connection.close()
 
 

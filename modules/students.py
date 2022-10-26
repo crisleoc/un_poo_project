@@ -36,21 +36,6 @@ def insertStudent(connection, student):
     connection.commit()
 
 
-def selectAllStudents(connection):
-    """Select all students in the database:
-
-    Args:
-        connection (object): Connection to sqlite3.
-
-    Returns:
-        list<tuple>: List of tuples with the data of the students.
-    """
-    CURSOR_OBJ = connection.cursor()
-    SELECT_STATEMENT = "SELECT * FROM students"
-    CURSOR_OBJ.execute(SELECT_STATEMENT)
-    return CURSOR_OBJ.fetchall()
-
-
 def selectStudentByID(connection, id):
     """Select a student by id in the database:
 

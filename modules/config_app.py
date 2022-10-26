@@ -211,14 +211,3 @@ def readDataUserSubject():
     language = input("Enter the language of the subject: ")
     subject = (code, name, school, department, credits, language)
     return subject
-
-
-def input_option(menu):
-    while True:
-        clear()
-        try:
-            data = int(input(menu))
-            return data
-        except ValueError:
-            print("ERROR: Use only numbers")
-            continue
