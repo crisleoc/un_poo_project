@@ -12,13 +12,13 @@ def createStudentTable(connection):
     NAME = "name TEXT"
     LAST_NAME = "lastname TEXT"
     CAREER = "career TEXT"
-    BORN_DATE = "bornDate TEXT"
+    BIRTH_DATE = "birthDate TEXT"
     ENTRY_DATE = "entryDate TEXT"
     PLACE_ORIGIN = "placeOrigin TEXT"
     EMAIL = "email TEXT"
     ENROLL_QUANTITY = "enrollQuantity INTEGER"
     PICTURE = "photograph TEXT"
-    CREATE_STATEMENT = f"CREATE TABLE IF NOT EXISTS students({ID}, {NAME}, {LAST_NAME}, {CAREER}, {BORN_DATE}, {ENTRY_DATE}, {PLACE_ORIGIN}, {EMAIL}, {ENROLL_QUANTITY}, {PICTURE})"
+    CREATE_STATEMENT = f"CREATE TABLE IF NOT EXISTS students({ID}, {NAME}, {LAST_NAME}, {CAREER}, {BIRTH_DATE}, {ENTRY_DATE}, {PLACE_ORIGIN}, {EMAIL}, {ENROLL_QUANTITY}, {PICTURE})"
     CURSOR_OBJ.execute(CREATE_STATEMENT)
     connection.commit()
 
@@ -34,21 +34,6 @@ def insertStudent(connection, student):
     INSERT_STATEMENT = "INSERT INTO students VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
     CURSOR_OBJ.execute(INSERT_STATEMENT, student)
     connection.commit()
-
-
-def selectAllStudents(connection):
-    """Select all students in the database:
-
-    Args:
-        connection (object): Connection to sqlite3.
-
-    Returns:
-        list<tuple>: List of tuples with the data of the students.
-    """
-    CURSOR_OBJ = connection.cursor()
-    SELECT_STATEMENT = "SELECT * FROM students"
-    CURSOR_OBJ.execute(SELECT_STATEMENT)
-    return CURSOR_OBJ.fetchall()
 
 
 def selectStudentByID(connection, id):
@@ -104,7 +89,7 @@ def updateStudent(connection, studentID):
         option = input(UPDATE_MENU)
         if option == '1':
             try:
-                newId = input("Enter the new id:  ")
+                newId = int(input("Enter the new id:  "))
                 UPDATE_STATEMENT = f"UPDATE students SET id = ? WHERE id = ?"
                 CURSOR_OBJ.execute(UPDATE_STATEMENT, (newId, studentID))
                 connection.commit()
@@ -177,7 +162,8 @@ def updateStudent(connection, studentID):
                 error = "08. ERROR: " + str(e)
         elif option == '9':
             try:
-                newEnrollQuantity = input("Enter the new enroll quantity: ")
+                newEnrollQuantity = int(
+                    input("Enter the new enroll quantity: "))
                 UPDATE_STATEMENT = f"UPDATE students SET enrollQuantity = ? WHERE id = ?"
                 CURSOR_OBJ.execute(
                     UPDATE_STATEMENT, (newEnrollQuantity, studentID))

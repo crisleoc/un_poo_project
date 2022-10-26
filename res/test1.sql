@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS academicHistory;
 DROP TABLE IF EXISTS classification;
 
 CREATE TABLE IF NOT EXISTS subjects(
-  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
+  code INTEGER PRIMARY KEY NOT NULL UNIQUE,
   name TEXT NOT NULL UNIQUE,
   school TEXT,
   department TEXT,
@@ -26,30 +26,22 @@ CREATE TABLE IF NOT EXISTS students(
   photograph TEXT);
 
 CREATE TABLE IF NOT EXISTS academicHistory(
-  academicHistoryID INTEGER PRIMARY KEY NOT NULL UNIQUE,
-  -- subjectCredits INTEGER
-  studentID INTEGER,
-  subjectID INTEGER,
+  code INTEGER,
+  id INTEGER,
   finalNote FLOAT,
-  FOREIGN KEY(subjectID)
-  REFERENCES subjects(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  FOREIGN KEY(studentID)
-  REFERENCES students(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
+  credits INTEGER,
+  PRIMARY KEY (code, id)
+  FOREIGN KEY (code) REFERENCES subjects(code),
+  FOREIGN KEY (id) REFERENCES students(id)
+  );
 
 CREATE TABLE IF NOT EXISTS classification(
-  classificationID INTEGER PRIMARY KEY NOT NULL UNIQUE,
-  -- studentID INTEGER,
-  -- name TEXT,
-  -- lastName TEXT,
-  studentID INTEGER,
+  studentID INTEGER PRIMARY KEY NOT NULL UNIQUE,
+  name TEXT,
+  lastName TEXT,
   amountSubjects INTEGER,
   creditSum INTEGER,
-  studentAverage INTEGER,
+  Average INTEGER,
   FOREIGN KEY(studentID)
   REFERENCES students(id)
     ON DELETE CASCADE
@@ -62,7 +54,7 @@ INSERT INTO students(id, name, lastName, career, bornDate, entryDate, placeOrigi
 (1078366420, "Maria", "Gomez", "Administración de Empresas", "11-10-2003", "01-01-2022", "Bogotá", "margomez", 2, "source.unsplash.com/100x100/"),
 (1078366421, "Camilo", "Gonzalez", "Administración de Empresas", "03-11-2004", "01-01-2022", "Bogotá", "camgonzalez", 2, "source.unsplash.com/100x100/");
 
-INSERT INTO subjects(id, name, school, department, credits, language) VALUES
+INSERT INTO subjects(code, name, school, department, credits, language) VALUES
 (001, "Matemáticas", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
 (002, "Física", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
 (003, "Química", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
@@ -78,20 +70,18 @@ INSERT INTO subjects(id, name, school, department, credits, language) VALUES
 (013, "Sistemas de Información", "Ingeniería", "Ingeniería de Sistemas", "4", "Español"),
 (014, "Ingeniería Económica", "Ingeniería", "Ingeniería de Sistemas", "2", "Español");
 
-INSERT INTO academicHistory(finalNote, subjectID, studentID) VALUES
-(4.5, 001, 1078366418),
-(4.0, 010, 1078366418),
-(2.9, 014, 1078366418),
-(4.0, 011, 1078366418),
-(3.0, 001, 1078366419),
-(2.0, 002, 1078366419),
-(5.0, 005, 1078366419),
-(4.0, 013, 1078366419),
-(3.0, 003, 1078366420),
-(3.0, 009, 1078366420),
-(5.0, 010, 1078366420),
-(4.0, 004, 1078366421),
-(4.0, 013, 1078366421),
-(4.0, 014, 1078366421);
+INSERT INTO academicHistory(code, id, finalNote, credits) VALUES
+(1, 1078366418, 3.5, 4),
+(2, 1078366418, 4, 4),
+(10, 1078366418, 5, 4),
+(12, 1078366419, 3, 4),
+(8, 1078366419, 4, 4),
+(14, 1078366419, 1, 2),
+(5, 1078366420, 5, 3),
+(2, 1078366420, 4, 4),
+(10, 1078366420, 3, 4),
+(1, 1078366421, 2, 4),
+(11, 1078366421, 5, 4),
+(8, 1078366421, 5, 4);
 
 
