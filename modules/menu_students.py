@@ -20,8 +20,8 @@ def mainMenuStudents(connection):
         if success:
             CONFIG.printSuccessApp(success)
         success = None
-        if select:
-            CONFIG.printSelectApp(select)
+        if select != None:
+            CONFIG.printSelectStudent(select)
         select = None
         STUDENT_MENU = CONFIG.menuStudents()
         option = input(STUDENT_MENU)
@@ -34,21 +34,21 @@ def mainMenuStudents(connection):
                 error = "01. ERROR: " + str(e)
         elif option == '2':
             try:
-                studentID = input("Enter the student id: ")
+                studentID = int(input("Enter the student id: "))
                 select = STUDENTS.selectStudentByID(connection, studentID)
                 success = "02. SUCCESS: Execution finished without errors."
             except Exception as e:
                 error = "02. ERROR: " + str(e)
         elif option == '3':
             try:
-                studentID = input("Enter the student id: ")
+                studentID = int(input("Enter the student id: "))
                 STUDENTS.updateStudent(connection, studentID)
                 success = "03. SUCCESS: Student updated successfully"
             except Exception as e:
                 error = "03. ERROR: " + str(e)
         elif option == '4':
             try:
-                studentID = input("Enter the student id: ")
+                studentID = int(input("Enter the student id: "))
                 STUDENTS.deleteStudent(connection, studentID)
                 success = "04. SUCCESS: Student deleted successfully"
             except Exception as e:
