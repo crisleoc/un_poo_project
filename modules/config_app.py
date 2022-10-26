@@ -8,10 +8,10 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-br = '='*60
+br = '='*60  # User Interface variable that multiplies the character 60 times and assigns the new string to the br variable
 
 
-def menuMain():
+def menuMain():  # Returns the string containing the main menu options
     return f"""
 MAIN MENU | SIA SIMULATOR 2022
 {br}
@@ -25,7 +25,7 @@ MAIN MENU | SIA SIMULATOR 2022
 Choose an option >>>\t"""
 
 
-def menuStudents():
+def menuStudents():  # Returns the string containing the Students menu options
     return f"""
 STUDENTS MENU
 {br}
@@ -52,6 +52,7 @@ Choose an option >>>\t"""
 
 
 def menuAcademicHistory():
+    # Returns the string containing the Academic History menu options
     return f"""
 ACADEMIC HISTORY MENU
 {br}
@@ -65,6 +66,7 @@ Choose an option >>>\t"""
 
 
 def menuSubjects():
+    # Returns the string containing the Subjects menu options
     return f"""
 SUBJECTS MENU
 {br}
@@ -115,6 +117,7 @@ Choose an option >>>\t"""
 
 # Function that receive a long text and print ir with a line break every 50 characters
 def printErrorApp(text):
+    # "\033[0;31m" allows the string to be printed with red characters
     print("\033[0;31m" + br)
     for i in range(0, len(text), 60):
         print(text[i:i+60])
@@ -139,10 +142,11 @@ def printSelectStudent(studentData):
     titles = ("Id", "Name", "Last Name", "Career", "Born Date", "Entry Date",
               "Place Origin", "Email", "Enroll Quantity", "Photograph")
     print("\033[0;33m" + br)
-    if studentData != []:
+    if studentData != []:  # if the studentData isn´t empty, prints all its elements
         for i in range(len(studentData[0])):
             title = str(titles[i])
             data = str(studentData[0][i])
+            # Limits the space used by each element in every row of the table
             string = "|{:<23}||{:>33}|".format(title, data)
             print(string)
             print('-'*60)
@@ -169,7 +173,7 @@ def printSelectClassify(classifyData):
 
 def printSelectSubject(subjectData):
     titles = ("Code", "Name", "School", "Department", "Credits", "Language")
-    print("\033[0;33m" + br)
+    print("\033[0;33m" + br)  # prints the br variable in red characters
     if subjectData != []:
         for i in range(len(subjectData[0])):
             title = str(titles[i])
@@ -179,10 +183,11 @@ def printSelectSubject(subjectData):
             print('-'*60)
     else:
         print("No data found")
-    print(br + "\033[0m")
+    print(br + "\033[0m")  # prints the br variable in red characters
 
 
 def printSelectAH(AHData):
+    # Prints all the information of a row in the Academic History if it exists
     titles = ("Subject code", "Student id", "Final note", "Credits")
     if AHData != [] and type(AHData) != str:
         print(f"\033[0;35m({AHData[0][1]})\033[0;33m")
