@@ -36,9 +36,31 @@ def mainMenu(connection):
         elif option == '3':
             MENU_ACADEMIC_HISTORY.mainMenuAH(connection)
         elif option == '4':
+<<<<<<< HEAD
+            exitClas = False
+            while not exitClas:
+                option = input('''
+
+                        Classification Menu
+
+                        1. See Classification
+            
+                        0. Exit Menu
+                        
+                        Select an option >>>: ''')
+                if option == '1': 
+                    #**************
+                    CLASSIFICATION.queryClassification()   
+                    #**************  
+                elif option == '0': exitClas == True # exits the classification table submenu if the input is 0
+                else: print('ERROR: Invalid input, try again')
+        elif option == '0' : # exits the main menu if the input is 0
+            print('Exiting Menu...')
+=======
             pass
         elif option == '5':  # exits the main menu if the input is 5
             print("\033[0;31mDone!\033[0;m")
+>>>>>>> 590d1b6bf59b130f498ff1baf768c3a28dd9439f
             exitMenu = True
         else:  # prints out an error message. The main menu iteration continues
             error = "ERROR: Invalid option"
