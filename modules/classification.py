@@ -37,6 +37,51 @@ def selectClassificationByID(connection, student_id):
 
 
 # recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
+def UpdateClassification(connection):
+    cursorObj = connection.cursor()
+    SELECT_QUERY_ACAD = "SELECT id FROM academicHistory WHERE id>-1 ORDER BY id ASC"
+    SELECT_QUERY_CLAS = "SELECT student_id FROM classification WHERE student_id>-1 ORDER BY student_id ASC"
+    SELECT_QUERY_CREDITS = "SELECT credits FROM academicHistory WHERE id>-1 ORDER BY id ASC"
+    SELECT_QUERY_SCORE = "SELECT finalNote FROM academicHistory WHERE id >-1 ORDER BY id ASC"
+    cursorObj.execute(SELECT_QUERY_CLAS)
+    # toma las IDs de classification y las convierte en una tupla
+    CLAStuple = cursorObj.fetchall()
+    cursorObj.execute(SELECT_QUERY_ACAD)
+    # toma las IDs de academicHistory y las convierte en una tupla
+    ACADtuple = cursorObj.fetchall()
+    cursorObj.execute(SELECT_QUERY_CREDITS)
+    CREDITStuple = cursorObj.fetchall()
+    cursorObj.execute(SELECT_QUERY_SCORE)
+    SCOREtuple = cursorObj.fetchall()
+    print(CLAStuple)
+    print(ACADtuple)
+    print(CREDITStuple)
+    print(SCOREtuple)
+    for i in range(len(CLAStuple)):
+        creditos = 0
+        materias = 0
+        promedio = 0
+        for j in range(len(ACADtuple)):
+            if(CLAStuple[i] == ACADtuple[j]):
+                creditos = creditos+CREDITStuple[j][0]
+                materias += 1
+                promedio = promedio+(SCOREtuple[j][0]*CREDITStuple[j][0])
+        if(creditos != 0):
+            promedio = (promedio/creditos)
+        UPDATE_STATEMENT = "UPDATE classification SET creditSum == " + \
+            str(creditos)+" WHERE student_id == "+str(CLAStuple[i][0])+""
+        cursorObj.execute(UPDATE_STATEMENT)
+        UPDATE_STATEMENT2 = "UPDATE classification SET amountSubjects == " + \
+            str(materias)+" WHERE student_id == "+str(CLAStuple[i][0])+""
+        cursorObj.execute(UPDATE_STATEMENT2)
+        UPDATE_STATEMENT3 = "UPDATE classification SET average == " + \
+            str(promedio)+" WHERE student_id == "+str(CLAStuple[i][0])+""
+        cursorObj.execute(UPDATE_STATEMENT3)
+        connection.commit()
+    connection.commit()
+
+
+# recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
 def GetCreditsAmount(connection):
     cursorObj = connection.cursor()
     SELECT_QUERY_ACAD = "SELECT id FROM academicHistory WHERE id>-1 ORDER BY id ASC"

@@ -82,8 +82,8 @@ def addSubject(connection):
         return 'ERROR: Please enter a valid input'
 
 
-def readAcademicHistory(connection):
-    """The readAcademicHistory function queries the academicHistory table for information.
+def queryAcademicHistory(connection):
+    """The queryAcademicHistory function queries the academicHistory table for information.
     Args:
         connection (object): Connection to sqlite3.
     Returns:
