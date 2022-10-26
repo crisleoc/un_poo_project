@@ -105,6 +105,7 @@ def updateSubject(connection, subjectCode):
                 connection.commit()  # Ensures persistence in the data base
                 # Initiates the success variable using the corresponding success confirmation message
                 success = f"The id was updated ({newCode}) successfully"
+                subjectCode = newCode  # Updates the subject code
             except Exception as e:
                 # Should an exception happen, it prints out the exception
                 error = "01. ERROR: " + str(e)

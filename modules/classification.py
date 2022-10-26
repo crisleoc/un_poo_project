@@ -14,6 +14,11 @@ def createClassificationTable(connection):
 
 # tomamos la información relevante de la tabla students y la pasamos a la tabla clasificación
 def getStudentInfo(connection):
+    """Get the student information from the students table and insert it into the classification table.
+
+    Args:
+        connection (Object): Connection to sqlite3.
+    """
     cursorObj = connection.cursor()
     joinStatement = "INSERT INTO classification (student_id, name, lastname) SELECT id, name, lastname FROM students WHERE id NOT IN (SELECT student_id FROM classification)"
     cursorObj.execute(joinStatement)
@@ -38,6 +43,11 @@ def selectClassificationByID(connection, student_id):
 
 # recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
 def UpdateClassification(connection):
+    """Update the classification table with the amount of subjects and the sum of credits of the students.
+
+    Args:
+        connection (object): Connection to sqlite3.
+    """
     cursorObj = connection.cursor()
     SELECT_QUERY_ACAD = "SELECT id FROM academicHistory WHERE id>-1 ORDER BY id ASC"
     SELECT_QUERY_CLAS = "SELECT student_id FROM classification WHERE student_id>-1 ORDER BY student_id ASC"
@@ -79,6 +89,7 @@ def UpdateClassification(connection):
 
 # recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
 def GetCreditsAmount(connection):
+    """Get the amount of credits of the students."""
     cursorObj = connection.cursor()
     SELECT_QUERY_ACAD = "SELECT id FROM academicHistory WHERE id>-1 ORDER BY id ASC"
     SELECT_QUERY_CLAS = "SELECT student_id FROM classification WHERE student_id>-1 ORDER BY student_id ASC"

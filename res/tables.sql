@@ -1,9 +1,9 @@
 PRAGMA encoding="UTF-8";
 
-DROP TABLE IF EXISTS subjects;
-DROP TABLE IF EXISTS students;
-DROP TABLE IF EXISTS academicHistory;
-DROP TABLE IF EXISTS classification;
+-- DROP TABLE IF EXISTS subjects;
+-- DROP TABLE IF EXISTS students;
+-- DROP TABLE IF EXISTS academicHistory;
+-- DROP TABLE IF EXISTS classification;
 
 CREATE TABLE IF NOT EXISTS subjects(
     code INTEGER PRIMARY KEY NOT NULL UNIQUE,

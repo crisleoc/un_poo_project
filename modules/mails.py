@@ -1,27 +1,36 @@
 import smtplib
-import email.message
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from . import students as STUDENTS
 
-mail_template = None
-try:
-    with open('../res/template_mail.html', 'r', encoding='utf-8') as html_file:
-        mail_template = html_file.read()
-except Exception as e:
-    print(e)
-email_content = mail_template
 
-msg = email.message.Message()
-msg['Subject'] = 'Tutsplus Newsletter'
-msg['From'] = 'castanedacristian2016@gmail.com'
-msg['To'] = 'jcardonat@unal.edu.co'
-password = "uygjdptgwrzratps"
+def get_email(connection, studentID):
+    try:
+        return str(STUDENTS.selectStudentByID(connection, studentID)[0][7])
+    except Exception as e:
+        print("ERROR: " + str(e))
 
-msg.add_header('Content-Type', 'text/html')
-msg.set_payload(email_content)
-server = smtplib.SMTP('smtp.gmail.com: 587')
-server.starttls()
 
-# Login Credentials for sending the mail
-server.login(msg['From'], password)
-server.sendmail(msg['From'], [msg['To']], msg.as_string())
-server.quit()
-print(f"successfully sent email to {msg['To']}")
+def sendEmail(destinationEmail, bodyMail):
+    try:
+        # create message object instance
+        msg = MIMEMultipart()
+        message = str(bodyMail)
+        # setup the parameters of the message
+        msg['Subject'] = 'Informe de promedio académico'
+        msg['From'] = 'castanedacristian2016@gmail.com'
+        msg['To'] = destinationEmail
+        password = "uygjdptgwrzratps"
+        # add in the message body
+        msg.attach(MIMEText(message, 'plain'))
+        # create server
+        server = smtplib.SMTP('smtp.gmail.com: 587')
+        server.starttls()
+        # Login Credentials for sending the mail
+        server.login(msg['From'], password)
+        # send the message via the server.
+        server.sendmail(msg['From'], [msg['To']], msg.as_string())
+        server.quit()
+        return f"Successfully sent email to {destinationEmail}"
+    except Exception as e:
+        raise e

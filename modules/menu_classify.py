@@ -1,5 +1,6 @@
 from . import config_app as CONFIG
 from . import classification as CLASSIFY
+from . import mails as EMAIL
 
 
 def mainMenuClassify(connection):
@@ -12,6 +13,7 @@ def mainMenuClassify(connection):
     error = None
     success = None
     select = None
+    sendEmail = None
     while not exitMenuClassify:
         CONFIG.clear()
         if error:
@@ -21,8 +23,19 @@ def mainMenuClassify(connection):
             CONFIG.printSuccessApp(success)
         success = None
         if select != None:
-            CONFIG.printSelectClassify(select)
+            sendEmail = CONFIG.printSelectClassify(select)
         select = None
+        if sendEmail != None:
+            if sendEmail[0]:
+                msg = None
+                try:
+                    email = EMAIL.get_email(connection, sendEmail[1][0][0])
+                    msg = EMAIL.sendEmail(email, CONFIG.bodyMail(sendEmail[1]))
+                    CONFIG.printSuccessApp(str(msg))
+                except Exception as e:
+                    msg = e
+                    CONFIG.printErrorApp(f"ERROR: {msg}")
+        sendEmail = None
         CLASSIFY_MENU = CONFIG.menuClassify()
         option = input(CLASSIFY_MENU)
         if option == '1':

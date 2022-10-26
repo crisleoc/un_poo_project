@@ -3,15 +3,16 @@ import os
 
 def clear():
     # Function that clear the console
-    """_summary_: Clear the console
-    """
+    """Clear the console"""
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-br = '='*60  # User Interface variable that multiplies the character 60 times and assigns the new string to the br variable
+# User Interface variable that multiplies the character 60 times and assigns the new string to the br variable
+br = '='*60
 
 
-def menuMain():  # Returns the string containing the main menu options
+# Returns the string containing the main menu options
+def menuMain():
     return f"""
 MAIN MENU | SIA SIMULATOR 2022
 {br}
@@ -25,7 +26,8 @@ MAIN MENU | SIA SIMULATOR 2022
 Choose an option >>>\t"""
 
 
-def menuStudents():  # Returns the string containing the Students menu options
+# Returns the string containing the Students menu options
+def menuStudents():
     return f"""
 STUDENTS MENU
 {br}
@@ -51,8 +53,8 @@ CLASSIFICATION MENU
 Choose an option >>>\t"""
 
 
+# Returns the string containing the Academic History menu options
 def menuAcademicHistory():
-    # Returns the string containing the Academic History menu options
     return f"""
 ACADEMIC HISTORY MENU
 {br}
@@ -65,8 +67,8 @@ ACADEMIC HISTORY MENU
 Choose an option >>>\t"""
 
 
+# Returns the string containing the Subjects menu options
 def menuSubjects():
-    # Returns the string containing the Subjects menu options
     return f"""
 SUBJECTS MENU
 {br}
@@ -142,7 +144,8 @@ def printSelectStudent(studentData):
     titles = ("Id", "Name", "Last Name", "Career", "Born Date", "Entry Date",
               "Place Origin", "Email", "Enroll Quantity", "Photograph")
     print("\033[0;33m" + br)
-    if studentData != []:  # if the studentData isn´t empty, prints all its elements
+    # if the studentData isn´t empty, prints all its elements
+    if studentData != []:
         for i in range(len(studentData[0])):
             title = str(titles[i])
             data = str(studentData[0][i])
@@ -169,6 +172,29 @@ def printSelectClassify(classifyData):
     else:
         print("No data found, please reload the data.")
     print(br + "\033[0m")
+    while True:
+        sendEmail = input(
+            "Do you want to send an email to the student with the info? (y/n) ")
+        if sendEmail == "y":
+            return [True, classifyData]
+        elif sendEmail == "n":
+            return [False, classifyData]
+
+
+def bodyMail(classifyData):
+    titles = ("Id", "Name", "Last Name", "Amount of subjects",
+              "Accumulated credits", "Average")
+    message = ""
+    message += f"{br}\n"
+    if classifyData != []:
+        for i in range(len(classifyData[0])):
+            title = str(titles[i])
+            data = str(classifyData[0][i])
+            string = "|{:<23}||{:>33}|".format(title, data)
+            message += f"{string}\n"
+            message += '-'*60 + "\n"
+    message += f"{br}\n"
+    return message
 
 
 def printSelectSubject(subjectData):
