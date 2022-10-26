@@ -20,7 +20,7 @@ def createStudentTable(connection):
     PICTURE = "photograph TEXT"
     CREATE_STATEMENT = f"CREATE TABLE IF NOT EXISTS students({ID}, {NAME}, {LAST_NAME}, {CAREER}, {BIRTH_DATE}, {ENTRY_DATE}, {PLACE_ORIGIN}, {EMAIL}, {ENROLL_QUANTITY}, {PICTURE})"
     CURSOR_OBJ.execute(CREATE_STATEMENT)
-    connection.commit()
+    connection.commit() # Ensures persistence
 
 
 def insertStudent(connection, student):
@@ -32,7 +32,7 @@ def insertStudent(connection, student):
     """
     CURSOR_OBJ = connection.cursor()
     INSERT_STATEMENT = "INSERT INTO students VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    CURSOR_OBJ.execute(INSERT_STATEMENT, student)
+    CURSOR_OBJ.execute(INSERT_STATEMENT, student) # Replaces each ? character with its corresponding value inside the student tuple
     connection.commit()
 
 
@@ -47,9 +47,9 @@ def selectStudentByID(connection, id):
         list<tuple>: List of tuples with the data of the students that contains the id.
     """
     CURSOR_OBJ = connection.cursor()
-    SELECT_STATEMENT = "SELECT * FROM students WHERE id = ?"
+    SELECT_STATEMENT = "SELECT * FROM students WHERE id = ?" # Selects the row inside the students table with the associated id
     CURSOR_OBJ.execute(SELECT_STATEMENT, (id,))
-    return CURSOR_OBJ.fetchall()
+    return CURSOR_OBJ.fetchall() # Returns a tuple containing all the values of the row
 
 
 def deleteStudent(connection, id):
@@ -60,7 +60,7 @@ def deleteStudent(connection, id):
         id (int): Id of the student.
     """
     CURSOR_OBJ = connection.cursor()
-    DELETE_STATEMENT = "DELETE FROM students WHERE id = ?"
+    DELETE_STATEMENT = "DELETE FROM students WHERE id = ?" # Deletes from the DB the row associated with the id
     CURSOR_OBJ.execute(DELETE_STATEMENT, (id,))
     connection.commit()
 
@@ -73,38 +73,38 @@ def updateStudent(connection, studentID):
         student (int): Id of the student.
     """
     CURSOR_OBJ = connection.cursor()
-    exitMenuUpdate = False
-    error = None
-    success = None
+    exitMenuUpdate = False # Changes its value to True when the user closes the menu
+    error = None # Default value of the error value, changes its value when an exception occurs
+    success = None # Default value of the success value, changes its value when the selected method runs successfully
 
     while not exitMenuUpdate:
-        CONFIG.clear()
+        CONFIG.clear() # Clears the terminal in each iteration 
         if error:
-            CONFIG.printErrorApp(error)
-        error = None
+            CONFIG.printErrorApp(error) # It's an user interface method that prints out the error message
+        error = None # After printing the error the variable switches back to the None value
         if success:
-            CONFIG.printSuccessApp(success)
-        success = None
-        UPDATE_MENU = CONFIG.menuUpdateStudent(studentID)
+            CONFIG.printSuccessApp(success) # It's an user interface method that prints out the success confirmation message
+        success = None # After printing the error the variable switches back to the None value
+        UPDATE_MENU = CONFIG.menuUpdateStudent(studentID) # Initiates the Student menu using the ID entered by the user as an argument
         option = input(UPDATE_MENU)
         if option == '1':
-            try:
+            try: # Try Except statement for exception handling
                 newId = int(input("Enter the new id:  "))
-                UPDATE_STATEMENT = f"UPDATE students SET id = ? WHERE id = ?"
-                CURSOR_OBJ.execute(UPDATE_STATEMENT, (newId, studentID))
+                UPDATE_STATEMENT = f"UPDATE students SET id = ? WHERE id = ?" # Replaces the old id value associated with the entered id with newId
+                CURSOR_OBJ.execute(UPDATE_STATEMENT, (newId, studentID)) # Executes the statement, taking the old and new values as arguments
                 connection.commit()
-                success = f"The id was updated ({newId}) successfully"
+                success = f"The id was updated ({newId}) successfully" # Initiates the success variable using the corresponding success confirmation message
             except Exception as e:
-                error = "01. ERROR: " + str(e)
+                error = "01. ERROR: " + str(e) # Should an exception happen, it prints out the exception
         elif option == '2':
             try:
                 newName = input("Enter the new name:  ")
-                UPDATE_STATEMENT = f"UPDATE students SET name = ? WHERE id = ?"
-                CURSOR_OBJ.execute(UPDATE_STATEMENT, (newName, studentID))
+                UPDATE_STATEMENT = f"UPDATE students SET name = ? WHERE id = ?" # Replaces the old name value associated with the entered id with newName
+                CURSOR_OBJ.execute(UPDATE_STATEMENT, (newName, studentID)) # Executes the statement, taking the old and new values as arguments
                 connection.commit()
-                success = f"The name was updated ({newName}) successfully"
+                success = f"The name was updated ({newName}) successfully" # Initiates the success variable using the corresponding success confirmation message
             except Exception as e:
-                error = "02. ERROR: " + str(e)
+                error = "02. ERROR: " + str(e) # Should an exception happen, it prints out the exception
         elif option == '3':
             try:
                 newLastName = input("Enter the new last name: ")
@@ -185,14 +185,16 @@ def updateStudent(connection, studentID):
             try:
                 newStudent = CONFIG.readDataUserStudent()
                 UPDATE_STATEMENT = f"UPDATE students SET id = ?, name = ?, lastname = ?, career = ?, bornDate = ?, entryDate = ?, placeOrigin = ?, email = ?, enrollQuantity = ?, photograph = ? WHERE id = ?"
+                # Replaces ALL of the values associated with the entered code with newStudent
                 CURSOR_OBJ.execute(UPDATE_STATEMENT, (newStudent[0], newStudent[1], newStudent[2], newStudent[3],
                                                       newStudent[4], newStudent[5], newStudent[6], newStudent[7], newStudent[8], newStudent[9], studentID))
+                # Extracts each value of the newStudent tuple and replaces them in the ? characters
                 connection.commit()
                 exitMenuUpdate = True
             except Exception as e:
-                error = "11. ERROR: " + str(e)
+                error = "11. ERROR: " + str(e) # Should the menu end abruptly, it prints out a warning message
         elif option == '12':
-            print("\033[0;31mOperation canceled!\033[0;m")
-            exitMenuUpdate = True
+            print("\033[0;31mOperation canceled!\033[0;m") # Should the menu end abruptly, it prints out a warning message
+            exitMenuUpdate = True # Ends the infinite While Not iteration
         else:
             error = 'ERROR: Invalid option'
