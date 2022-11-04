@@ -5,13 +5,13 @@ def createAcademicHistoryTable(connection):
     """
     cursorObj = connection.cursor()  # We traverse the database with the object cursorObj
     cursorObj.execute('''CREATE TABLE IF NOT EXISTS academicHistory(
-                                    code integer,
-                                    id integer,
-                                    finalNote float,
-                                    credits integer,
-                                    PRIMARY KEY (code, id)
-                                    FOREIGN KEY (code) REFERENCES subjects(code),
-                                    FOREIGN KEY (id) REFERENCES students(id))''')  # We create the table academicHistory
+        code integer,
+        id integer,
+        finalNote float,
+        credits integer,
+        PRIMARY KEY (code, id)
+        FOREIGN KEY (code) REFERENCES subjects(code),
+        FOREIGN KEY (id) REFERENCES students(id))''')  # We create the table academicHistory
     connection.commit()  # We ensure persistence by saving the table to disk
 
 
