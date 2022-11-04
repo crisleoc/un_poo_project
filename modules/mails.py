@@ -5,6 +5,15 @@ from . import students as STUDENTS
 
 
 def get_email(connection, studentID):
+    """Get the email of a student by his ID:
+
+    Args:
+        connection (object): Connection to the database
+        studentID (int): Student ID
+
+    Returns:
+        str: Student email
+    """
     try:
         return str(STUDENTS.selectStudentByID(connection, studentID)[0][7])
     except Exception as e:
@@ -12,6 +21,18 @@ def get_email(connection, studentID):
 
 
 def sendEmail(destinationEmail, bodyMail):
+    """Send an email to a destination email
+
+    Args:
+        destinationEmail (str): Destination email
+        bodyMail (str): Body of the email
+
+    Raises:
+        e: Error
+
+    Returns:
+        str: Message of success
+    """
     try:
         # create message object instance
         msg = MIMEMultipart()

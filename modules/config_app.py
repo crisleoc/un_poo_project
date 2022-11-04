@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 
 
@@ -238,25 +239,60 @@ def printSelectAH(AHData):
     print(br + "\033[0m")
 
 
+def get_data(text, dataType):
+    """This function receives a text and a data type and returns the data
+
+    Args:
+        text (str): Text to be printed
+        dataType (str): Data type to be validated (int, float, str, date)
+
+    Returns:
+        data : Data validated
+    """
+    if dataType == "int":
+        while True:
+            try:
+                data = int(input(text))
+                return data
+            except ValueError:
+                printErrorApp("Please enter a valid integer")
+    elif dataType == "float":
+        while True:
+            try:
+                data = float(input(text))
+                return data
+            except ValueError:
+                printErrorApp("Please enter a valid float")
+    elif dataType == "str":
+        while True:
+            try:
+                data = str(input(text))
+                return data
+            except ValueError:
+                printErrorApp("Please enter a valid string")
+    elif dataType == "date":
+        while True:
+            try:
+                data = str(input(text))
+                date = datetime.strptime(data, "%d-%m-%Y")
+                return date
+            except ValueError:
+                printErrorApp("Please enter a valid date (dd-mm-yyyy)")
+
+
 # creates the 'student' tuple, used in the insertStudent method.
 def readDataUserStudent():
-    try:
-        id = int(input("Enter the id of the student: "))
-    except:
-        raise Exception("The id must be a number")
-    name = input("Enter the name of the student: ")
-    last_name = input("Enter the last_name of the student: ")
-    career = input("Enter the career of the student: ")
-    born_date = input("Enter the born_date of the student: ")
-    entry_date = input("Enter the entry_date of the student: ")
-    place_origin = input("Enter the place_origin of the student: ")
-    email = input("Enter the email of the student: ")
-    try:
-        enroll_quantity = int(
-            input("Enter the enroll_quantity of the student: "))
-    except:
-        raise Exception("The enroll_quantity must be a number")
-    photograph = input("Enter the photograph of the student: ")
+    id = get_data("Enter the student id: ", "int")
+    name = get_data("Enter the student name: ", "str")
+    last_name = get_data("Enter the student last name: ", "str")
+    career = get_data("Enter the student career: ", "str")
+    born_date = get_data("Enter the student born date (dd-mm-yyyy): ", "date")
+    entry_date = get_data(
+        "Enter the student entry date (dd-mm-yyyy): ", "date")
+    place_origin = get_data("Enter the student place origin: ", "str")
+    email = get_data("Enter the student email: ", "str")
+    enroll_quantity = get_data("Enter the student enroll quantity: ", "int")
+    photograph = get_data("Enter the student photograph link: ", "str")
     student = (id, name, last_name, career, born_date, entry_date,
                place_origin, email, enroll_quantity, photograph)
     return student
@@ -264,17 +300,11 @@ def readDataUserStudent():
 
 # creates the 'subject' tuple, used in the insertSubject method.
 def readDataUserSubject():
-    try:
-        code = int(input("Enter the code of the subject: "))
-    except:
-        raise Exception("The id must be a number: ")
-    name = input("Enter name of the subject: ")
-    school = input("Enter school of the subject: ")
-    department = input("Enter the department of the subject: ")
-    try:
-        credits = int(input("Enter the number of credits of the subject: "))
-    except:
-        raise Exception("The credits must be a number: ")
-    language = input("Enter the language of the subject: ")
+    code = get_data("Enter the subject code: ", "int")
+    name = get_data("Enter the subject name: ", "str")
+    school = get_data("Enter the subject school: ", "str")
+    department = get_data("Enter the subject department: ", "str")
+    credits = get_data("Enter the subject credits: ", "int")
+    language = get_data("Enter the subject language: ", "str")
     subject = (code, name, school, department, credits, language)
     return subject
