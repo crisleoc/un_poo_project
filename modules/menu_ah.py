@@ -30,22 +30,22 @@ def mainMenuAH(connection):
         option = input(AH_MENU)
         if option == '1':
             try:
-                message = AH.objectAH.addSubject(connection)
+                message = objectAH.addSubject(connection)
             except Exception as e:
                 error = "01. ERROR: " + str(e)
         elif option == '2':
             try:
-                select = AH.objectAH.queryAcademicHistory(connection)
+                select = objectAH.queryAcademicHistory(connection)
             except Exception as e:
                 error = "02. ERROR: " + str(e)
         elif option == '3':
             try:
-                message = AH.objectAH.updateFinalNote(connection)
+                message = objectAH.updateFinalNote(connection)
             except Exception as e:
                 error = "03. ERROR: " + str(e)
         elif option == '4':
             try:
-                message = AH.objectAH.deleteSubject(connection)
+                message = objectAH.deleteSubject(connection)
             except Exception as e:
                 error = "04. ERROR: " + str(e)
         elif option == '5':
