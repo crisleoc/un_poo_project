@@ -1,4 +1,4 @@
-INSERT INTO students(id, name, lastName, career, bornDate, entryDate, placeOrigin, email, enrollQuantity, photograph) VALUES
+INSERT INTO students(id, name, lastName, career, birthDate, entryDate, placeOrigin, email, enrollQuantity, photograph) VALUES
 (1078366418, "Cristian", "Castañeda", "Ciencias de la Computación", "03-10-2004", "01-01-2022", "Bogotá", "crcastanedao", 2, "source.unsplash.com/100x100/"),
 (1078366419, "Juan", "Perez", "Medicina", "23-12-2003", "01-01-2022", "Bogotá", "juperez", 2, "source.unsplash.com/100x100/"),
 (1078366420, "Maria", "Gomez", "Administración de Empresas", "11-10-2003", "01-01-2022", "Bogotá", "margomez", 2, "source.unsplash.com/100x100/"),

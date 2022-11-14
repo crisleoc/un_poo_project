@@ -59,10 +59,10 @@ def menuAcademicHistory():
     return f"""
 ACADEMIC HISTORY MENU
 {br}
-    01. Add subject qualification
-    02. Search subject qualification
+    01. Create new academic history
+    02. Search academic history
     03. Update subject qualification
-    04. Delete update qualification
+    04. Delete subject
     05. Return
 {br}
 Choose an option >>>\t"""
