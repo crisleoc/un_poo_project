@@ -12,7 +12,7 @@ def createStudentTable(connection):
     NAME = "name TEXT"
     LAST_NAME = "lastname TEXT"
     CAREER = "career TEXT"
-    BIRTH_DATE = "birthDate TEXT"
+    BIRTH_DATE = "bornDate TEXT"
     ENTRY_DATE = "entryDate TEXT"
     PLACE_ORIGIN = "placeOrigin TEXT"
     EMAIL = "email TEXT"
