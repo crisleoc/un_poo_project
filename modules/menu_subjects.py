@@ -27,7 +27,7 @@ def mainMenuSubjects(connection):
         option = input(SUBJECT_MENU)
         if option == '1':
             try:
-                SUBJECTS.insertSubject(
+                SUBJECTS.subject.insertSubject(
                     connection, CONFIG.readDataUserSubject())
                 success = "01. SUCCESS: Subject added successfully"
             except Exception as e:
@@ -35,17 +35,17 @@ def mainMenuSubjects(connection):
         elif option == '2':
             try:
                 subjectCode = int(input("Enter the subject code: "))
-                select = SUBJECTS.selectSubjectByID(connection, subjectCode)
+                select = SUBJECTS.subject.selectSubjectByID(connection, subjectCode)
                 success = "02. SUCCESS: Execution finished without errors."
             except Exception as e:
                 error = "02. ERROR: " + str(e)
         elif option == '3':
             try:
                 subjectCode = int(input("Enter the subject code: "))
-                subjectExists = SUBJECTS.selectSubjectByID(
+                subjectExists = SUBJECTS.subject.selectSubjectByID(
                     connection, subjectCode)
                 if subjectExists:
-                    SUBJECTS.updateSubject(connection, subjectCode)
+                    SUBJECTS.subject.updateSubject(connection, subjectCode)
                     success = "03. SUCCESS: Subject updated successfully"
                 else:
                     raise Exception("Subject does not exist")
@@ -54,10 +54,10 @@ def mainMenuSubjects(connection):
         elif option == '4':
             try:
                 subjectCode = int(input("Enter the subject code: "))
-                subjectExists = SUBJECTS.selectSubjectByID(
+                subjectExists = SUBJECTS.subject.selectSubjectByID(
                     connection, subjectCode)
                 if subjectExists:
-                    SUBJECTS.deleteSubject(connection, subjectCode)
+                    SUBJECTS.subject.deleteSubject(connection, subjectCode)
                     success = "04. SUCCESS: Subject deleted successfully"
                 else:
                     raise Exception("Subject does not exist")
