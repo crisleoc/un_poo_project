@@ -1,16 +1,24 @@
 from modules import config_app as CONFIG
+from .Object import object
 
+
+# This class inherits from the abstract class object
 class subject(object):
+
+    _connection = None
+    _subject = None
+    _id = None
+    _subjectCode = None
+
     def __init__(self): pass
-    
-    def createSubjectsTable(connection):
+
+    def createSubjectsTable(self, connection):
         """Creates the subjects table in the database:
 
         Args:
             connection (object): Connection to sqlite3.
-
         """
-
+        self._connection = connection
         CURSOR_OBJ = connection.cursor()
         CODE = "code INTEGER PRIMARY KEY NOT NULL UNIQUE"
         NAME = "name TEXT NOT NULL UNIQUE"
@@ -21,11 +29,11 @@ class subject(object):
         CREATE_STATEMENT = f"""CREATE TABLE IF NOT EXISTS subjects(
             {CODE}, {NAME}, {SCHOOL}, {DEPARTMENT}, {CREDITS}, {LANGUAGE}
             )"""
-        CURSOR_OBJ.execute(CREATE_STATEMENT)  # creates the table in the database
+        CURSOR_OBJ.execute(
+            CREATE_STATEMENT)  # creates the table in the database
         connection.commit()  # Ensures persistence by saving the table to disk
 
-
-    def insertSubject(connection, subject):
+    def insertSubject(self, connection, subject):
         """Inserts a subject in the subjects table:
 
         Args:
@@ -33,6 +41,8 @@ class subject(object):
             subject (tuple): Tuple containing the elements of the Subjects table.
 
         """
+        self._connection = connection
+        self._subject = subject
         CURSOR_OBJ = connection.cursor()
         # uses string formatting to replace the ? characters with the elements contained in the subject list
         INSERT_STATEMENT = "INSERT INTO subjects VALUES(?, ?, ?, ?, ?, ?)"
@@ -40,22 +50,22 @@ class subject(object):
         CURSOR_OBJ.execute(INSERT_STATEMENT, subject)
         connection.commit()  # Ensures persistence
 
-
-    def deleteSubject(connection, id):
+    def deleteSubject(self, connection, id):
         """Delete a subject by id in the database:
 
         Args:
             connection (object): Connection to sqlite3.
             id (int): Id of the subject.
         """
+        self._connection
+        self._id = id
         CURSOR_OBJ = connection.cursor()
         DELETE_STATEMENT = "DELETE FROM subjects WHERE code = ?"
         # Deletes the subject using its code as reference
         CURSOR_OBJ.execute(DELETE_STATEMENT, (id,))
         connection.commit()
 
-
-    def selectSubjectByID(connection, id):
+    def selectSubjectByID(self, connection, id):
         """Select a subject by id in the database:
 
         Args:
@@ -65,19 +75,22 @@ class subject(object):
         Returns:
             list<tuple>: List of tuples with the data of the subjects that contains the id.
         """
+        self._connection = connection
+        self._id = id
         CURSOR_OBJ = connection.cursor()
         SELECT_STATEMENT = "SELECT * FROM subjects WHERE code = ?"
         CURSOR_OBJ.execute(SELECT_STATEMENT, (id,))
         return CURSOR_OBJ.fetchall()  # Returns the row as a tuple
 
-
-    def updateSubject(connection, subjectCode):
+    def updateSubject(self, connection, subjectCode):
         """Update a subject in the database:
 
         Args:
             connection (object): Connection to sqlite3.
             subject (int): Id of the subject.
         """
+        self._connection = connection
+        self._subjectCode = subjectCode
         CURSOR_OBJ = connection.cursor()
         exitMenuUpdate = False
         error = None
@@ -103,7 +116,8 @@ class subject(object):
                     # Replaces the old code with a new one entered by the user
                     UPDATE_STATEMENT = f"UPDATE subjects SET code = ? WHERE code = ?"
                     # Executes the statement, taking the old and new codes as arguments
-                    CURSOR_OBJ.execute(UPDATE_STATEMENT, (newCode, subjectCode))
+                    CURSOR_OBJ.execute(
+                        UPDATE_STATEMENT, (newCode, subjectCode))
                     connection.commit()  # Ensures persistence in the data base
                     # Initiates the success variable using the corresponding success confirmation message
                     success = f"The id was updated ({newCode}) successfully"
@@ -116,7 +130,8 @@ class subject(object):
                     newName = input("Enter the new name:  ")
                     # Replaces the old name value associated with the entered code with newName
                     UPDATE_STATEMENT = f"UPDATE subjects SET name = ? WHERE code = ?"
-                    CURSOR_OBJ.execute(UPDATE_STATEMENT, (newName, subjectCode))
+                    CURSOR_OBJ.execute(
+                        UPDATE_STATEMENT, (newName, subjectCode))
                     connection.commit()
                     # Initiates the success variable using the corresponding success confirmation message
                     success = f"The name was updated ({newName}) successfully"
@@ -128,7 +143,8 @@ class subject(object):
                     newSchool = input("Enter the new school: ")
                     # Replaces the old school value associated with the entered code with newSchool
                     UPDATE_STATEMENT = f"UPDATE subjects SET school = ? WHERE code = ?"
-                    CURSOR_OBJ.execute(UPDATE_STATEMENT, (newSchool, subjectCode))
+                    CURSOR_OBJ.execute(
+                        UPDATE_STATEMENT, (newSchool, subjectCode))
                     connection.commit()
                     success = f"The school was updated ({newSchool}) successfully"
                 except Exception as e:
@@ -149,7 +165,8 @@ class subject(object):
                     newCredits = int(input("Enter the new credits: "))
                     # Replaces the old credits value associated with the entered code with newCredits
                     UPDATE_STATEMENT = f"UPDATE subjects SET credits = ? WHERE code = ?"
-                    CURSOR_OBJ.execute(UPDATE_STATEMENT, (newCredits, subjectCode))
+                    CURSOR_OBJ.execute(
+                        UPDATE_STATEMENT, (newCredits, subjectCode))
                     connection.commit()
                     success = f"The credits was updated ({newCredits}) successfully"
                 except Exception as e:

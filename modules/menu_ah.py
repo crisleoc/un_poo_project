@@ -1,5 +1,5 @@
 from . import config_app as CONFIG
-from . import academic_history as AH
+from .classes import academic_history as AH
 
 
 def mainMenuAH(connection):

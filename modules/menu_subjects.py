@@ -1,5 +1,5 @@
 from . import config_app as CONFIG
-from . import subjects as SUBJECTS
+from .classes import subjects as SUBJECTS
 
 
 def mainMenuSubjects(connection):
@@ -8,6 +8,9 @@ def mainMenuSubjects(connection):
     Args:
         connection (object): Connection to sqlite3.
     """
+
+    objectSubject = SUBJECTS.subject()
+
     exitMenuSubjects = False
     error = None
     success = None
@@ -27,7 +30,7 @@ def mainMenuSubjects(connection):
         option = input(SUBJECT_MENU)
         if option == '1':
             try:
-                SUBJECTS.subject.insertSubject(
+                objectSubject.insertSubject(
                     connection, CONFIG.readDataUserSubject())
                 success = "01. SUCCESS: Subject added successfully"
             except Exception as e:
@@ -35,17 +38,18 @@ def mainMenuSubjects(connection):
         elif option == '2':
             try:
                 subjectCode = int(input("Enter the subject code: "))
-                select = SUBJECTS.subject.selectSubjectByID(connection, subjectCode)
+                select = objectSubject.selectSubjectByID(
+                    connection, subjectCode)
                 success = "02. SUCCESS: Execution finished without errors."
             except Exception as e:
                 error = "02. ERROR: " + str(e)
         elif option == '3':
             try:
                 subjectCode = int(input("Enter the subject code: "))
-                subjectExists = SUBJECTS.subject.selectSubjectByID(
+                subjectExists = objectSubject.selectSubjectByID(
                     connection, subjectCode)
                 if subjectExists:
-                    SUBJECTS.subject.updateSubject(connection, subjectCode)
+                    objectSubject.updateSubject(connection, subjectCode)
                     success = "03. SUCCESS: Subject updated successfully"
                 else:
                     raise Exception("Subject does not exist")
@@ -54,10 +58,10 @@ def mainMenuSubjects(connection):
         elif option == '4':
             try:
                 subjectCode = int(input("Enter the subject code: "))
-                subjectExists = SUBJECTS.subject.selectSubjectByID(
+                subjectExists = objectSubject.selectSubjectByID(
                     connection, subjectCode)
                 if subjectExists:
-                    SUBJECTS.subject.deleteSubject(connection, subjectCode)
+                    objectSubject.deleteSubject(connection, subjectCode)
                     success = "04. SUCCESS: Subject deleted successfully"
                 else:
                     raise Exception("Subject does not exist")

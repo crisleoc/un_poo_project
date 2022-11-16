@@ -1,7 +1,7 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from . import students as STUDENTS
+from .classes import students as STUDENTS
 
 
 def get_email(connection, studentID):

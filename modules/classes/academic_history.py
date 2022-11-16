@@ -1,4 +1,7 @@
-class academicHistory:
+from .Object import object
+
+
+class academicHistory(object):
 
     def __init__(self):
         """this is the constructor method for the academic history class
