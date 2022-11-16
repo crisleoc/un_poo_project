@@ -1,5 +1,5 @@
 class academicHistory:
-    
+
     def __init__(self):
         """this is the constructor method for the academic history class
         """
@@ -7,7 +7,7 @@ class academicHistory:
         id = None
         finalNote = None
         credits = None    # we declare the attributes that have the class with a None value each
-    
+
     def createAcademicHistoryTable(self, connection):
         """Create the academicHistory table in the database:
         Args:
@@ -23,7 +23,6 @@ class academicHistory:
             FOREIGN KEY (code) REFERENCES subjects(code),
             FOREIGN KEY (id) REFERENCES students(id))''')  # We create the table academicHistory
         connection.commit()  # We ensure persistence by saving the table to disk
-
 
     def addSubject(self, connection):
         """The add Subject function adds subjects to the academic History table.
@@ -80,7 +79,6 @@ class academicHistory:
         except:
             return 'ERROR: Please enter a valid input'
 
-
     def queryAcademicHistory(self, connection):
         """The queryAcademicHistory function queries the academicHistory table for information.
         Args:
@@ -105,7 +103,6 @@ class academicHistory:
             return rows
         except:
             return 'ERROR: Please enter a valid input'
-
 
     def deleteSubject(self, connection):
         """The function deleteSubject delete a subject that is registered in academicHistory
@@ -142,7 +139,6 @@ class academicHistory:
                 return 'This subject was successfully deleted!'
         except:
             return 'ERROR: Please enter a valid input'
-
 
     def updateFinalNote(self, connection):
         """The updateFinalNote function updates the final grade of a subject in the academicHistory table.
