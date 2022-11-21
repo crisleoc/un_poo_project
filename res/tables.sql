@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS subjects(
     language TEXT);
 
 CREATE TABLE IF NOT EXISTS students(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY NOT NULL UNIQUE,
     name TEXT,
     lastName TEXT,
     career TEXT,

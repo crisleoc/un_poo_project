@@ -18,6 +18,14 @@ def mainMenuClassify(connection):
     select = None
     sendEmail = None
     while not exitMenuClassify:
+        try:
+            objectClassify.getStudentInfo(connection)
+            objectClassify.UpdateClassification(connection)
+            objectClassify.GetCreditsAmount(connection)
+            success = "SUCCESS: Classification module reloaded successfully."
+        except Exception as e:
+            error = "ERROR: " + str(e)
+
         CONFIG.clear()
         if error:
             CONFIG.printErrorApp(error)
@@ -50,24 +58,6 @@ def mainMenuClassify(connection):
             except Exception as e:
                 error = "01. ERROR: " + str(e)
         elif option == '2':
-            try:
-                objectClassify.getStudentInfo(connection)
-                success = "02. SUCCESS: Data reload successfully"
-            except Exception as e:
-                error = "02. ERROR: " + str(e)
-        elif option == '3':
-            try:
-                objectClassify.UpdateClassification(connection)
-                success = "03. SUCCESS: Classification reloaded successfully"
-            except Exception as e:
-                error = "03. ERROR: " + str(e)
-        elif option == '4':
-            try:
-                objectClassify.GetCreditsAmount(connection)
-                success = "04. SUCCESS: Credits amount reloaded successfully"
-            except Exception as e:
-                error = "04. ERROR: " + str(e)
-        elif option == '5':
             print("\033[0;31mOperation canceled!\033[0;m")
             exitMenuClassify = True
         else:

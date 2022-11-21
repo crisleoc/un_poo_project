@@ -14,8 +14,9 @@ def get_email(connection, studentID):
     Returns:
         str: Student email
     """
+    objectStudent = STUDENTS.student()
     try:
-        return str(STUDENTS.selectStudentByID(connection, studentID)[0][7])
+        return str(objectStudent.selectStudentByID(connection, studentID)[0][7])
     except Exception as e:
         print("ERROR: " + str(e))
 

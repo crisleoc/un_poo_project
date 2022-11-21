@@ -46,10 +46,7 @@ def menuClassify():
 CLASSIFICATION MENU
 {br}
     01. Query student classification
-    02. Reload main student data
-    03. Reload student classification
-    04. Reload credits amount
-    05. Return
+    02. Return
 {br}
 Choose an option >>>\t"""
 
