@@ -112,21 +112,6 @@ class subject(object):
             option = input(UPDATE_MENU)
             if option == '1':
                 try:  # Try Except statement for exception handling
-                    newCode = int(input("Enter the new code:  "))
-                    # Replaces the old code with a new one entered by the user
-                    UPDATE_STATEMENT = f"UPDATE subjects SET code = ? WHERE code = ?"
-                    # Executes the statement, taking the old and new codes as arguments
-                    CURSOR_OBJ.execute(
-                        UPDATE_STATEMENT, (newCode, subjectCode))
-                    connection.commit()  # Ensures persistence in the data base
-                    # Initiates the success variable using the corresponding success confirmation message
-                    success = f"The id was updated ({newCode}) successfully"
-                    subjectCode = newCode  # Updates the subject code
-                except Exception as e:
-                    # Should an exception happen, it prints out the exception
-                    error = "01. ERROR: " + str(e)
-            elif option == '2':
-                try:  # Try Except statement for exception handling
                     newName = input("Enter the new name:  ")
                     # Replaces the old name value associated with the entered code with newName
                     UPDATE_STATEMENT = f"UPDATE subjects SET name = ? WHERE code = ?"
@@ -137,8 +122,8 @@ class subject(object):
                     success = f"The name was updated ({newName}) successfully"
                 except Exception as e:
                     # Should an exception happen, it prints out the exception
-                    error = "02. ERROR: " + str(e)
-            elif option == '3':
+                    error = "01. ERROR: " + str(e)
+            elif option == '2':
                 try:  # Try Except statement for exception handling
                     newSchool = input("Enter the new school: ")
                     # Replaces the old school value associated with the entered code with newSchool
@@ -148,8 +133,8 @@ class subject(object):
                     connection.commit()
                     success = f"The school was updated ({newSchool}) successfully"
                 except Exception as e:
-                    error = "03. ERROR: " + str(e)
-            elif option == '4':
+                    error = "02. ERROR: " + str(e)
+            elif option == '3':
                 try:  # Try Except statement for exception handling
                     newDepartment = input("Enter the new department: ")
                     # Replaces the old department value associated with the entered code with newDepartment
@@ -159,8 +144,8 @@ class subject(object):
                     connection.commit()
                     success = f"The department was updated ({newDepartment}) successfully"
                 except Exception as e:
-                    error = "04. ERROR: " + str(e)
-            elif option == '5':
+                    error = "03. ERROR: " + str(e)
+            elif option == '4':
                 try:  # Try Except statement for exception handling
                     newCredits = int(input("Enter the new credits: "))
                     # Replaces the old credits value associated with the entered code with newCredits
@@ -170,8 +155,8 @@ class subject(object):
                     connection.commit()
                     success = f"The credits was updated ({newCredits}) successfully"
                 except Exception as e:
-                    error = "05. ERROR: " + str(e)
-            elif option == '6':
+                    error = "04. ERROR: " + str(e)
+            elif option == '5':
                 try:  # Try Except statement for exception handling
                     newLanguage = input("Enter the new language: ")
                     # Replaces the old language value associated with the entered code with newLanguage
@@ -181,19 +166,19 @@ class subject(object):
                     connection.commit()
                     success = f"The language was updated ({newLanguage}) successfully"
                 except Exception as e:
-                    error = "06. ERROR: " + str(e)
-            elif option == '7':
+                    error = "05. ERROR: " + str(e)
+            elif option == '6':
                 try:  # Try Except statement for exception handling
-                    newSubject = CONFIG.readDataUserSubject()
+                    newSubject = CONFIG.readDataUserSubject(True)
                     # Replaces ALL of the values associated with the entered code with newSubject
-                    UPDATE_STATEMENT = f"UPDATE subjects SET code = ?, name = ?, school = ?, department = ?, credits = ?, language = ? WHERE code = ?"
+                    UPDATE_STATEMENT = f"UPDATE subjects SET name = ?, school = ?, department = ?, credits = ?, language = ? WHERE code = ?"
                     CURSOR_OBJ.execute(
-                        UPDATE_STATEMENT, (newSubject[0], newSubject[1], newSubject[2], newSubject[3], newSubject[4], newSubject[5], subjectCode))  # Extracts each value of the newSubject tuple and replaces them in the ? characters
+                        UPDATE_STATEMENT, (newSubject[0], newSubject[1], newSubject[2], newSubject[3], newSubject[4], subjectCode))  # Extracts each value of the newSubject tuple and replaces them in the ? characters
                     connection.commit()
                     exitMenuUpdate = True
                 except Exception as e:
-                    error = "7. ERROR: " + str(e)
-            elif option == '8':
+                    error = "6. ERROR: " + str(e)
+            elif option == '7':
                 # Should the menu end abruptly, it prints out a warning message
                 print("\033[0;31mOperation canceled!\033[0;m")
                 exitMenuUpdate = True  # Ends the infinite While Not iteration

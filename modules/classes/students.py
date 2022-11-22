@@ -109,20 +109,6 @@ class student(object):
             UPDATE_MENU = CONFIG.menuUpdateStudent(studentID)
             option = input(UPDATE_MENU)
             if option == '1':
-                try:  # Try Except statement for exception handling
-                    newId = int(input("Enter the new id:  "))
-                    # Replaces the old id value associated with the entered id with newId
-                    UPDATE_STATEMENT = f"UPDATE students SET id = ? WHERE id = ?"
-                    # Executes the statement, taking the old and new values as arguments
-                    CURSOR_OBJ.execute(UPDATE_STATEMENT, (newId, studentID))
-                    connection.commit()
-                    # Initiates the success variable using the corresponding success confirmation message
-                    success = f"The id was updated ({newId}) successfully"
-                    studentID = newId  # Updates the studentID variable with the new value
-                except Exception as e:
-                    # Should an exception happen, it prints out the exception
-                    error = "01. ERROR: " + str(e)
-            elif option == '2':
                 try:
                     newName = input("Enter the new name:  ")
                     # Replaces the old name value associated with the entered id with newName
@@ -134,8 +120,8 @@ class student(object):
                     success = f"The name was updated ({newName}) successfully"
                 except Exception as e:
                     # Should an exception happen, it prints out the exception
-                    error = "02. ERROR: " + str(e)
-            elif option == '3':
+                    error = "01. ERROR: " + str(e)
+            elif option == '2':
                 try:
                     newLastName = input("Enter the new last name: ")
                     UPDATE_STATEMENT = f"UPDATE students SET lastname = ? WHERE id = ?"
@@ -144,8 +130,8 @@ class student(object):
                     connection.commit()
                     success = f"The last name was updated ({newLastName}) successfully"
                 except Exception as e:
-                    error = "03. ERROR: " + str(e)
-            elif option == '4':
+                    error = "02. ERROR: " + str(e)
+            elif option == '3':
                 try:
                     newCareer = input("Enter the new career: ")
                     UPDATE_STATEMENT = f"UPDATE students SET career = ? WHERE id = ?"
@@ -154,8 +140,8 @@ class student(object):
                     connection.commit()
                     success = f"The career was updated ({newCareer}) successfully"
                 except Exception as e:
-                    error = "04. ERROR: " + str(e)
-            elif option == '5':
+                    error = "03. ERROR: " + str(e)
+            elif option == '4':
                 try:
                     newBornDate = CONFIG.get_data(
                         "Enter the new born date: ", "date")
@@ -165,8 +151,8 @@ class student(object):
                     connection.commit()
                     success = f"The born date was updated ({newBornDate}) successfully"
                 except Exception as e:
-                    error = "05. ERROR: " + str(e)
-            elif option == '6':
+                    error = "04. ERROR: " + str(e)
+            elif option == '5':
                 try:
                     newEntryDate = CONFIG.get_data(
                         "Enter the new entry date: ", "date")
@@ -176,8 +162,8 @@ class student(object):
                     connection.commit()
                     success = f"The entry date was updated ({newEntryDate}) successfully"
                 except Exception as e:
-                    error = "06. ERROR: " + str(e)
-            elif option == '7':
+                    error = "05. ERROR: " + str(e)
+            elif option == '6':
                 try:
                     newPlaceOrigin = input("Enter the new place of origin: ")
                     UPDATE_STATEMENT = f"UPDATE students SET placeOrigin = ? WHERE id = ?"
@@ -186,17 +172,18 @@ class student(object):
                     connection.commit()
                     success = f"The place of origin was updated ({newPlaceOrigin}) successfully"
                 except Exception as e:
-                    error = "07. ERROR: " + str(e)
-            elif option == '8':
+                    error = "06. ERROR: " + str(e)
+            elif option == '7':
                 try:
-                    newEmail = input("Enter the new email: ")
+                    newEmail = CONFIG.get_data(
+                        "Enter the new email: ", "email")
                     UPDATE_STATEMENT = f"UPDATE students SET email = ? WHERE id = ?"
                     CURSOR_OBJ.execute(UPDATE_STATEMENT, (newEmail, studentID))
                     connection.commit()
                     success = f"The email was updated ({newEmail}) successfully"
                 except Exception as e:
-                    error = "08. ERROR: " + str(e)
-            elif option == '9':
+                    error = "07. ERROR: " + str(e)
+            elif option == '8':
                 try:
                     newEnrollQuantity = int(
                         input("Enter the new enroll quantity: "))
@@ -206,8 +193,8 @@ class student(object):
                     connection.commit()
                     success = f"The enroll quantity was updated ({newEnrollQuantity}) successfully"
                 except Exception as e:
-                    error = "09. ERROR: " + str(e)
-            elif option == '10':
+                    error = "08. ERROR: " + str(e)
+            elif option == '9':
                 try:
                     newPhotograph = input("Enter the new photograph: ")
                     UPDATE_STATEMENT = f"UPDATE students SET photograph = ? WHERE id = ?"
@@ -216,21 +203,21 @@ class student(object):
                     connection.commit()
                     success = f"The photograph was updated ({newPhotograph}) successfully"
                 except Exception as e:
-                    error = "10. ERROR: " + str(e)
-            elif option == '11':
+                    error = "9. ERROR: " + str(e)
+            elif option == '10':
                 try:
-                    newStudent = CONFIG.readDataUserStudent()
-                    UPDATE_STATEMENT = f"UPDATE students SET id = ?, name = ?, lastname = ?, career = ?, bornDate = ?, entryDate = ?, placeOrigin = ?, email = ?, enrollQuantity = ?, photograph = ? WHERE id = ?"
+                    newStudent = CONFIG.readDataUserStudent(True)
+                    UPDATE_STATEMENT = f"UPDATE students SET name = ?, lastname = ?, career = ?, bornDate = ?, entryDate = ?, placeOrigin = ?, email = ?, enrollQuantity = ?, photograph = ? WHERE id = ?"
                     # Replaces ALL of the values associated with the entered code with newStudent
                     CURSOR_OBJ.execute(UPDATE_STATEMENT, (newStudent[0], newStudent[1], newStudent[2], newStudent[3],
-                                                          newStudent[4], newStudent[5], newStudent[6], newStudent[7], newStudent[8], newStudent[9], studentID))
+                                                          newStudent[4], newStudent[5], newStudent[6], newStudent[7], newStudent[8], studentID))
                     # Extracts each value of the newStudent tuple and replaces them in the ? characters
                     connection.commit()
                     exitMenuUpdate = True
                 except Exception as e:
                     # Should the menu end abruptly, it prints out a warning message
-                    error = "11. ERROR: " + str(e)
-            elif option == '12':
+                    error = "10. ERROR: " + str(e)
+            elif option == '11':
                 # Should the menu end abruptly, it prints out a warning message
                 print("\033[0;31mOperation canceled!\033[0;m")
                 exitMenuUpdate = True  # Ends the infinite While Not iteration

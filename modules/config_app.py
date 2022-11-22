@@ -59,7 +59,7 @@ ACADEMIC HISTORY MENU
     01. Create new academic history
     02. Search academic history
     03. Update subject qualification
-    04. Delete subject
+    04. Delete subject qualification
     05. Return
 {br}
 Choose an option >>>\t"""
@@ -83,18 +83,17 @@ def menuUpdateStudent(studentID):
     return f"""
 UPDATE STUDENT \033[0;33m({studentID})\033[0;m
 {br}
-    01. Modify id
-    02. Modify name
-    03. Modify lastName
-    04. Modify career
-    05. Modify bornDate
-    06. Modify entryDate
-    07. Modify placeOrigin
-    08. Modify email
-    09. Modify enrollQuantity
-    10. Modify photograph
-    11. Modify all
-    12. Cancel
+    01. Modify name
+    02. Modify lastName
+    03. Modify career
+    04. Modify bornDate
+    05. Modify entryDate
+    06. Modify placeOrigin
+    07. Modify email
+    08. Modify enrollQuantity
+    09. Modify photograph
+    10. Modify all
+    11. Cancel
 {br}
 Choose an option >>>\t"""
 
@@ -103,14 +102,13 @@ def menuUpdateSubject(subjectCode):
     return f"""
 UPDATE SUBJECT \033[0;33m({subjectCode})\033[0;m
 {br}
-    01. Modify code
-    02. Modify name
-    03. Modify school
-    04. Modify department
-    05. Modify credits
-    06. Modify language
-    07. Modify all
-    08. Cancel
+    01. Modify name
+    02. Modify school
+    03. Modify department
+    04. Modify credits
+    05. Modify language
+    06. Modify all
+    07. Cancel
 {br}
 Choose an option >>>\t"""
 
@@ -275,11 +273,31 @@ def get_data(text, dataType):
                 return date
             except ValueError:
                 printErrorApp("Please enter a valid date (dd-mm-yyyy)")
+    elif dataType == "email":
+        while True:
+            try:
+                data = str(input(text))
+                if "@" in data:
+                    return data
+                else:
+                    printErrorApp("Please enter a valid email")
+            except ValueError:
+                printErrorApp("Please enter a valid email")
 
 
 # creates the 'student' tuple, used in the insertStudent method.
-def readDataUserStudent():
-    id = get_data("Enter the student id: ", "int")
+def readDataUserStudent(is_update=False):
+    """This function reads the data of a student and returns it in a tuple
+
+    Args:
+        is_update (bool, optional): Checks if the user is updating data or not. Defaults to False.
+
+    Returns:
+        student(tuple): Tuple with the data of the student
+    """
+    id = None
+    if not is_update:
+        id = get_data("Enter the student id: ", "int")
     name = get_data("Enter the student name: ", "str")
     last_name = get_data("Enter the student last name: ", "str")
     career = get_data("Enter the student career: ", "str")
@@ -287,21 +305,42 @@ def readDataUserStudent():
     entry_date = get_data(
         "Enter the student entry date (dd-mm-yyyy): ", "date")
     place_origin = get_data("Enter the student place origin: ", "str")
-    email = get_data("Enter the student email: ", "str")
+    email = get_data("Enter the student email: ", "email")
     enroll_quantity = get_data("Enter the student enroll quantity: ", "int")
     photograph = get_data("Enter the student photograph link: ", "str")
-    student = (id, name, last_name, career, born_date, entry_date,
-               place_origin, email, enroll_quantity, photograph)
+
+    student = None
+    if not is_update:
+        student = (id, name, last_name, career, born_date,
+                   entry_date, place_origin, email, enroll_quantity, photograph)
+    else:
+        student = (name, last_name, career, born_date,
+                   entry_date, place_origin, email, enroll_quantity, photograph, id)
     return student
 
 
 # creates the 'subject' tuple, used in the insertSubject method.
-def readDataUserSubject():
-    code = get_data("Enter the subject code: ", "int")
+def readDataUserSubject(is_update=False):
+    """This function reads the data of a subject and returns it in a tuple
+
+    Args:
+        is_update (bool, optional): Checks if the user is updating data or not. Defaults to False.
+
+    Returns:
+        subject(tuple): Tuple with the data of the subject
+    """
+    code = None
+    if not is_update:
+        code = get_data("Enter the subject code: ", "int")
     name = get_data("Enter the subject name: ", "str")
     school = get_data("Enter the subject school: ", "str")
     department = get_data("Enter the subject department: ", "str")
     credits = get_data("Enter the subject credits: ", "int")
     language = get_data("Enter the subject language: ", "str")
-    subject = (code, name, school, department, credits, language)
+
+    subject = None
+    if not is_update:
+        subject = (code, name, school, department, credits, language)
+    else:
+        subject = (name, school, department, credits, language, code)
     return subject
