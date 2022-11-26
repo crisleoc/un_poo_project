@@ -202,7 +202,7 @@ font-weight: 500;</string>
               <number>10</number>
              </property>
              <item>
-              <widget class="QPushButton" name="subjectsBtn">
+              <widget class="QPushButton" name="studentsBtn">
                <property name="font">
                 <font>
                  <family>MS Shell Dlg 2</family>
@@ -237,7 +237,7 @@ font-weight: 500;</string>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="studentsBtn">
+              <widget class="QPushButton" name="subjectsBtn">
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>

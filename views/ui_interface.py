@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-# Form generated from reading UI file 'interfaceWElfov.ui'
+# Form generated from reading UI file 'interfacewJWOsd.ui'
 ##
 # Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -25,6 +25,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(62)
+        MainWindow.setWindowFlags(Qt.FramelessWindowHint)
         MainWindow.setFont(font)
         MainWindow.setStyleSheet(u"*{\n"
                                  "	border: none;\n"
@@ -121,34 +122,34 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 10, 0, 10)
-        self.subjectsBtn = QPushButton(self.frame_2)
-        self.subjectsBtn.setObjectName(u"subjectsBtn")
+        self.studentsBtn = QPushButton(self.frame_2)
+        self.studentsBtn.setObjectName(u"studentsBtn")
         font1 = QFont()
         font1.setFamily(u"MS Shell Dlg 2")
         font1.setBold(True)
         font1.setItalic(False)
         font1.setWeight(62)
-        self.subjectsBtn.setFont(font1)
-        self.subjectsBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.subjectsBtn.setStyleSheet(u"background-color: #1f232a;")
+        self.studentsBtn.setFont(font1)
+        self.studentsBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.studentsBtn.setStyleSheet(u"background-color: #1f232a;")
         icon1 = QIcon()
         icon1.addFile(u":/icons/icons/users.svg",
                       QSize(), QIcon.Normal, QIcon.Off)
-        self.subjectsBtn.setIcon(icon1)
-        self.subjectsBtn.setIconSize(QSize(24, 24))
-
-        self.verticalLayout_4.addWidget(self.subjectsBtn)
-
-        self.studentsBtn = QPushButton(self.frame_2)
-        self.studentsBtn.setObjectName(u"studentsBtn")
-        self.studentsBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/icons/book-open.svg",
-                      QSize(), QIcon.Normal, QIcon.Off)
-        self.studentsBtn.setIcon(icon2)
+        self.studentsBtn.setIcon(icon1)
         self.studentsBtn.setIconSize(QSize(24, 24))
 
         self.verticalLayout_4.addWidget(self.studentsBtn)
+
+        self.subjectsBtn = QPushButton(self.frame_2)
+        self.subjectsBtn.setObjectName(u"subjectsBtn")
+        self.subjectsBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/icons/book-open.svg",
+                      QSize(), QIcon.Normal, QIcon.Off)
+        self.subjectsBtn.setIcon(icon2)
+        self.subjectsBtn.setIconSize(QSize(24, 24))
+
+        self.verticalLayout_4.addWidget(self.subjectsBtn)
 
         self.ahBtn = QPushButton(self.frame_2)
         self.ahBtn.setObjectName(u"ahBtn")
@@ -520,7 +521,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_3.setCurrentIndex(3)
+        self.stackedWidget_3.setCurrentIndex(0)
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
@@ -534,16 +535,16 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.menuBtn.setText("")
 # if QT_CONFIG(tooltip)
-        self.subjectsBtn.setToolTip(QCoreApplication.translate(
+        self.studentsBtn.setToolTip(QCoreApplication.translate(
             "MainWindow", u"Go to subjects", None))
 #endif // QT_CONFIG(tooltip)
-        self.subjectsBtn.setText(QCoreApplication.translate(
+        self.studentsBtn.setText(QCoreApplication.translate(
             "MainWindow", u"Students", None))
 # if QT_CONFIG(tooltip)
-        self.studentsBtn.setToolTip(QCoreApplication.translate(
+        self.subjectsBtn.setToolTip(QCoreApplication.translate(
             "MainWindow", u"Go to students", None))
 #endif // QT_CONFIG(tooltip)
-        self.studentsBtn.setText(QCoreApplication.translate(
+        self.subjectsBtn.setText(QCoreApplication.translate(
             "MainWindow", u"Subjects", None))
 # if QT_CONFIG(tooltip)
         self.ahBtn.setToolTip(QCoreApplication.translate(
@@ -612,4 +613,4 @@ class Ui_MainWindow(object):
         self.pushButton_6.setText("")
         self.label_6.setText(QCoreApplication.translate(
             "MainWindow", u"Notifications", None))
-# retranslateUi
+    # retranslateUi
