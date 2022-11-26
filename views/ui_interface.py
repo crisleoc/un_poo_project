@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-# Form generated from reading UI file 'interfacewJWOsd.ui'
+# Form generated from reading UI file 'interfaceLkIMUC.ui'
 ##
 # Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(847, 582)
+        MainWindow.resize(952, 582)
         font = QFont()
         font.setFamily(u"Segoe UI")
         font.setBold(True)
@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
                                  "	background-color: #2c313c;\n"
                                  "}\n"
                                  "\n"
-                                 "#frame_4, #frame_8 {\n"
+                                 "#frame_4, #frame_8, #frame_9 {\n"
                                  "	background-color: #16191d;\n"
                                  "	border-radius: 10px;\n"
                                  "}\n"
@@ -406,12 +406,99 @@ class Ui_MainWindow(object):
         self.page_3.setObjectName(u"page_3")
         self.verticalLayout_14 = QVBoxLayout(self.page_3)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.label_7 = QLabel(self.page_3)
+        self.widget = QWidget(self.page_3)
+        self.widget.setObjectName(u"widget")
+        self.verticalLayout_19 = QVBoxLayout(self.widget)
+        self.verticalLayout_19.setSpacing(0)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.widget_2 = QWidget(self.widget)
+        self.widget_2.setObjectName(u"widget_2")
+        self.horizontalLayout_9 = QHBoxLayout(self.widget_2)
+        self.horizontalLayout_9.setSpacing(0)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(0, -1, 0, 9)
+        self.label_11 = QLabel(self.widget_2)
+        self.label_11.setObjectName(u"label_11")
+
+        self.horizontalLayout_9.addWidget(self.label_11, 0, Qt.AlignLeft)
+
+        self.frame_9 = QFrame(self.widget_2)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setFrameShape(QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_9)
+        self.horizontalLayout_10.setSpacing(10)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(9, 9, 9, 9)
+        self.createStudentBtn = QPushButton(self.frame_9)
+        self.createStudentBtn.setObjectName(u"createStudentBtn")
+        self.createStudentBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        icon11 = QIcon()
+        icon11.addFile(u":/icons/icons/user-plus.svg",
+                       QSize(), QIcon.Normal, QIcon.Off)
+        self.createStudentBtn.setIcon(icon11)
+        self.createStudentBtn.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_10.addWidget(self.createStudentBtn)
+
+        self.searchStudentBtn = QPushButton(self.frame_9)
+        self.searchStudentBtn.setObjectName(u"searchStudentBtn")
+        self.searchStudentBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        icon12 = QIcon()
+        icon12.addFile(u":/icons/icons/search.svg",
+                       QSize(), QIcon.Normal, QIcon.Off)
+        self.searchStudentBtn.setIcon(icon12)
+        self.searchStudentBtn.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_10.addWidget(self.searchStudentBtn)
+
+        self.updateStudentBtn = QPushButton(self.frame_9)
+        self.updateStudentBtn.setObjectName(u"updateStudentBtn")
+        self.updateStudentBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        icon13 = QIcon()
+        icon13.addFile(u":/icons/icons/refresh-ccw.svg",
+                       QSize(), QIcon.Normal, QIcon.Off)
+        self.updateStudentBtn.setIcon(icon13)
+        self.updateStudentBtn.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_10.addWidget(self.updateStudentBtn)
+
+        self.deleteStudentBtn = QPushButton(self.frame_9)
+        self.deleteStudentBtn.setObjectName(u"deleteStudentBtn")
+        self.deleteStudentBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        icon14 = QIcon()
+        icon14.addFile(u":/icons/icons/trash-2.svg",
+                       QSize(), QIcon.Normal, QIcon.Off)
+        self.deleteStudentBtn.setIcon(icon14)
+        self.deleteStudentBtn.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_10.addWidget(self.deleteStudentBtn)
+
+        self.horizontalLayout_9.addWidget(self.frame_9, 0, Qt.AlignRight)
+
+        self.verticalLayout_19.addWidget(self.widget_2, 0, Qt.AlignTop)
+
+        self.widget_3 = QWidget(self.widget)
+        self.widget_3.setObjectName(u"widget_3")
+        sizePolicy.setHeightForWidth(
+            self.widget_3.sizePolicy().hasHeightForWidth())
+        self.widget_3.setSizePolicy(sizePolicy)
+        self.verticalLayout_18 = QVBoxLayout(self.widget_3)
+        self.verticalLayout_18.setSpacing(0)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
+        self.label_7 = QLabel(self.widget_3)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setFont(font2)
         self.label_7.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_14.addWidget(self.label_7)
+        self.verticalLayout_18.addWidget(self.label_7)
+
+        self.verticalLayout_19.addWidget(self.widget_3)
+
+        self.verticalLayout_14.addWidget(self.widget)
 
         self.stackedWidget_3.addWidget(self.page_3)
         self.page_4 = QWidget()
@@ -596,6 +683,28 @@ class Ui_MainWindow(object):
             "MainWindow", u"Close window", None))
 #endif // QT_CONFIG(tooltip)
         self.closeBtn.setText("")
+        self.label_11.setText(QCoreApplication.translate(
+            "MainWindow", u"Students", None))
+# if QT_CONFIG(tooltip)
+        self.createStudentBtn.setToolTip(
+            QCoreApplication.translate("MainWindow", u"Add student", None))
+#endif // QT_CONFIG(tooltip)
+        self.createStudentBtn.setText("")
+# if QT_CONFIG(tooltip)
+        self.searchStudentBtn.setToolTip(
+            QCoreApplication.translate("MainWindow", u"Search student", None))
+#endif // QT_CONFIG(tooltip)
+        self.searchStudentBtn.setText("")
+# if QT_CONFIG(tooltip)
+        self.updateStudentBtn.setToolTip(
+            QCoreApplication.translate("MainWindow", u"Update student", None))
+#endif // QT_CONFIG(tooltip)
+        self.updateStudentBtn.setText("")
+# if QT_CONFIG(tooltip)
+        self.deleteStudentBtn.setToolTip(
+            QCoreApplication.translate("MainWindow", u"Delete student", None))
+#endif // QT_CONFIG(tooltip)
+        self.deleteStudentBtn.setText("")
         self.label_7.setText(QCoreApplication.translate(
             "MainWindow", u"Students", None))
         self.label_8.setText(QCoreApplication.translate(
