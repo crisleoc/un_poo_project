@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-# Form generated from reading UI file 'interfaceLkIMUC.ui'
+# Form generated from reading UI file 'interfaceUuCZkK.ui'
 ##
 # Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -66,7 +66,32 @@ class Ui_MainWindow(object):
                                  "#headerContainer {\n"
                                  "	background-color: #2c313c;\n"
                                  "}\n"
-                                 "")
+                                 "\n"
+                                 "QLineEdit {\n"
+                                 "	background-color: transparent;\n"
+                                 "	border: none;\n"
+                                 "	border-bottom: 2px solid #fff;\n"
+                                 "	padding-bottom: 10px;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QTableWidget {\n"
+                                 "	background-color: rgb(255, 255, 255, 0.6);\n"
+                                 "	color: rgb(0, 0, "
+                                 "0);\n"
+                                 "	grid-color: #343b47;\n"
+                                 "	font-size: 11px;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QHeaderView::section {\n"
+                                 "	background-color: #16191d;\n"
+                                 "	border: 1px solid #1f232a;\n"
+                                 "	font-size: 11px;\n"
+                                 "}\n"
+                                 "\n"
+                                 "QTableWidget QTableCornerButton::section {\n"
+                                 "	background-color: #16191d;\n"
+                                 "	border: 1px solid #1f232a;\n"
+                                 "}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -246,13 +271,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addWidget(self.frame_4, 0, Qt.AlignTop)
 
-        self.stackedWidget = QStackedWidget(self.centerMenuSubContainer)
-        self.stackedWidget.setObjectName(u"stackedWidget")
-        self.page = QWidget()
-        self.page.setObjectName(u"page")
-        self.verticalLayout_8 = QVBoxLayout(self.page)
+        self.stackedWidget_settings = QStackedWidget(
+            self.centerMenuSubContainer)
+        self.stackedWidget_settings.setObjectName(u"stackedWidget_settings")
+        self.page_settings = QWidget()
+        self.page_settings.setObjectName(u"page_settings")
+        self.verticalLayout_8 = QVBoxLayout(self.page_settings)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.label_2 = QLabel(self.page)
+        self.label_2 = QLabel(self.page_settings)
         self.label_2.setObjectName(u"label_2")
         font2 = QFont()
         font2.setBold(True)
@@ -263,9 +289,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.label_2)
 
-        self.stackedWidget.addWidget(self.page)
+        self.stackedWidget_settings.addWidget(self.page_settings)
 
-        self.verticalLayout_7.addWidget(self.stackedWidget)
+        self.verticalLayout_7.addWidget(self.stackedWidget_settings)
 
         self.verticalLayout_6.addWidget(
             self.centerMenuSubContainer, 0, Qt.AlignLeft)
@@ -400,13 +426,13 @@ class Ui_MainWindow(object):
         self.mainContentContainer.setObjectName(u"mainContentContainer")
         self.verticalLayout_13 = QVBoxLayout(self.mainContentContainer)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.stackedWidget_3 = QStackedWidget(self.mainContentContainer)
-        self.stackedWidget_3.setObjectName(u"stackedWidget_3")
-        self.page_3 = QWidget()
-        self.page_3.setObjectName(u"page_3")
-        self.verticalLayout_14 = QVBoxLayout(self.page_3)
+        self.stackedWidget_main = QStackedWidget(self.mainContentContainer)
+        self.stackedWidget_main.setObjectName(u"stackedWidget_main")
+        self.page_students = QWidget()
+        self.page_students.setObjectName(u"page_students")
+        self.verticalLayout_14 = QVBoxLayout(self.page_students)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.widget = QWidget(self.page_3)
+        self.widget = QWidget(self.page_students)
         self.widget.setObjectName(u"widget")
         self.verticalLayout_19 = QVBoxLayout(self.widget)
         self.verticalLayout_19.setSpacing(0)
@@ -484,61 +510,403 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(
             self.widget_3.sizePolicy().hasHeightForWidth())
         self.widget_3.setSizePolicy(sizePolicy)
+        self.widget_3.setStyleSheet(u"QFrame QLabel {\n"
+                                    "	font-size: 11px;\n"
+                                    "}")
         self.verticalLayout_18 = QVBoxLayout(self.widget_3)
         self.verticalLayout_18.setSpacing(0)
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.verticalLayout_18.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
-        self.label_7 = QLabel(self.widget_3)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setFont(font2)
-        self.label_7.setAlignment(Qt.AlignCenter)
+        self.stackedWidget_students = QStackedWidget(self.widget_3)
+        self.stackedWidget_students.setObjectName(u"stackedWidget_students")
+        self.page_createStudent = QWidget()
+        self.page_createStudent.setObjectName(u"page_createStudent")
+        self.verticalLayout_20 = QVBoxLayout(self.page_createStudent)
+        self.verticalLayout_20.setSpacing(10)
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.scrollArea = QScrollArea(self.page_createStudent)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setLayoutDirection(Qt.RightToLeft)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(
+            u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, -294, 337, 680))
+        self.verticalLayout_34 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
+        self.frame_16 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_16.setObjectName(u"frame_16")
+        self.frame_16.setStyleSheet(u"")
+        self.frame_16.setFrameShape(QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_30 = QVBoxLayout(self.frame_16)
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.label_18 = QLabel(self.frame_16)
+        self.label_18.setObjectName(u"label_18")
 
-        self.verticalLayout_18.addWidget(self.label_7)
+        self.verticalLayout_30.addWidget(self.label_18)
+
+        self.lineEdit_7 = QLineEdit(self.frame_16)
+        self.lineEdit_7.setObjectName(u"lineEdit_7")
+        self.lineEdit_7.setAutoFillBackground(False)
+
+        self.verticalLayout_30.addWidget(self.lineEdit_7)
+
+        self.verticalLayout_34.addWidget(self.frame_16)
+
+        self.frame_17 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_17.setObjectName(u"frame_17")
+        self.frame_17.setStyleSheet(u"")
+        self.frame_17.setFrameShape(QFrame.StyledPanel)
+        self.frame_17.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_31 = QVBoxLayout(self.frame_17)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.label_19 = QLabel(self.frame_17)
+        self.label_19.setObjectName(u"label_19")
+
+        self.verticalLayout_31.addWidget(self.label_19)
+
+        self.lineEdit_8 = QLineEdit(self.frame_17)
+        self.lineEdit_8.setObjectName(u"lineEdit_8")
+        self.lineEdit_8.setAutoFillBackground(False)
+
+        self.verticalLayout_31.addWidget(self.lineEdit_8)
+
+        self.verticalLayout_34.addWidget(self.frame_17)
+
+        self.frame_19 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setStyleSheet(u"")
+        self.frame_19.setFrameShape(QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_33 = QVBoxLayout(self.frame_19)
+        self.verticalLayout_33.setObjectName(u"verticalLayout_33")
+        self.label_21 = QLabel(self.frame_19)
+        self.label_21.setObjectName(u"label_21")
+
+        self.verticalLayout_33.addWidget(self.label_21)
+
+        self.lineEdit_10 = QLineEdit(self.frame_19)
+        self.lineEdit_10.setObjectName(u"lineEdit_10")
+        self.lineEdit_10.setAutoFillBackground(False)
+
+        self.verticalLayout_33.addWidget(self.lineEdit_10)
+
+        self.verticalLayout_34.addWidget(self.frame_19)
+
+        self.frame_10 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_10.setObjectName(u"frame_10")
+        self.frame_10.setStyleSheet(u"")
+        self.frame_10.setFrameShape(QFrame.StyledPanel)
+        self.frame_10.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_24 = QVBoxLayout(self.frame_10)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.label_12 = QLabel(self.frame_10)
+        self.label_12.setObjectName(u"label_12")
+
+        self.verticalLayout_24.addWidget(self.label_12)
+
+        self.lineEdit = QLineEdit(self.frame_10)
+        self.lineEdit.setObjectName(u"lineEdit")
+        self.lineEdit.setAutoFillBackground(False)
+
+        self.verticalLayout_24.addWidget(self.lineEdit)
+
+        self.verticalLayout_34.addWidget(self.frame_10)
+
+        self.frame_11 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_11.setObjectName(u"frame_11")
+        self.frame_11.setStyleSheet(u"")
+        self.frame_11.setFrameShape(QFrame.StyledPanel)
+        self.frame_11.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_25 = QVBoxLayout(self.frame_11)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.label_13 = QLabel(self.frame_11)
+        self.label_13.setObjectName(u"label_13")
+
+        self.verticalLayout_25.addWidget(self.label_13)
+
+        self.dateEdit = QDateEdit(self.frame_11)
+        self.dateEdit.setObjectName(u"dateEdit")
+
+        self.verticalLayout_25.addWidget(self.dateEdit)
+
+        self.verticalLayout_34.addWidget(self.frame_11)
+
+        self.frame_12 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setStyleSheet(u"")
+        self.frame_12.setFrameShape(QFrame.StyledPanel)
+        self.frame_12.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_26 = QVBoxLayout(self.frame_12)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.label_14 = QLabel(self.frame_12)
+        self.label_14.setObjectName(u"label_14")
+
+        self.verticalLayout_26.addWidget(self.label_14)
+
+        self.dateEdit_2 = QDateEdit(self.frame_12)
+        self.dateEdit_2.setObjectName(u"dateEdit_2")
+
+        self.verticalLayout_26.addWidget(self.dateEdit_2)
+
+        self.verticalLayout_34.addWidget(self.frame_12)
+
+        self.frame_18 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setStyleSheet(u"")
+        self.frame_18.setFrameShape(QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_32 = QVBoxLayout(self.frame_18)
+        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
+        self.label_20 = QLabel(self.frame_18)
+        self.label_20.setObjectName(u"label_20")
+
+        self.verticalLayout_32.addWidget(self.label_20)
+
+        self.lineEdit_9 = QLineEdit(self.frame_18)
+        self.lineEdit_9.setObjectName(u"lineEdit_9")
+        self.lineEdit_9.setAutoFillBackground(False)
+
+        self.verticalLayout_32.addWidget(self.lineEdit_9)
+
+        self.verticalLayout_34.addWidget(self.frame_18)
+
+        self.frame_14 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setStyleSheet(u"")
+        self.frame_14.setFrameShape(QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_28 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.label_16 = QLabel(self.frame_14)
+        self.label_16.setObjectName(u"label_16")
+
+        self.verticalLayout_28.addWidget(self.label_16)
+
+        self.lineEdit_5 = QLineEdit(self.frame_14)
+        self.lineEdit_5.setObjectName(u"lineEdit_5")
+        self.lineEdit_5.setAutoFillBackground(False)
+
+        self.verticalLayout_28.addWidget(self.lineEdit_5)
+
+        self.verticalLayout_34.addWidget(self.frame_14)
+
+        self.frame_15 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setStyleSheet(u"")
+        self.frame_15.setFrameShape(QFrame.StyledPanel)
+        self.frame_15.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_29 = QVBoxLayout(self.frame_15)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.label_17 = QLabel(self.frame_15)
+        self.label_17.setObjectName(u"label_17")
+
+        self.verticalLayout_29.addWidget(self.label_17)
+
+        self.lineEdit_6 = QLineEdit(self.frame_15)
+        self.lineEdit_6.setObjectName(u"lineEdit_6")
+        self.lineEdit_6.setAutoFillBackground(False)
+
+        self.verticalLayout_29.addWidget(self.lineEdit_6)
+
+        self.verticalLayout_34.addWidget(self.frame_15)
+
+        self.frame_13 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setStyleSheet(u"")
+        self.frame_13.setFrameShape(QFrame.StyledPanel)
+        self.frame_13.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_27 = QVBoxLayout(self.frame_13)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.label_15 = QLabel(self.frame_13)
+        self.label_15.setObjectName(u"label_15")
+
+        self.verticalLayout_27.addWidget(self.label_15)
+
+        self.lineEdit_4 = QLineEdit(self.frame_13)
+        self.lineEdit_4.setObjectName(u"lineEdit_4")
+        self.lineEdit_4.setAutoFillBackground(False)
+
+        self.verticalLayout_27.addWidget(self.lineEdit_4)
+
+        self.verticalLayout_34.addWidget(self.frame_13)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.verticalLayout_20.addWidget(self.scrollArea)
+
+        self.frame_20 = QFrame(self.page_createStudent)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_20)
+        self.horizontalLayout_11.setSpacing(30)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.pushButton_2 = QPushButton(self.frame_20)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
+        icon15 = QIcon()
+        icon15.addFile(u":/icons/icons/delete.svg",
+                       QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_2.setIcon(icon15)
+        self.pushButton_2.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_11.addWidget(self.pushButton_2)
+
+        self.pushButton_3 = QPushButton(self.frame_20)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setCursor(QCursor(Qt.PointingHandCursor))
+        icon16 = QIcon()
+        icon16.addFile(u":/icons/icons/check-square.svg",
+                       QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_3.setIcon(icon16)
+        self.pushButton_3.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_11.addWidget(self.pushButton_3)
+
+        self.verticalLayout_20.addWidget(
+            self.frame_20, 0, Qt.AlignHCenter | Qt.AlignBottom)
+
+        self.stackedWidget_students.addWidget(self.page_createStudent)
+        self.page_searchStudent = QWidget()
+        self.page_searchStudent.setObjectName(u"page_searchStudent")
+        self.verticalLayout_22 = QVBoxLayout(self.page_searchStudent)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
+        self.frame_21 = QFrame(self.page_searchStudent)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_12 = QHBoxLayout(self.frame_21)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.lineEdit_2 = QLineEdit(self.frame_21)
+        self.lineEdit_2.setObjectName(u"lineEdit_2")
+
+        self.horizontalLayout_12.addWidget(self.lineEdit_2)
+
+        self.pushButton_4 = QPushButton(self.frame_21)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.pushButton_4.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_4.setIcon(icon12)
+        self.pushButton_4.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_12.addWidget(self.pushButton_4)
+
+        self.verticalLayout_22.addWidget(self.frame_21)
+
+        self.tableWidget = QTableWidget(self.page_searchStudent)
+        if (self.tableWidget.columnCount() < 10):
+            self.tableWidget.setColumnCount(10)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(6, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(7, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(8, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(9, __qtablewidgetitem9)
+        if (self.tableWidget.rowCount() < 3):
+            self.tableWidget.setRowCount(3)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(1, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(2, __qtablewidgetitem12)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setStyleSheet(u"")
+        self.tableWidget.setAlternatingRowColors(False)
+        self.tableWidget.setHorizontalScrollMode(
+            QAbstractItemView.ScrollPerPixel)
+        self.tableWidget.setCornerButtonEnabled(False)
+        self.tableWidget.horizontalHeader().setMinimumSectionSize(41)
+        self.tableWidget.horizontalHeader().setStretchLastSection(True)
+
+        self.verticalLayout_22.addWidget(self.tableWidget)
+
+        self.stackedWidget_students.addWidget(self.page_searchStudent)
+        self.page_updateStudent = QWidget()
+        self.page_updateStudent.setObjectName(u"page_updateStudent")
+        self.verticalLayout_23 = QVBoxLayout(self.page_updateStudent)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.widget_6 = QWidget(self.page_updateStudent)
+        self.widget_6.setObjectName(u"widget_6")
+
+        self.verticalLayout_23.addWidget(self.widget_6)
+
+        self.stackedWidget_students.addWidget(self.page_updateStudent)
+        self.page_deleteStudent = QWidget()
+        self.page_deleteStudent.setObjectName(u"page_deleteStudent")
+        self.verticalLayout_21 = QVBoxLayout(self.page_deleteStudent)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.widget_7 = QWidget(self.page_deleteStudent)
+        self.widget_7.setObjectName(u"widget_7")
+
+        self.verticalLayout_21.addWidget(self.widget_7)
+
+        self.stackedWidget_students.addWidget(self.page_deleteStudent)
+
+        self.verticalLayout_18.addWidget(self.stackedWidget_students)
 
         self.verticalLayout_19.addWidget(self.widget_3)
 
         self.verticalLayout_14.addWidget(self.widget)
 
-        self.stackedWidget_3.addWidget(self.page_3)
-        self.page_4 = QWidget()
-        self.page_4.setObjectName(u"page_4")
-        self.verticalLayout_15 = QVBoxLayout(self.page_4)
+        self.stackedWidget_main.addWidget(self.page_students)
+        self.page_subjects = QWidget()
+        self.page_subjects.setObjectName(u"page_subjects")
+        self.verticalLayout_15 = QVBoxLayout(self.page_subjects)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.label_8 = QLabel(self.page_4)
+        self.label_8 = QLabel(self.page_subjects)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setFont(font2)
         self.label_8.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_15.addWidget(self.label_8)
 
-        self.stackedWidget_3.addWidget(self.page_4)
-        self.page_5 = QWidget()
-        self.page_5.setObjectName(u"page_5")
-        self.verticalLayout_16 = QVBoxLayout(self.page_5)
+        self.stackedWidget_main.addWidget(self.page_subjects)
+        self.page_ah = QWidget()
+        self.page_ah.setObjectName(u"page_ah")
+        self.verticalLayout_16 = QVBoxLayout(self.page_ah)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.label_9 = QLabel(self.page_5)
+        self.label_9 = QLabel(self.page_ah)
         self.label_9.setObjectName(u"label_9")
         self.label_9.setFont(font2)
         self.label_9.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_16.addWidget(self.label_9)
 
-        self.stackedWidget_3.addWidget(self.page_5)
-        self.page_6 = QWidget()
-        self.page_6.setObjectName(u"page_6")
-        self.verticalLayout_17 = QVBoxLayout(self.page_6)
+        self.stackedWidget_main.addWidget(self.page_ah)
+        self.page_classify = QWidget()
+        self.page_classify.setObjectName(u"page_classify")
+        self.verticalLayout_17 = QVBoxLayout(self.page_classify)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.label_10 = QLabel(self.page_6)
+        self.label_10 = QLabel(self.page_classify)
         self.label_10.setObjectName(u"label_10")
         self.label_10.setFont(font2)
         self.label_10.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_10)
 
-        self.stackedWidget_3.addWidget(self.page_6)
+        self.stackedWidget_main.addWidget(self.page_classify)
 
-        self.verticalLayout_13.addWidget(self.stackedWidget_3)
+        self.verticalLayout_13.addWidget(self.stackedWidget_main)
 
         self.horizontalLayout_7.addWidget(self.mainContentContainer)
 
@@ -577,22 +945,24 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_11.addWidget(self.frame_8)
 
-        self.stackedWidget_2 = QStackedWidget(self.rightMenuSubContainer)
-        self.stackedWidget_2.setObjectName(u"stackedWidget_2")
-        self.page_2 = QWidget()
-        self.page_2.setObjectName(u"page_2")
-        self.verticalLayout_12 = QVBoxLayout(self.page_2)
+        self.stackedWidget_notifications = QStackedWidget(
+            self.rightMenuSubContainer)
+        self.stackedWidget_notifications.setObjectName(
+            u"stackedWidget_notifications")
+        self.page_notifications = QWidget()
+        self.page_notifications.setObjectName(u"page_notifications")
+        self.verticalLayout_12 = QVBoxLayout(self.page_notifications)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.label_6 = QLabel(self.page_2)
+        self.label_6 = QLabel(self.page_notifications)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setFont(font2)
         self.label_6.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_12.addWidget(self.label_6)
 
-        self.stackedWidget_2.addWidget(self.page_2)
+        self.stackedWidget_notifications.addWidget(self.page_notifications)
 
-        self.verticalLayout_11.addWidget(self.stackedWidget_2)
+        self.verticalLayout_11.addWidget(self.stackedWidget_notifications)
 
         self.verticalLayout_10.addWidget(self.rightMenuSubContainer)
 
@@ -607,8 +977,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_3.setCurrentIndex(0)
+        self.stackedWidget_settings.setCurrentIndex(0)
+        self.stackedWidget_main.setCurrentIndex(0)
+        self.stackedWidget_students.setCurrentIndex(1)
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
@@ -705,8 +1076,99 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", u"Delete student", None))
 #endif // QT_CONFIG(tooltip)
         self.deleteStudentBtn.setText("")
-        self.label_7.setText(QCoreApplication.translate(
-            "MainWindow", u"Students", None))
+        self.label_18.setText(
+            QCoreApplication.translate("MainWindow", u"ID:", None))
+        self.lineEdit_7.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student id", None))
+        self.label_19.setText(QCoreApplication.translate(
+            "MainWindow", u"Name:", None))
+        self.lineEdit_8.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student name", None))
+        self.label_21.setText(QCoreApplication.translate(
+            "MainWindow", u"Lastname:", None))
+        self.lineEdit_10.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student lastname", None))
+        self.label_12.setText(QCoreApplication.translate(
+            "MainWindow", u"Career:", None))
+        self.lineEdit.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student career", None))
+        self.label_13.setText(QCoreApplication.translate(
+            "MainWindow", u"Enter the student born date:", None))
+        self.label_14.setText(QCoreApplication.translate(
+            "MainWindow", u"Enter the student entry date:", None))
+        self.label_20.setText(QCoreApplication.translate(
+            "MainWindow", u"Place origin:", None))
+        self.lineEdit_9.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student place origin", None))
+        self.label_16.setText(QCoreApplication.translate(
+            "MainWindow", u"E-mail:", None))
+        self.lineEdit_5.setText("")
+        self.lineEdit_5.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student email", None))
+        self.label_17.setText(QCoreApplication.translate(
+            "MainWindow", u"Enroll quantity:", None))
+        self.lineEdit_6.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student's enrollment number", None))
+        self.label_15.setText(QCoreApplication.translate(
+            "MainWindow", u"Picture URL:", None))
+        self.lineEdit_4.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student picture URL", None))
+# if QT_CONFIG(tooltip)
+        self.pushButton_2.setToolTip(
+            QCoreApplication.translate("MainWindow", u"Clear all", None))
+#endif // QT_CONFIG(tooltip)
+        self.pushButton_2.setText("")
+# if QT_CONFIG(tooltip)
+        self.pushButton_3.setToolTip(QCoreApplication.translate(
+            "MainWindow", u"Create student", None))
+#endif // QT_CONFIG(tooltip)
+        self.pushButton_3.setText("")
+        self.lineEdit_2.setPlaceholderText(QCoreApplication.translate(
+            "MainWindow", u"Type the student id to search", None))
+# if QT_CONFIG(tooltip)
+        self.pushButton_4.setToolTip(QCoreApplication.translate(
+            "MainWindow", u"Search student", None))
+#endif // QT_CONFIG(tooltip)
+        self.pushButton_4.setText("")
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(
+            QCoreApplication.translate("MainWindow", u"ID", None))
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(
+            QCoreApplication.translate("MainWindow", u"Name", None))
+        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(
+            QCoreApplication.translate("MainWindow", u"LastName", None))
+        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(
+            QCoreApplication.translate("MainWindow", u"Career", None))
+        ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(
+            QCoreApplication.translate("MainWindow", u"Born Date", None))
+        ___qtablewidgetitem5 = self.tableWidget.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(
+            QCoreApplication.translate("MainWindow", u"Entry Date", None))
+        ___qtablewidgetitem6 = self.tableWidget.horizontalHeaderItem(6)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate(
+            "MainWindow", u"Place origin", None))
+        ___qtablewidgetitem7 = self.tableWidget.horizontalHeaderItem(7)
+        ___qtablewidgetitem7.setText(
+            QCoreApplication.translate("MainWindow", u"Email", None))
+        ___qtablewidgetitem8 = self.tableWidget.horizontalHeaderItem(8)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate(
+            "MainWindow", u"Enroll quantity", None))
+        ___qtablewidgetitem9 = self.tableWidget.horizontalHeaderItem(9)
+        ___qtablewidgetitem9.setText(
+            QCoreApplication.translate("MainWindow", u"Picture", None))
+        ___qtablewidgetitem10 = self.tableWidget.verticalHeaderItem(0)
+        ___qtablewidgetitem10.setText(
+            QCoreApplication.translate("MainWindow", u"01", None))
+        ___qtablewidgetitem11 = self.tableWidget.verticalHeaderItem(1)
+        ___qtablewidgetitem11.setText(
+            QCoreApplication.translate("MainWindow", u"02", None))
+        ___qtablewidgetitem12 = self.tableWidget.verticalHeaderItem(2)
+        ___qtablewidgetitem12.setText(
+            QCoreApplication.translate("MainWindow", u"03", None))
         self.label_8.setText(QCoreApplication.translate(
             "MainWindow", u"Subjects", None))
         self.label_9.setText(QCoreApplication.translate(

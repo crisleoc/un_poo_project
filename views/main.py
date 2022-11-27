@@ -29,28 +29,28 @@ class MainWindow(QMainWindow):
         self.ui.subjectsBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.ahBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.classifyBtn.setStyleSheet(u"background-color: transparent;")
-        self.ui.stackedWidget_3.setCurrentIndex(0)
+        self.ui.stackedWidget_main.setCurrentIndex(0)
 
     def changeToSubjectsPage(self):
         self.ui.subjectsBtn.setStyleSheet(u"background-color: #1f232a;")
         self.ui.studentsBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.ahBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.classifyBtn.setStyleSheet(u"background-color: transparent;")
-        self.ui.stackedWidget_3.setCurrentIndex(1)
+        self.ui.stackedWidget_main.setCurrentIndex(1)
 
     def changeToAhPage(self):
         self.ui.ahBtn.setStyleSheet(u"background-color: #1f232a;")
         self.ui.subjectsBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.studentsBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.classifyBtn.setStyleSheet(u"background-color: transparent;")
-        self.ui.stackedWidget_3.setCurrentIndex(2)
+        self.ui.stackedWidget_main.setCurrentIndex(2)
 
     def changeToClassifyPage(self):
         self.ui.classifyBtn.setStyleSheet(u"background-color: #1f232a;")
         self.ui.subjectsBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.studentsBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.ahBtn.setStyleSheet(u"background-color: transparent;")
-        self.ui.stackedWidget_3.setCurrentIndex(3)
+        self.ui.stackedWidget_main.setCurrentIndex(3)
 
     def closeWindow(self):
         self.close()
