@@ -66,6 +66,21 @@ class student(object):
         CURSOR_OBJ.execute(SELECT_STATEMENT, (id,))
         return CURSOR_OBJ.fetchall()  # Returns a tuple containing all the values of the row
 
+    def selectAllStudents(self, connection):
+        """Select all students in the database:
+
+        Args:
+            connection (object): Connection to sqlite3.
+
+        Returns:
+            list<tuple>: List of tuples with the data of all the students.
+        """
+        self._connection = connection
+        CURSOR_OBJ = connection.cursor()
+        SELECT_STATEMENT = "SELECT * FROM students"
+        CURSOR_OBJ.execute(SELECT_STATEMENT)
+        return CURSOR_OBJ.fetchall()
+
     def deleteStudent(self, connection, id):
         self._connection = connection
         self._id = id

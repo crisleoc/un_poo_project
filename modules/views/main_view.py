@@ -1,27 +1,30 @@
-import sys
-from ui_interface import *
+from modules.connect_db import *
+from .ui_interface import *
 
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        QMainWindow.__init__(self)
+class MainView(QMainWindow):
+
+    _connection = None
+
+    def __init__(self, connection):
+        self._connection = connection
+        super(MainView, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.leftMenuContainer.setFixedWidth(53)
         self.ui.centerMenuContainer.hide()
-        self.ui.rightMenuContainer.hide()
         self.ui.closeBtn.clicked.connect(self.closeWindow)
         self.ui.minimizeBtn.clicked.connect(self.minimizeWindow)
         self.ui.restoreBtn.clicked.connect(self.resizeWindow)
         self.ui.settingsBtn.clicked.connect(self.toggleSettingsWidget)
         self.ui.pushButton.clicked.connect(self.hideSettingsWidget)
-        self.ui.pushButton_5.clicked.connect(self.toggleNotificationsWidget)
-        self.ui.pushButton_6.clicked.connect(self.hideNotificationsWidget)
         self.ui.menuBtn.clicked.connect(self.toggleMainMenuWidget)
         self.ui.studentsBtn.clicked.connect(self.changeToStudentsPage)
         self.ui.subjectsBtn.clicked.connect(self.changeToSubjectsPage)
         self.ui.ahBtn.clicked.connect(self.changeToAhPage)
         self.ui.classifyBtn.clicked.connect(self.changeToClassifyPage)
+        self.ui.fillDbBtn.clicked.connect(
+            lambda: self.showDialog(fillDB, []))
         self.show()
 
     def changeToStudentsPage(self):
@@ -109,17 +112,6 @@ class MainWindow(QMainWindow):
             self.ui.settingsBtn.setStyleSheet(
                 u"background-color: transparent;")
 
-    def toggleNotificationsWidget(self):
-        rightCont = self.ui.rightMenuContainer
-        if rightCont.isHidden():
-            rightCont.show()
-        else:
-            rightCont.hide()
-
-    def hideNotificationsWidget(self):
-        rightCont = self.ui.rightMenuContainer
-        rightCont.hide()
-
     def toggleMainMenuWidget(self):
         leftCont = self.ui.leftMenuContainer
         if leftCont.width() == 53:
@@ -127,9 +119,20 @@ class MainWindow(QMainWindow):
         else:
             leftCont.setFixedWidth(53)
 
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    sys.exit(app.exec_())
+    def showDialog(self, function, params):
+        msg = QMessageBox()
+        msg.setWindowTitle("MessageBox demo")
+        msgIcon = QIcon()
+        msgIcon.addFile(u":images/logo.png")
+        msg.setWindowIcon(msgIcon)
+        try:
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Successful")
+            funcMsg = function(*params)
+            if funcMsg:
+                msg.setInformativeText(str(funcMsg))
+        except Exception as e:
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Error: " + str(e))
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
