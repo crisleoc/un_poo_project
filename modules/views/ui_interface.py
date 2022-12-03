@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-# Form generated from reading UI file 'interfaceheczLy.ui'
+# Form generated from reading UI file 'interfaceRzuUgE.ui'
 ##
 # Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -879,7 +879,7 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(
             u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 519, 609))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(-218, 0, 301, 609))
         self.verticalLayout_35 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
@@ -1197,13 +1197,13 @@ class Ui_MainWindow(object):
         self.menuBtn.setText("")
 # if QT_CONFIG(tooltip)
         self.studentsBtn.setToolTip(QCoreApplication.translate(
-            "MainWindow", u"Go to subjects", None))
+            "MainWindow", u"Go to students", None))
 #endif // QT_CONFIG(tooltip)
         self.studentsBtn.setText(QCoreApplication.translate(
             "MainWindow", u"Students", None))
 # if QT_CONFIG(tooltip)
         self.subjectsBtn.setToolTip(QCoreApplication.translate(
-            "MainWindow", u"Go to students", None))
+            "MainWindow", u"Go to subjects", None))
 #endif // QT_CONFIG(tooltip)
         self.subjectsBtn.setText(QCoreApplication.translate(
             "MainWindow", u"Subjects", None))
@@ -1291,11 +1291,11 @@ class Ui_MainWindow(object):
         self.lineEdit_cCareer.setPlaceholderText(QCoreApplication.translate(
             "MainWindow", u"Type the student career", None))
         self.label_13.setText(QCoreApplication.translate(
-            "MainWindow", u"Enter the student born date (yyyy-mm--dd):", None))
+            "MainWindow", u"Enter the student born date (yyyy-mm-dd):", None))
         self.dateEdit_cBornD.setDisplayFormat(
             QCoreApplication.translate("MainWindow", u"dd-MM-yyyy", None))
         self.label_14.setText(QCoreApplication.translate(
-            "MainWindow", u"Enter the student entry date (yyyy-mm--dd):", None))
+            "MainWindow", u"Enter the student entry date (yyyy-mm-dd):", None))
         self.dateEdit_cEntryD.setDisplayFormat(
             QCoreApplication.translate("MainWindow", u"dd-MM-yyyy", None))
         self.label_20.setText(QCoreApplication.translate(
@@ -1377,11 +1377,11 @@ class Ui_MainWindow(object):
         self.lineEdit_uCareer.setPlaceholderText(QCoreApplication.translate(
             "MainWindow", u"Type the new student career", None))
         self.label_36.setText(QCoreApplication.translate(
-            "MainWindow", u"Enter the new student born date (yyyy-mm--dd):", None))
+            "MainWindow", u"Enter the new student born date (yyyy-mm-dd):", None))
         self.dateEdit_uBornD.setDisplayFormat(
             QCoreApplication.translate("MainWindow", u"dd-MM-yyyy", None))
         self.label_37.setText(QCoreApplication.translate(
-            "MainWindow", u"Enter the new student entry date (yyyy-mm--dd):", None))
+            "MainWindow", u"Enter the new student entry date (yyyy-mm-dd):", None))
         self.dateEdit_uEntryD.setDisplayFormat(
             QCoreApplication.translate("MainWindow", u"dd-MM-yyyy", None))
         self.label_38.setText(QCoreApplication.translate(

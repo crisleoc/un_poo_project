@@ -1,3 +1,4 @@
+from datetime import datetime
 from modules.connect_db import *
 from .ui_interface import *
 
@@ -11,6 +12,7 @@ class MainView(QMainWindow):
         super(MainView, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.headerContainer.mouseMoveEvent = self.moveWindow
         self.ui.leftMenuContainer.setFixedWidth(53)
         self.ui.centerMenuContainer.hide()
         self.ui.closeBtn.clicked.connect(self.closeWindow)
@@ -26,6 +28,15 @@ class MainView(QMainWindow):
         self.ui.fillDbBtn.clicked.connect(
             lambda: self.showDialog(fillDB, []))
         self.show()
+
+    def mousePressEvent(self, event):
+        self.click_position = event.globalPos()
+
+    def moveWindow(self, event):
+        if event.buttons() == Qt.LeftButton:
+            self.move(self.pos() + event.globalPos() - self.click_position)
+            self.click_position = event.globalPos()
+            event.accept()
 
     def changeToStudentsPage(self):
         self.ui.studentsBtn.setStyleSheet(u"background-color: #1f232a;")
@@ -121,18 +132,29 @@ class MainView(QMainWindow):
 
     def showDialog(self, function, params):
         msg = QMessageBox()
-        msg.setWindowTitle("MessageBox demo")
+        msg.setWindowTitle("Dialog Box")
         msgIcon = QIcon()
         msgIcon.addFile(u":images/logo.png")
         msg.setWindowIcon(msgIcon)
         try:
             msg.setIcon(QMessageBox.Information)
-            msg.setText("Successful")
+            msg.setText("Function executed successfully")
             funcMsg = function(*params)
             if funcMsg:
                 msg.setInformativeText(str(funcMsg))
         except Exception as e:
             msg.setIcon(QMessageBox.Critical)
             msg.setText("Error: " + str(e))
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
+
+    def showErrorDialog(self, error):
+        msg = QMessageBox()
+        msg.setWindowTitle("Error message box")
+        msgIcon = QIcon()
+        msgIcon.addFile(u":images/logo.png")
+        msg.setWindowIcon(msgIcon)
+        msg.setIcon(QMessageBox.Critical)
+        msg.setText("Error: " + str(error))
         msg.setStandardButtons(QMessageBox.Ok)
         msg.exec_()

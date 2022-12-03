@@ -83,7 +83,7 @@ class student(object):
 
     def deleteStudent(self, connection, id):
         self._connection = connection
-        self._id = id
+        self._id = int(id)
         """Delete a student by id in the database:
 
         Args:
@@ -94,6 +94,24 @@ class student(object):
         # Deletes from the DB the row associated with the id
         DELETE_STATEMENT = "DELETE FROM students WHERE id = ?"
         CURSOR_OBJ.execute(DELETE_STATEMENT, (id,))
+        connection.commit()
+
+    def updateStudentView(self, connection, id, data):
+        """Update a student by id in the database:
+
+        Args:
+            connection (object): Connection to sqlite3.
+            id (int): Id of the student.
+            data (tuple): Tuple with the data (10 spaces) of the student.
+        """
+        self._connection = connection
+        self._id = id
+        self._student = data
+        CURSOR_OBJ = connection.cursor()
+        UPDATE_STATEMENT = "UPDATE students SET name = ?, lastname = ?, career = ?, bornDate = ?, entryDate = ?, placeOrigin = ?, email = ?, enrollQuantity = ?, photograph = ? WHERE id = ?"
+        # Replaces each ? character with its corresponding value inside the student tuple
+        CURSOR_OBJ.execute(
+            UPDATE_STATEMENT, (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], id))
         connection.commit()
 
     def updateStudent(self, connection, studentID):

@@ -59,13 +59,13 @@
 	border-radius: 10px;
 }
 
-#filldbBtn {
+#fillDbBtn {
 	background-color: #16191d;
 	border-radius: 10px;
 	padding: 10px 5px;
 }
 
-#filldbBtn:hover {
+#fillDbBtn:hover {
 	background-color: #1f232a;
 }
 
@@ -249,7 +249,7 @@ font-weight: 500;</string>
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="toolTip">
-                <string>Go to subjects</string>
+                <string>Go to students</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">background-color: #1f232a;</string>
@@ -275,7 +275,7 @@ font-weight: 500;</string>
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="toolTip">
-                <string>Go to students</string>
+                <string>Go to subjects</string>
                </property>
                <property name="text">
                 <string>Subjects</string>
@@ -530,7 +530,7 @@ font-weight: 500;</string>
                   <number>0</number>
                  </property>
                  <item alignment="Qt::AlignTop">
-                  <widget class="QPushButton" name="filldbBtn">
+                  <widget class="QPushButton" name="fillDbBtn">
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
@@ -1198,7 +1198,7 @@ QPushButton:hover {
                                   <item>
                                    <widget class="QLabel" name="label_13">
                                     <property name="text">
-                                     <string>Enter the student born date (yyyy-mm--dd):</string>
+                                     <string>Enter the student born date (yyyy-mm-dd):</string>
                                     </property>
                                    </widget>
                                   </item>
@@ -1227,7 +1227,7 @@ QPushButton:hover {
                                   <item>
                                    <widget class="QLabel" name="label_14">
                                     <property name="text">
-                                     <string>Enter the student entry date (yyyy-mm--dd):</string>
+                                     <string>Enter the student entry date (yyyy-mm-dd):</string>
                                     </property>
                                    </widget>
                                   </item>
@@ -1619,9 +1619,9 @@ QPushButton:hover {
                                 <widget class="QWidget" name="scrollAreaWidgetContents_3">
                                  <property name="geometry">
                                   <rect>
-                                   <x>0</x>
+                                   <x>-218</x>
                                    <y>0</y>
-                                   <width>519</width>
+                                   <width>301</width>
                                    <height>609</height>
                                   </rect>
                                  </property>
@@ -1749,7 +1749,7 @@ QPushButton:hover {
                                      <item>
                                       <widget class="QLabel" name="label_36">
                                        <property name="text">
-                                        <string>Enter the new student born date (yyyy-mm--dd):</string>
+                                        <string>Enter the new student born date (yyyy-mm-dd):</string>
                                        </property>
                                       </widget>
                                      </item>
@@ -1778,7 +1778,7 @@ QPushButton:hover {
                                      <item>
                                       <widget class="QLabel" name="label_37">
                                        <property name="text">
-                                        <string>Enter the new student entry date (yyyy-mm--dd):</string>
+                                        <string>Enter the new student entry date (yyyy-mm-dd):</string>
                                        </property>
                                       </widget>
                                      </item>
