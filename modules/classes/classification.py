@@ -143,3 +143,21 @@ class classification(object):
             cursorObj.execute(UPDATE_STATEMENT3)
             connection.commit()
         connection.commit()
+
+    def selectAllClassification(self, connection,orderer):
+        """Select a classification by the student id in the database:
+
+        Args:
+            connection (object): Connection to sqlite3.
+            student_id (int): Id of the student.
+        Returns:
+            list<tuple>: List of tuples with the data of the students that contains the id.
+        """
+        print('hola mundo')
+        self._connection = connection
+        CURSOR_OBJ = connection.cursor()
+        SELECT_STATEMENT = "SELECT * FROM Classification WHERE student_id > 0 ORDER BY "+orderer+" DESC"
+        CURSOR_OBJ.execute (SELECT_STATEMENT)
+        return CURSOR_OBJ.fetchall()
+
+    # recorre la tabla de academicHistory y cuenta cuantas materias concuerdan con cada ID del estudiante
