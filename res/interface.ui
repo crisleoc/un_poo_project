@@ -792,7 +792,7 @@ font-weight: 800;</string>
              <item>
               <widget class="QStackedWidget" name="stackedWidget_main">
                <property name="currentIndex">
-                <number>0</number>
+                <number>3</number>
                </property>
                <widget class="QWidget" name="page_students">
                 <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -1006,7 +1006,7 @@ QPushButton:hover {
                        <item>
                         <widget class="QStackedWidget" name="stackedWidget_students">
                          <property name="currentIndex">
-                          <number>0</number>
+                          <number>3</number>
                          </property>
                          <widget class="QWidget" name="page_createStudent">
                           <layout class="QVBoxLayout" name="verticalLayout_20">
@@ -1036,9 +1036,9 @@ QPushButton:hover {
                              <widget class="QWidget" name="scrollAreaWidgetContents">
                               <property name="geometry">
                                <rect>
-                                <x>0</x>
+                                <x>-209</x>
                                 <y>0</y>
-                                <width>519</width>
+                                <width>274</width>
                                 <height>680</height>
                                </rect>
                               </property>
@@ -2094,21 +2094,66 @@ QPushButton:hover {
                <widget class="QWidget" name="page_classify">
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
-                  <widget class="QLabel" name="label_10">
-                   <property name="font">
-                    <font>
-                     <pointsize>-1</pointsize>
-                     <weight>62</weight>
-                     <italic>false</italic>
-                     <bold>true</bold>
-                    </font>
+                  <widget class="QTableWidget" name="TABLE">
+                   <property name="enabled">
+                    <bool>true</bool>
                    </property>
-                   <property name="text">
-                    <string>Classification</string>
+                   <property name="cursor" stdset="0">
+                    <cursorShape>ArrowCursor</cursorShape>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="sortingEnabled">
+                    <bool>true</bool>
                    </property>
+                   <row>
+                    <property name="text">
+                     <string>1</string>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string>2</string>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string>3</string>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string>4</string>
+                    </property>
+                   </row>
+                   <column>
+                    <property name="text">
+                     <string>student_id</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>name</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>lastName</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>amountSubjects</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>creditSum</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>average</string>
+                    </property>
+                   </column>
                   </widget>
                  </item>
                 </layout>
