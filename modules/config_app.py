@@ -342,5 +342,5 @@ def readDataUserSubject(is_update=False):
     if not is_update:
         subject = (code, name, school, department, credits, language)
     else:
-        subject = (name, school, department, credits, language, code)
+        subject = (name, school, department, credits, language)
     return subject

@@ -65,6 +65,21 @@ class subject(object):
         CURSOR_OBJ.execute(DELETE_STATEMENT, (id,))
         connection.commit()
 
+    def selectAllSubjects(self, connection):
+        """Select all subjects in the database:
+
+        Args:
+            connection (object): Connection to sqlite3.
+
+        Returns:
+            list<tuple>: List of tuples with the data of all the subjects.
+        """
+        self._connection = connection
+        CURSOR_OBJ = connection.cursor()
+        SELECT_STATEMENT = "SELECT * FROM subjects"
+        CURSOR_OBJ.execute(SELECT_STATEMENT)
+        return CURSOR_OBJ.fetchall()
+
     def selectSubjectByID(self, connection, id):
         """Select a subject by id in the database:
 
@@ -81,6 +96,23 @@ class subject(object):
         SELECT_STATEMENT = "SELECT * FROM subjects WHERE code = ?"
         CURSOR_OBJ.execute(SELECT_STATEMENT, (id,))
         return CURSOR_OBJ.fetchall()  # Returns the row as a tuple
+
+    def updateSubjectView(self, connection, code, data):
+        """Update a subject in the database:
+
+        Args:
+            connection (object): Connection to sqlite3.
+            code (int): Id of the subject.
+            data (tuple): Tuple containing the elements of the Subjects table.
+        """
+        self._connection = connection
+        self._subjectCode = code
+        self._subject = data
+        CURSOR_OBJ = connection.cursor()
+        UPDATE_STATEMENT = "UPDATE subjects SET name = ?, school = ?, department = ?, credits = ?, language = ? WHERE code = ?"
+        CURSOR_OBJ.execute(
+            UPDATE_STATEMENT, (data[0], data[1], data[2], data[3], data[4], code))
+        connection.commit()
 
     def updateSubject(self, connection, subjectCode):
         """Update a subject in the database:

@@ -14,7 +14,12 @@ class MainView(QMainWindow):
         self.ui.setupUi(self)
         self.ui.headerContainer.mouseMoveEvent = self.moveWindow
         self.ui.leftMenuContainer.setFixedWidth(53)
-        self.ui.centerMenuContainer.hide()
+        # self.ui.centerMenuContainer.hide()
+        self.ui.stackedWidget_settings.setCurrentIndex(0)
+        self.ui.stackedWidget_main.setCurrentIndex(0)
+        self.ui.stackedWidget_students.setCurrentIndex(0)
+        self.ui.stackedWidget_subjects.setCurrentIndex(0)
+        self.ui.stackedWidget_classify.setCurrentIndex(0)
         self.ui.closeBtn.clicked.connect(self.closeWindow)
         self.ui.minimizeBtn.clicked.connect(self.minimizeWindow)
         self.ui.restoreBtn.clicked.connect(self.resizeWindow)
@@ -58,6 +63,8 @@ class MainView(QMainWindow):
         self.ui.studentsBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.classifyBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.stackedWidget_main.setCurrentIndex(2)
+        self.ui.lineEdit_searchAH.clear()
+        self.ui.lineEdit_searchAH.setFocus()
 
     def changeToClassifyPage(self):
         self.ui.classifyBtn.setStyleSheet(u"background-color: #1f232a;")
@@ -65,6 +72,8 @@ class MainView(QMainWindow):
         self.ui.studentsBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.ahBtn.setStyleSheet(u"background-color: transparent;")
         self.ui.stackedWidget_main.setCurrentIndex(3)
+        self.ui.lineEdit_searchClassifyS.clear()
+        self.ui.lineEdit_searchClassifyS.setFocus()
 
     def closeWindow(self):
         self.close()

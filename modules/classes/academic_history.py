@@ -3,13 +3,7 @@ from .Object import object
 
 class academicHistory(object):
 
-    def __init__(self):
-        """this is the constructor method for the academic history class
-        """
-        code = None
-        id = None
-        finalNote = None
-        credits = None    # we declare the attributes that have the class with a None value each
+    def __init__(self): pass
 
     def createAcademicHistoryTable(self, connection):
         """Create the academicHistory table in the database:
@@ -82,28 +76,33 @@ class academicHistory(object):
         except:
             return 'ERROR: Please enter a valid input'
 
-    def queryAcademicHistory(self, connection):
-        """The queryAcademicHistory function queries the academicHistory table for information.
+    def selectAllAcademicHistories(self, connection):
+        """The selectAllAcademicHistories function queries the academicHistory table for information.
         Args:
             connection (object): Connection to sqlite3.
         Returns:
             list<tuple>: List of tuples with the data of the academic History.
         """
+        cursorObj = connection.cursor()
+        cursorObj.execute('SELECT * FROM academicHistory')
+        rows = cursorObj.fetchall()  # Read the registers in memory and return a list
+        return rows
+
+    def queryAcademicHistory(self, connection, identity):
+        """The queryAcademicHistory function queries the academicHistory table for information.
+        Args:
+            connection (object): Connection to sqlite3.
+            identity (int): Identity of the student.
+        Returns:
+            list<tuple>: List of tuples with the data of the academic History.
+        """
         try:  # validates that input errors do not break the program
-            identity = input('Enter the identification number: ')
             # We traverse the database with the object cursorObj
             cursorObj = connection.cursor()
-
-            def useSelect(x):
-                # We consult the information in the academicHistory table
-                cursorObj.execute(x)
-                rows = cursorObj.fetchall()  # Read the registers in memory and return a list
-                return rows
-
-            readHistory = "SELECT * FROM academicHistory WHERE id = "+identity+""
+            SELECT_STATEMENT = "SELECT * FROM academicHistory WHERE id = ?"
+            cursorObj.execute(SELECT_STATEMENT, (identity,))
             # We call the function that executes the SELECT
-            rows = useSelect(readHistory)
-            return rows
+            return cursorObj.fetchall()
         except:
             return 'ERROR: Please enter a valid input'
 

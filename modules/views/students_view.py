@@ -29,25 +29,26 @@ class StudentsView(MainView):
             lambda: self.showDialog(self.getUpdateStudentId, []))
         self.ui.updateStudentBtn.clicked.connect(
             lambda: self.showDialog(self._studentObj.updateStudentView, [self._connection, self.getUpdateStudentId2(), self.getTupleStudentUpdate()]))
+        self.show()
 
     def getUpdateStudentId2(self):
         try:
             id = int(self.ui.lineEdit_searchStudentU.text())
             return id
         except Exception as e:
-            print(str(e))
+            print("gUSI2: " + str(e))
 
     def getUpdateStudentId(self):
         try:
             id = int(self.ui.lineEdit_searchStudentU.text())
             studentData = self._studentObj.selectStudentByID(
                 self._connection, id)
-            self.fillUpdatePlaceHolders(studentData[0])
+            self.fillStudentUpdateInputs(studentData[0])
             return id
         except ValueError:
             self.showErrorDialog("ID must be a number")
 
-    def fillUpdatePlaceHolders(self, studentData):
+    def fillStudentUpdateInputs(self, studentData):
         self.ui.lineEdit_uName.setText(studentData[1])
         self.ui.lineEdit_uLastName.setText(studentData[2])
         self.ui.lineEdit_uCareer.setText(studentData[3])
@@ -60,7 +61,7 @@ class StudentsView(MainView):
         self.ui.lineEdit_uEnroll.setText(str(studentData[8]))
         self.ui.lineEdit_uPURL.setText(studentData[9])
 
-    def clearUpdateInputs(self):
+    def clearStudentUpdateInputs(self):
         self.ui.lineEdit_uName.clear()
         self.ui.lineEdit_uLastName.clear()
         self.ui.lineEdit_uCareer.clear()
@@ -104,7 +105,7 @@ class StudentsView(MainView):
             pictureURL = self.ui.lineEdit_uPURL.text()
             return (name, lastName, career, bornDate, entryDate, origin, email, enrollment, pictureURL)
         except Exception as e:
-            print(str(e))
+            print("gTSU: " + str(e))
 
     def getTupleStudentInsert(self):
         try:
@@ -120,9 +121,9 @@ class StudentsView(MainView):
             pic = self.ui.lineEdit_cPURL.text()
             return (id, name, lastName, career, bornDate, entryDate, placeOrigin, email, enrollQ, pic)
         except Exception as e:
-            print(str(e))
+            print("gTSI: " + str(e))
 
-    def clearInsertInputs(self):
+    def clearStudentCreateInputs(self):
         self.ui.lineEdit_cID.clear()
         self.ui.lineEdit_cName.clear()
         self.ui.lineEdit_cLastName.clear()
@@ -142,7 +143,7 @@ class StudentsView(MainView):
         self.ui.deleteStudentBtnMain.setStyleSheet(
             u"background-color: transparent;")
         self.ui.stackedWidget_students.setCurrentIndex(0)
-        self.clearInsertInputs()
+        self.clearStudentCreateInputs()
 
     def changeToSearchStudentPage(self):
         self.ui.searchStudentBtnMain.setStyleSheet(
@@ -169,10 +170,9 @@ class StudentsView(MainView):
         self.ui.deleteStudentBtnMain.setStyleSheet(
             u"background-color: transparent;")
         self.ui.stackedWidget_students.setCurrentIndex(2)
-        self.ui.stackedWidget_main.setCurrentIndex(0)
         self.ui.lineEdit_searchStudentU.clear()
         self.ui.lineEdit_searchStudentU.setFocus()
-        self.clearUpdateInputs()
+        self.clearStudentUpdateInputs()
 
     def changeToDeleteStudentPage(self):
         self.ui.deleteStudentBtnMain.setStyleSheet(
@@ -185,3 +185,4 @@ class StudentsView(MainView):
             u"background-color: transparent;")
         self.ui.stackedWidget_students.setCurrentIndex(3)
         self.ui.lineEdit_searchStudentD.clear()
+        self.ui.lineEdit_searchStudentD.setFocus()

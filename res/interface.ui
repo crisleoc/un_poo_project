@@ -54,7 +54,7 @@
 	background-color: #2c313c;
 }
 
-#frame_4, #frame_8, #frame_9 {
+#frame_4, #frame_9, #frame_60, #frame_6, #frame_25 {
 	background-color: #16191d;
 	border-radius: 10px;
 }
@@ -114,7 +114,7 @@ QTableWidget QTableCornerButton::section {
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item alignment="Qt::AlignLeft">
+    <item>
      <widget class="QWidget" name="leftMenuContainer" native="true">
       <property name="styleSheet">
        <string notr="true">font-size: 12px;
@@ -534,6 +534,9 @@ font-weight: 500;</string>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
+                   <property name="toolTip">
+                    <string>Filll the DB</string>
+                   </property>
                    <property name="text">
                     <string>Fill DB</string>
                    </property>
@@ -788,16 +791,19 @@ font-weight: 800;</string>
           </property>
           <item>
            <widget class="QWidget" name="mainContentContainer" native="true">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <item>
               <widget class="QStackedWidget" name="stackedWidget_main">
                <property name="currentIndex">
-                <number>3</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="page_students">
                 <layout class="QVBoxLayout" name="verticalLayout_14">
                  <item>
-                  <widget class="QWidget" name="widget" native="true">
+                  <widget class="QWidget" name="mainWidget_students" native="true">
                    <layout class="QVBoxLayout" name="verticalLayout_19">
                     <property name="spacing">
                      <number>0</number>
@@ -815,7 +821,7 @@ font-weight: 800;</string>
                      <number>0</number>
                     </property>
                     <item alignment="Qt::AlignTop">
-                     <widget class="QWidget" name="widget_2" native="true">
+                     <widget class="QWidget" name="subWidget_students_1" native="true">
                       <layout class="QHBoxLayout" name="horizontalLayout_9">
                        <property name="spacing">
                         <number>0</number>
@@ -972,7 +978,7 @@ QPushButton:hover {
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget_3" native="true">
+                     <widget class="QWidget" name="subWidget_students_2" native="true">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                         <horstretch>0</horstretch>
@@ -1006,7 +1012,7 @@ QPushButton:hover {
                        <item>
                         <widget class="QStackedWidget" name="stackedWidget_students">
                          <property name="currentIndex">
-                          <number>3</number>
+                          <number>1</number>
                          </property>
                          <widget class="QWidget" name="page_createStudent">
                           <layout class="QVBoxLayout" name="verticalLayout_20">
@@ -1477,6 +1483,9 @@ QPushButton:hover {
                              <property name="styleSheet">
                               <string notr="true"/>
                              </property>
+                             <property name="editTriggers">
+                              <set>QAbstractItemView::NoEditTriggers</set>
+                             </property>
                              <property name="alternatingRowColors">
                               <bool>false</bool>
                              </property>
@@ -1487,7 +1496,7 @@ QPushButton:hover {
                               <bool>false</bool>
                              </property>
                              <attribute name="horizontalHeaderMinimumSectionSize">
-                              <number>41</number>
+                              <number>100</number>
                              </attribute>
                              <attribute name="horizontalHeaderStretchLastSection">
                               <bool>true</bool>
@@ -1619,9 +1628,9 @@ QPushButton:hover {
                                 <widget class="QWidget" name="scrollAreaWidgetContents_3">
                                  <property name="geometry">
                                   <rect>
-                                   <x>-218</x>
+                                   <x>0</x>
                                    <y>0</y>
-                                   <width>301</width>
+                                   <width>519</width>
                                    <height>609</height>
                                   </rect>
                                  </property>
@@ -2050,21 +2059,991 @@ QPushButton:hover {
                <widget class="QWidget" name="page_subjects">
                 <layout class="QVBoxLayout" name="verticalLayout_15">
                  <item>
-                  <widget class="QLabel" name="label_8">
-                   <property name="font">
-                    <font>
-                     <pointsize>-1</pointsize>
-                     <weight>62</weight>
-                     <italic>false</italic>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Subjects</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
+                  <widget class="QWidget" name="mainWidget_subjects" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_10">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QWidget" name="subWidget_subjects_1" native="true">
+                      <layout class="QHBoxLayout" name="horizontalLayout_22">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>9</number>
+                       </property>
+                       <item alignment="Qt::AlignLeft">
+                        <widget class="QLabel" name="label_51">
+                         <property name="text">
+                          <string>Subjects</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignRight">
+                        <widget class="QFrame" name="frame_60">
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton {
+	padding: 5px;
+	border-radius: 10px;
+}
+
+QPushButton:hover {
+	background-color: #1f232a
+}</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_23">
+                          <property name="spacing">
+                           <number>10</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>9</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>9</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>9</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>9</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="createSubjectBtnMain">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="toolTip">
+                             <string>Add subject</string>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">background-color: #2c313c</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="resources.qrc">
+                              <normaloff>:/icons/icons/file-plus.svg</normaloff>:/icons/icons/file-plus.svg</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>24</width>
+                              <height>24</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="searchSubjectBtnMain">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="toolTip">
+                             <string>Search subject</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="resources.qrc">
+                              <normaloff>:/icons/icons/search.svg</normaloff>:/icons/icons/search.svg</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>24</width>
+                              <height>24</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="updateSubjectBtnMain">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="toolTip">
+                             <string>Update subject</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="resources.qrc">
+                              <normaloff>:/icons/icons/refresh-ccw.svg</normaloff>:/icons/icons/refresh-ccw.svg</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>24</width>
+                              <height>24</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="deleteSubjectBtnMain">
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="toolTip">
+                             <string>Delete subject</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="resources.qrc">
+                              <normaloff>:/icons/icons/trash-2.svg</normaloff>:/icons/icons/trash-2.svg</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>24</width>
+                              <height>24</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="subWidget_subjects_2" native="true">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame QLabel {
+	font-size: 11px;
+}</string>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_78">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetDefaultConstraint</enum>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QStackedWidget" name="stackedWidget_subjects">
+                         <property name="currentIndex">
+                          <number>3</number>
+                         </property>
+                         <widget class="QWidget" name="page_createSubject">
+                          <layout class="QVBoxLayout" name="verticalLayout_79">
+                           <property name="spacing">
+                            <number>10</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>9</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>9</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>9</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>9</number>
+                           </property>
+                           <item>
+                            <widget class="QScrollArea" name="scrollArea_5">
+                             <property name="layoutDirection">
+                              <enum>Qt::RightToLeft</enum>
+                             </property>
+                             <property name="widgetResizable">
+                              <bool>true</bool>
+                             </property>
+                             <widget class="QWidget" name="scrollAreaWidgetContents_5">
+                              <property name="geometry">
+                               <rect>
+                                <x>0</x>
+                                <y>0</y>
+                                <width>519</width>
+                                <height>420</height>
+                               </rect>
+                              </property>
+                              <layout class="QVBoxLayout" name="verticalLayout_80">
+                               <property name="leftMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="topMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="rightMargin">
+                                <number>0</number>
+                               </property>
+                               <property name="bottomMargin">
+                                <number>0</number>
+                               </property>
+                               <item>
+                                <widget class="QFrame" name="frame_61">
+                                 <property name="styleSheet">
+                                  <string notr="true"/>
+                                 </property>
+                                 <property name="frameShape">
+                                  <enum>QFrame::StyledPanel</enum>
+                                 </property>
+                                 <property name="frameShadow">
+                                  <enum>QFrame::Raised</enum>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_81">
+                                  <item>
+                                   <widget class="QLabel" name="label_52">
+                                    <property name="text">
+                                     <string>Code:</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLineEdit" name="lineEdit_cSubCode">
+                                    <property name="autoFillBackground">
+                                     <bool>false</bool>
+                                    </property>
+                                    <property name="placeholderText">
+                                     <string>Type the subject code</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QFrame" name="frame_62">
+                                 <property name="styleSheet">
+                                  <string notr="true"/>
+                                 </property>
+                                 <property name="frameShape">
+                                  <enum>QFrame::StyledPanel</enum>
+                                 </property>
+                                 <property name="frameShadow">
+                                  <enum>QFrame::Raised</enum>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_82">
+                                  <item>
+                                   <widget class="QLabel" name="label_53">
+                                    <property name="text">
+                                     <string>Name:</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLineEdit" name="lineEdit_cSubName">
+                                    <property name="autoFillBackground">
+                                     <bool>false</bool>
+                                    </property>
+                                    <property name="placeholderText">
+                                     <string>Type the subject name</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QFrame" name="frame_63">
+                                 <property name="styleSheet">
+                                  <string notr="true"/>
+                                 </property>
+                                 <property name="frameShape">
+                                  <enum>QFrame::StyledPanel</enum>
+                                 </property>
+                                 <property name="frameShadow">
+                                  <enum>QFrame::Raised</enum>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_83">
+                                  <item>
+                                   <widget class="QLabel" name="label_54">
+                                    <property name="text">
+                                     <string>School:</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLineEdit" name="lineEdit_cSubSchool">
+                                    <property name="autoFillBackground">
+                                     <bool>false</bool>
+                                    </property>
+                                    <property name="placeholderText">
+                                     <string>Type the subject school</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QFrame" name="frame_64">
+                                 <property name="styleSheet">
+                                  <string notr="true"/>
+                                 </property>
+                                 <property name="frameShape">
+                                  <enum>QFrame::StyledPanel</enum>
+                                 </property>
+                                 <property name="frameShadow">
+                                  <enum>QFrame::Raised</enum>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_84">
+                                  <item>
+                                   <widget class="QLabel" name="label_55">
+                                    <property name="text">
+                                     <string>Department:</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLineEdit" name="lineEdit_cSubDepartment">
+                                    <property name="autoFillBackground">
+                                     <bool>false</bool>
+                                    </property>
+                                    <property name="placeholderText">
+                                     <string>Type the subject department</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QFrame" name="frame_67">
+                                 <property name="styleSheet">
+                                  <string notr="true"/>
+                                 </property>
+                                 <property name="frameShape">
+                                  <enum>QFrame::StyledPanel</enum>
+                                 </property>
+                                 <property name="frameShadow">
+                                  <enum>QFrame::Raised</enum>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_87">
+                                  <item>
+                                   <widget class="QLabel" name="label_58">
+                                    <property name="text">
+                                     <string>Credits:</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLineEdit" name="lineEdit_cSubCredits">
+                                    <property name="autoFillBackground">
+                                     <bool>false</bool>
+                                    </property>
+                                    <property name="placeholderText">
+                                     <string>Type the subject credits</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QFrame" name="frame_68">
+                                 <property name="styleSheet">
+                                  <string notr="true"/>
+                                 </property>
+                                 <property name="frameShape">
+                                  <enum>QFrame::StyledPanel</enum>
+                                 </property>
+                                 <property name="frameShadow">
+                                  <enum>QFrame::Raised</enum>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_88">
+                                  <item>
+                                   <widget class="QLabel" name="label_59">
+                                    <property name="text">
+                                     <string>Language:</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QLineEdit" name="lineEdit_cSubLanguage">
+                                    <property name="autoFillBackground">
+                                     <bool>false</bool>
+                                    </property>
+                                    <property name="text">
+                                     <string/>
+                                    </property>
+                                    <property name="placeholderText">
+                                     <string>Type the subject language</string>
+                                    </property>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </item>
+                              </layout>
+                             </widget>
+                            </widget>
+                           </item>
+                           <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
+                            <widget class="QFrame" name="frame_71">
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_24">
+                              <property name="spacing">
+                               <number>30</number>
+                              </property>
+                              <item>
+                               <widget class="QPushButton" name="createSubjectBtn">
+                                <property name="cursor">
+                                 <cursorShape>PointingHandCursor</cursorShape>
+                                </property>
+                                <property name="toolTip">
+                                 <string>Create subject</string>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="resources.qrc">
+                                  <normaloff>:/icons/icons/check-square.svg</normaloff>:/icons/icons/check-square.svg</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>24</width>
+                                  <height>24</height>
+                                 </size>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                         <widget class="QWidget" name="page_searchSubject">
+                          <layout class="QVBoxLayout" name="verticalLayout_91">
+                           <property name="leftMargin">
+                            <number>9</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>9</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>9</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>9</number>
+                           </property>
+                           <item>
+                            <widget class="QFrame" name="frame_72">
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_25">
+                              <item>
+                               <widget class="QLineEdit" name="lineEdit_searchSubjectS">
+                                <property name="placeholderText">
+                                 <string>Type the subject code to search</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="searchSubjectBtnS">
+                                <property name="cursor">
+                                 <cursorShape>PointingHandCursor</cursorShape>
+                                </property>
+                                <property name="toolTip">
+                                 <string>Search subject</string>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="resources.qrc">
+                                  <normaloff>:/icons/icons/search.svg</normaloff>:/icons/icons/search.svg</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>24</width>
+                                  <height>24</height>
+                                 </size>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QTableWidget" name="searchTableSubject">
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
+                             <property name="editTriggers">
+                              <set>QAbstractItemView::NoEditTriggers</set>
+                             </property>
+                             <property name="alternatingRowColors">
+                              <bool>false</bool>
+                             </property>
+                             <property name="horizontalScrollMode">
+                              <enum>QAbstractItemView::ScrollPerPixel</enum>
+                             </property>
+                             <property name="cornerButtonEnabled">
+                              <bool>false</bool>
+                             </property>
+                             <attribute name="horizontalHeaderMinimumSectionSize">
+                              <number>100</number>
+                             </attribute>
+                             <attribute name="horizontalHeaderStretchLastSection">
+                              <bool>true</bool>
+                             </attribute>
+                             <column>
+                              <property name="text">
+                               <string>Code</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>Name</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>School</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>Entry Date</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>Credits</string>
+                              </property>
+                             </column>
+                             <column>
+                              <property name="text">
+                               <string>Language</string>
+                              </property>
+                             </column>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                         <widget class="QWidget" name="page_updateSubject">
+                          <layout class="QVBoxLayout" name="verticalLayout_92">
+                           <item>
+                            <widget class="QWidget" name="widget_11" native="true">
+                             <layout class="QVBoxLayout" name="verticalLayout_93">
+                              <property name="spacing">
+                               <number>10</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QFrame" name="frame_73">
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_26">
+                                 <item>
+                                  <widget class="QLineEdit" name="lineEdit_searchSubjectU">
+                                   <property name="placeholderText">
+                                    <string>Type the subject code to update</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QPushButton" name="searchSubjectBtnU">
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="toolTip">
+                                    <string>Search subject</string>
+                                   </property>
+                                   <property name="text">
+                                    <string/>
+                                   </property>
+                                   <property name="icon">
+                                    <iconset resource="resources.qrc">
+                                     <normaloff>:/icons/icons/search.svg</normaloff>:/icons/icons/search.svg</iconset>
+                                   </property>
+                                   <property name="iconSize">
+                                    <size>
+                                     <width>24</width>
+                                     <height>24</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QScrollArea" name="scrollArea_6">
+                                <property name="layoutDirection">
+                                 <enum>Qt::RightToLeft</enum>
+                                </property>
+                                <property name="widgetResizable">
+                                 <bool>true</bool>
+                                </property>
+                                <widget class="QWidget" name="scrollAreaWidgetContents_6">
+                                 <property name="geometry">
+                                  <rect>
+                                   <x>0</x>
+                                   <y>0</y>
+                                   <width>519</width>
+                                   <height>349</height>
+                                  </rect>
+                                 </property>
+                                 <layout class="QVBoxLayout" name="verticalLayout_94">
+                                  <property name="leftMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="topMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="rightMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <property name="bottomMargin">
+                                   <number>0</number>
+                                  </property>
+                                  <item>
+                                   <widget class="QFrame" name="frame_74">
+                                    <property name="styleSheet">
+                                     <string notr="true"/>
+                                    </property>
+                                    <property name="frameShape">
+                                     <enum>QFrame::StyledPanel</enum>
+                                    </property>
+                                    <property name="frameShadow">
+                                     <enum>QFrame::Raised</enum>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout_95">
+                                     <item>
+                                      <widget class="QLabel" name="label_62">
+                                       <property name="text">
+                                        <string>Name:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item>
+                                      <widget class="QLineEdit" name="lineEdit_uSubName">
+                                       <property name="autoFillBackground">
+                                        <bool>false</bool>
+                                       </property>
+                                       <property name="placeholderText">
+                                        <string>Type the new subject name</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                    </layout>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QFrame" name="frame_75">
+                                    <property name="styleSheet">
+                                     <string notr="true"/>
+                                    </property>
+                                    <property name="frameShape">
+                                     <enum>QFrame::StyledPanel</enum>
+                                    </property>
+                                    <property name="frameShadow">
+                                     <enum>QFrame::Raised</enum>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout_96">
+                                     <item>
+                                      <widget class="QLabel" name="label_63">
+                                       <property name="text">
+                                        <string>School:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item>
+                                      <widget class="QLineEdit" name="lineEdit_uSubSchool">
+                                       <property name="autoFillBackground">
+                                        <bool>false</bool>
+                                       </property>
+                                       <property name="placeholderText">
+                                        <string>Type the new subject school</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                    </layout>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QFrame" name="frame_76">
+                                    <property name="styleSheet">
+                                     <string notr="true"/>
+                                    </property>
+                                    <property name="frameShape">
+                                     <enum>QFrame::StyledPanel</enum>
+                                    </property>
+                                    <property name="frameShadow">
+                                     <enum>QFrame::Raised</enum>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout_97">
+                                     <item>
+                                      <widget class="QLabel" name="label_64">
+                                       <property name="text">
+                                        <string>Department:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item>
+                                      <widget class="QLineEdit" name="lineEdit_uSubDepartment">
+                                       <property name="autoFillBackground">
+                                        <bool>false</bool>
+                                       </property>
+                                       <property name="placeholderText">
+                                        <string>Type the new subject department</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                    </layout>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QFrame" name="frame_79">
+                                    <property name="styleSheet">
+                                     <string notr="true"/>
+                                    </property>
+                                    <property name="frameShape">
+                                     <enum>QFrame::StyledPanel</enum>
+                                    </property>
+                                    <property name="frameShadow">
+                                     <enum>QFrame::Raised</enum>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout_100">
+                                     <item>
+                                      <widget class="QLabel" name="label_67">
+                                       <property name="text">
+                                        <string>Credits:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item>
+                                      <widget class="QLineEdit" name="lineEdit_uSubCredits">
+                                       <property name="autoFillBackground">
+                                        <bool>false</bool>
+                                       </property>
+                                       <property name="placeholderText">
+                                        <string>Type the new subject credits</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                    </layout>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QFrame" name="frame_80">
+                                    <property name="styleSheet">
+                                     <string notr="true"/>
+                                    </property>
+                                    <property name="frameShape">
+                                     <enum>QFrame::StyledPanel</enum>
+                                    </property>
+                                    <property name="frameShadow">
+                                     <enum>QFrame::Raised</enum>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout_101">
+                                     <item>
+                                      <widget class="QLabel" name="label_68">
+                                       <property name="text">
+                                        <string>Language:</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item>
+                                      <widget class="QLineEdit" name="lineEdit_uSubLanguage">
+                                       <property name="autoFillBackground">
+                                        <bool>false</bool>
+                                       </property>
+                                       <property name="text">
+                                        <string/>
+                                       </property>
+                                       <property name="placeholderText">
+                                        <string>Type the new subject language</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                    </layout>
+                                   </widget>
+                                  </item>
+                                 </layout>
+                                </widget>
+                               </widget>
+                              </item>
+                              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                               <widget class="QFrame" name="frame_83">
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QVBoxLayout" name="verticalLayout_104">
+                                 <property name="spacing">
+                                  <number>30</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QPushButton" name="updateSubjectBtn">
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="toolTip">
+                                    <string>Update subject</string>
+                                   </property>
+                                   <property name="text">
+                                    <string/>
+                                   </property>
+                                   <property name="icon">
+                                    <iconset resource="resources.qrc">
+                                     <normaloff>:/icons/icons/refresh-ccw.svg</normaloff>:/icons/icons/refresh-ccw.svg</iconset>
+                                   </property>
+                                   <property name="iconSize">
+                                    <size>
+                                     <width>24</width>
+                                     <height>24</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                         <widget class="QWidget" name="page_deleteSubject">
+                          <layout class="QVBoxLayout" name="verticalLayout_105">
+                           <item>
+                            <widget class="QWidget" name="widget_12" native="true">
+                             <layout class="QVBoxLayout" name="verticalLayout_106">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item alignment="Qt::AlignTop">
+                               <widget class="QFrame" name="frame_84">
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_27">
+                                 <item>
+                                  <widget class="QLineEdit" name="lineEdit_searchSubjectD">
+                                   <property name="placeholderText">
+                                    <string>Type the subject code to delete</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QPushButton" name="deleteSubjectBtn">
+                                   <property name="cursor">
+                                    <cursorShape>PointingHandCursor</cursorShape>
+                                   </property>
+                                   <property name="toolTip">
+                                    <string>Delete subject</string>
+                                   </property>
+                                   <property name="text">
+                                    <string/>
+                                   </property>
+                                   <property name="icon">
+                                    <iconset resource="resources.qrc">
+                                     <normaloff>:/icons/icons/trash.svg</normaloff>:/icons/icons/trash.svg</iconset>
+                                   </property>
+                                   <property name="iconSize">
+                                    <size>
+                                     <width>24</width>
+                                     <height>24</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -2072,21 +3051,234 @@ QPushButton:hover {
                <widget class="QWidget" name="page_ah">
                 <layout class="QVBoxLayout" name="verticalLayout_16">
                  <item>
-                  <widget class="QLabel" name="label_9">
-                   <property name="font">
-                    <font>
-                     <pointsize>-1</pointsize>
-                     <weight>62</weight>
-                     <italic>false</italic>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Academic History</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
+                  <widget class="QWidget" name="mainWidget_ah" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_37">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QStackedWidget" name="stackedWidget_ah">
+                      <property name="currentIndex">
+                       <number>0</number>
+                      </property>
+                      <widget class="QWidget" name="page_mainSearchAH">
+                       <layout class="QVBoxLayout" name="verticalLayout_108">
+                        <property name="leftMargin">
+                         <number>9</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>9</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>9</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>9</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_85">
+                          <property name="frameShape">
+                           <enum>QFrame::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_30">
+                           <property name="spacing">
+                            <number>10</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QFrame" name="frame_24">
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_36">
+                              <property name="spacing">
+                               <number>10</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>9</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QLabel" name="label_5">
+                                <property name="text">
+                                 <string>Academic History</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QLineEdit" name="lineEdit_searchAH">
+                                <property name="placeholderText">
+                                 <string>Type the student id to search his academic history </string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="frame_25">
+                             <property name="styleSheet">
+                              <string notr="true">QPushButton {
+	padding: 5px;
+	border-radius: 10px;
+}
+
+QPushButton:hover {
+	background-color: #1f232a
+}</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_8">
+                              <property name="spacing">
+                               <number>10</number>
+                              </property>
+                              <item>
+                               <widget class="QPushButton" name="refreshAH">
+                                <property name="toolTip">
+                                 <string>Refresh data</string>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="resources.qrc">
+                                  <normaloff>:/icons/icons/refresh-ccw.svg</normaloff>:/icons/icons/refresh-ccw.svg</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>24</width>
+                                  <height>24</height>
+                                 </size>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="searchAHStudent">
+                                <property name="cursor">
+                                 <cursorShape>PointingHandCursor</cursorShape>
+                                </property>
+                                <property name="toolTip">
+                                 <string>Search academic history</string>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="resources.qrc">
+                                  <normaloff>:/icons/icons/search.svg</normaloff>:/icons/icons/search.svg</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>24</width>
+                                  <height>24</height>
+                                 </size>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QTableWidget" name="searchTableAH">
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="editTriggers">
+                           <set>QAbstractItemView::NoEditTriggers</set>
+                          </property>
+                          <property name="alternatingRowColors">
+                           <bool>false</bool>
+                          </property>
+                          <property name="horizontalScrollMode">
+                           <enum>QAbstractItemView::ScrollPerPixel</enum>
+                          </property>
+                          <property name="sortingEnabled">
+                           <bool>true</bool>
+                          </property>
+                          <property name="cornerButtonEnabled">
+                           <bool>false</bool>
+                          </property>
+                          <attribute name="horizontalHeaderMinimumSectionSize">
+                           <number>150</number>
+                          </attribute>
+                          <attribute name="horizontalHeaderStretchLastSection">
+                           <bool>true</bool>
+                          </attribute>
+                          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                           <bool>true</bool>
+                          </attribute>
+                          <column>
+                           <property name="text">
+                            <string>Subject code</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Student id</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Final note</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Credits</string>
+                           </property>
+                          </column>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -2094,66 +3286,270 @@ QPushButton:hover {
                <widget class="QWidget" name="page_classify">
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
-                  <widget class="QTableWidget" name="TABLE">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="cursor" stdset="0">
-                    <cursorShape>ArrowCursor</cursorShape>
-                   </property>
-                   <property name="sortingEnabled">
-                    <bool>true</bool>
-                   </property>
-                   <row>
-                    <property name="text">
-                     <string>1</string>
+                  <widget class="QWidget" name="mainWidget_classify" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_11">
+                    <property name="spacing">
+                     <number>0</number>
                     </property>
-                   </row>
-                   <row>
-                    <property name="text">
-                     <string>2</string>
+                    <property name="leftMargin">
+                     <number>0</number>
                     </property>
-                   </row>
-                   <row>
-                    <property name="text">
-                     <string>3</string>
+                    <property name="topMargin">
+                     <number>0</number>
                     </property>
-                   </row>
-                   <row>
-                    <property name="text">
-                     <string>4</string>
+                    <property name="rightMargin">
+                     <number>0</number>
                     </property>
-                   </row>
-                   <column>
-                    <property name="text">
-                     <string>student_id</string>
+                    <property name="bottomMargin">
+                     <number>0</number>
                     </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>name</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>lastName</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>amountSubjects</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>creditSum</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>average</string>
-                    </property>
-                   </column>
+                    <item>
+                     <widget class="QStackedWidget" name="stackedWidget_classify">
+                      <property name="currentIndex">
+                       <number>0</number>
+                      </property>
+                      <widget class="QWidget" name="page_mainSearch">
+                       <layout class="QVBoxLayout" name="verticalLayout_107">
+                        <property name="leftMargin">
+                         <number>9</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>9</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>9</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>9</number>
+                        </property>
+                        <item>
+                         <widget class="QFrame" name="frame_82">
+                          <property name="frameShape">
+                           <enum>QFrame::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_29">
+                           <property name="spacing">
+                            <number>10</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QFrame" name="frame_8">
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_12">
+                              <property name="spacing">
+                               <number>10</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>9</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QLabel" name="label_2">
+                                <property name="text">
+                                 <string>Classification</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QLineEdit" name="lineEdit_searchClassifyS">
+                                <property name="placeholderText">
+                                 <string>Type the student id to search his classification</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="frame_6">
+                             <property name="styleSheet">
+                              <string notr="true">QPushButton {
+	padding: 5px;
+	border-radius: 10px;
+}
+
+QPushButton:hover {
+	background-color: #1f232a
+}</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_5">
+                              <property name="spacing">
+                               <number>10</number>
+                              </property>
+                              <item>
+                               <widget class="QPushButton" name="refreshClassify">
+                                <property name="cursor">
+                                 <cursorShape>PointingHandCursor</cursorShape>
+                                </property>
+                                <property name="toolTip">
+                                 <string>Refresh data</string>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="resources.qrc">
+                                  <normaloff>:/icons/icons/refresh-ccw.svg</normaloff>:/icons/icons/refresh-ccw.svg</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>24</width>
+                                  <height>24</height>
+                                 </size>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="sendMailStudent">
+                                <property name="cursor">
+                                 <cursorShape>PointingHandCursor</cursorShape>
+                                </property>
+                                <property name="toolTip">
+                                 <string>Send a mail to the student</string>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="resources.qrc">
+                                  <normaloff>:/icons/icons/send.svg</normaloff>:/icons/icons/send.svg</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>24</width>
+                                  <height>24</height>
+                                 </size>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="searchClassifyStudent">
+                                <property name="cursor">
+                                 <cursorShape>PointingHandCursor</cursorShape>
+                                </property>
+                                <property name="toolTip">
+                                 <string>Search classification</string>
+                                </property>
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="resources.qrc">
+                                  <normaloff>:/icons/icons/search.svg</normaloff>:/icons/icons/search.svg</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>24</width>
+                                  <height>24</height>
+                                 </size>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QTableWidget" name="searchTableClassify">
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="editTriggers">
+                           <set>QAbstractItemView::NoEditTriggers</set>
+                          </property>
+                          <property name="alternatingRowColors">
+                           <bool>false</bool>
+                          </property>
+                          <property name="horizontalScrollMode">
+                           <enum>QAbstractItemView::ScrollPerPixel</enum>
+                          </property>
+                          <property name="sortingEnabled">
+                           <bool>true</bool>
+                          </property>
+                          <property name="cornerButtonEnabled">
+                           <bool>false</bool>
+                          </property>
+                          <attribute name="horizontalHeaderMinimumSectionSize">
+                           <number>100</number>
+                          </attribute>
+                          <attribute name="horizontalHeaderStretchLastSection">
+                           <bool>true</bool>
+                          </attribute>
+                          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                           <bool>true</bool>
+                          </attribute>
+                          <column>
+                           <property name="text">
+                            <string>ID</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Name</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Last name</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Amount subjects</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Credits sum</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Average</string>
+                           </property>
+                          </column>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>

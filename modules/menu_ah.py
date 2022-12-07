@@ -35,7 +35,8 @@ def mainMenuAH(connection):
                 error = "01. ERROR: " + str(e)
         elif option == '2':
             try:
-                select = objectAH.queryAcademicHistory(connection)
+                identity = input('Enter the identification number: ')
+                select = objectAH.queryAcademicHistory(connection, identity)
             except Exception as e:
                 error = "02. ERROR: " + str(e)
         elif option == '3':
