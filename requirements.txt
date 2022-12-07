@@ -98,3 +98,4 @@ wcwidth==0.2.5
 webencodings==0.5.1
 wrapt==1.12.1
 yarl==1.6.3
+pyside2==5.15.2
